@@ -1,0 +1,43 @@
+  <div class="col-md-3 col-lg-2 col-sm-12 col-xs-12">
+	<!-- Blog Categories Well -->				
+	<div class="well article_edit" style="padding-top: 0px;margin-top: 9px;padding-bottom:30px;">
+		<h4 class="side_article_txt">{{vm.JsonVals.article_category}}</h4>
+		<hr class="hr_line">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="list-unstyled  list-group" id="collapse-list" >						
+					<a class="col-md-6 col-sm-12 col-xs-12 list-group-item" ng-repeat="clist in vm.cLists" href="{{clist.url}}/{{clist.category_id}}">{{clist.category_name}}				
+					</a>
+				</div>					
+			</div>			
+		</div><a href="" class="viewAllLink pull-right sho">{{vm.JsonVals.view_all}}</a>
+		<a href=""  class="viewAllLink pull-right hid">{{vm.JsonVals.view_less}}</a>
+	</div>
+	<div class="well article_edit adds" style="padding-top: 0px;">
+		<ins class="adsbygoogle"
+		style="display:block"
+		data-ad-client="ca-pub-7097333205788199"
+		data-ad-slot="9573289661"
+		data-ad-format="auto"></ins>
+		<script defer type="text/javascript">
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>			
+</div>
+<script defer type="text/javascript">
+	$(function(){
+		
+		$('.hid').hide();
+		$(".list-unstyled  a:gt(5)").hide();
+		$('.sho').click(function(){
+			$("a:gt(5)").show();
+			$('.sho').hide();
+			$('.hid').show();
+		});
+		$('.hid').click(function(){
+			$(".list-unstyled a:gt(5)").hide();
+			$('.sho').show();
+			$('.hid').hide();
+		});
+	});
+</script>

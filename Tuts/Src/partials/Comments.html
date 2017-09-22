@@ -1,0 +1,37 @@
+<div class="cmts" ng-if="vm.comments[0].article_title_id">
+	
+				<div ng-repeat="comment in vm.comments| orderBy:'':true" >
+                     <h3><hr class="divideline">{{vm.JsonVals.comments}}</h3>
+				<div class="row article_edit cmt_box">
+				
+					<div class="media">
+						<a class="pull-left" href="">
+							<img class="media-object" ng-src="Src/images/profileimg.png" ng-if="!comment.profile_pic">
+							<img class="media-object" ng-src="{{comment.profile_pic}}" ng-if="comment.profile_pic">
+						
+						</a>
+						<div class="media-body">
+							<h4 class="media-heading">{{comment.UserName}}
+								<small>{{comment.time}}</small>
+							</h4>
+							{{comment.comment_description}}
+						</div>
+					</div>
+				</div>
+				</div>
+				</div>
+              
+
+<div  ng-show="vm.isLoggedIn">
+<hr class="divideline">	    
+    <div class="well">
+        <h4>{{vm.JsonVals.leave_comment}}</h4>
+        <form  name="commentForm">
+            <div class="form-group">
+            	<input type="hidden" ng-model="comment.article_title_id" ng-init="comment.article_title_id=vm.articledetails[0].article_title_id">
+                <textarea class="form-control" name="discription" id="discription" ng-model="comment.discription" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" id="cmntsbtButt" name="cmntsbtBtn" ng-click="vm.submit_comment(comment);">{{vm.JsonVals.btn_submit}}</button>
+        </form>
+    </div>
+</div>

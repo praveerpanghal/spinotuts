@@ -1,0 +1,120 @@
+<div class="container content">
+  <div class="col-md-12 articleAdd">
+    <div class="adds">
+      <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-7097333205788199"
+      data-ad-slot="9573289661"
+      data-ad-format="auto"></ins>
+      <script defer type="text/javascript">
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </div>  
+</div>
+<div class="container">  
+  <p class="postArticleCont" ng-if="vm.userupdatemsg!=''">{{vm.userupdatemsg}}</p>
+  <div class="col-md-12 article_edit" >
+      <form name="updateprofileform">
+          <fieldset class="upformfields">
+    <div class="col-md-3 col-sm-12 col-xs-12 col-md-offset-1 col-lg-offset-1 profileEdit">
+   
+        
+          <div ng-hide="vm.eselect">
+            <img ng-show="updateprofilepicform.file.$valid" ngf-thumbnail="vm.userprofiledetails.profile_pic" class="profilePic" ng-model="vm.userprofiledetails.profile_pic">
+            <div class="fileUpload btn btn-default">
+              <span class="glyphicon glyphicon-camera" ng-click="vm.eselect=true" ngf-select ng-model="vm.picFile" accept="image/*"></span>              
+            </div>
+          </div>
+          <div ng-show="vm.eselect">          
+            <div class="cropArea upload">
+            <img-crop image="vm.picFile  | ngfDataUrl"                 
+            result-image="vm.croppedDataUrl" ng-init="vm.croppedDataUrl=''">
+          </img-crop>
+        </div>
+        <!-- <button class="btn btn-primary btn-xs" ng-click="vm.upload_pic(vm.croppedDataUrl,vm.userprofiledetails)">Upload Pic</button> -->
+        <button class="btn btn-primary btn-xs" ng-click="vm.eselect=false">reset</button> 
+      </div>  
+ 
+</div>
+
+<div class="col-md-8 col-sm-12 col-xs-12">
+ 
+      <div class="col-md-9 col-sm-12 col-xs-12 mobAlignpadding profileWizard">
+        <div class="form-group col-md-12 col-sm-12 col-xs-12 mobAlignpadding clearfix">
+          <label class="control-label col-md-4 col-sm-4 col-xs-4" for="focusedInput">{{vm.JsonVals.fullname}}</label>
+          <div class="col-md-5 col-sm-5 col-xs-5 controlWizard">
+            <label class="help-block">{{vm.userprofiledetails.UserName}}</label>
+          </div>
+        </div>
+        <div class="form-group col-md-12 mobAlignpadding clearfix">
+          <label class="control-label col-md-4 col-sm-4 col-xs-4" for="focusedInput">{{ vm.JsonVals.dateofbirth }}</label>
+          <div class="col-md-5 col-sm-5 col-xs-5 controlWizard">
+            <input class="form-control selfield dob"  id="focusedInput" type="text" ng-disabled="vm.dobbutton" ng-focus="vm.foucs()" ng-model="vm.userprofiledetails.birth_date">
+          </div>
+          <a href="#" class="btn btn-default" ng-click="vm.run('dobbutton');">
+            <span class="glyphicon glyphicon-pencil" ></span>
+          </a>
+        </div>
+        <div class="form-group col-md-12 mobAlignpadding clearfix">
+          <label class="control-label col-md-4 col-sm-4 col-xs-4" for="focusedInput">{{vm.JsonVals.mobileno}}</label>
+          <div class="col-md-5 col-sm-5 col-xs-5 controlWizard">
+            <input class="form-control selfield" id="focusedInput" type="text" ng-disabled="vm.mobbutton" ng-focus="vm.foucs()" ng-model="vm.userprofiledetails.mobile"/>
+          </div>
+          <a href="#" class="btn btn-default" ng-click="vm.run('mobbutton');">
+            <span class="glyphicon glyphicon-pencil" ></span>
+          </a>
+        </div>
+        <div class="form-group col-md-12 col-sm-12 mobAlignpadding clearfix">
+          <label class="control-label col-md-4 col-sm-4 col-xs-4" for="focusedInput">{{ vm.JsonVals.emailid }}</label>
+          <div class="col-md-5 col-sm-5 col-xs-5 controlWizard">
+            <input class="form-control selfield" id="focusedInput" type="text" ng-model="vm.userprofiledetails.email" ng-focus="vm.foucs()" ng-disabled="vm.editbutton"/>
+          </div>
+          <a href="#" class="btn btn-default" ng-click="vm.run('editbutton');">
+            <span class="glyphicon glyphicon-pencil" ></span>
+          </a>
+        </div>
+        <div class="form-group col-md-12 col-sm-12 mobAlignpadding clearfix">
+          <label class="control-label col-md-4 col-sm-4 col-xs-4" for="focusedInput">{{vm.JsonVals.address}}</label>
+          <div class="col-md-5 col-sm-5 col-xs-5 controlWizard">
+            <textarea class="form-control col-md-4 selfield" id="focusedInput" ng-disabled="vm.adrsbut" ng-focus="vm.foucs()" ng-model="vm.userprofiledetails.address"></textarea>
+          </div>
+          <a href="#" class="btn btn-default" ng-click="vm.run('adrsbut');">
+            <span class="glyphicon glyphicon-pencil" ></span>
+          </a>
+        </div>
+        <div class="form-group col-md-12 col-sm-12 mobAlignpadding clearfix">
+          <label class="control-label col-md-4 col-sm-4 col-xs-4" for="focusedInput">{{ vm.JsonVals.city }}</label>
+          <div class="col-md-5 col-sm-5 col-xs-5 controlWizard">
+            <input class="form-control selfield" id="focusedInput" type="text" ng-model="vm.userprofiledetails.city" ng-focus="vm.foucs()" ng-disabled="vm.citybutton">
+          </div>
+          <a href="#" class="btn btn-default" ng-click="vm.run('citybutton');">
+            <span class="glyphicon glyphicon-pencil" ></span>
+          </a>
+        </div>
+        <div class="form-group col-md-12 col-sm-12 mobAlignpadding clearfix">
+          <label class="control-label col-md-4 col-sm-4 col-xs-4" for="focusedInput">{{ vm.JsonVals.country }}</label>
+          <div class="col-md-5 col-sm-5 col-xs-5 controlWizard">
+            <select class="form-control selfield" ng-options="opt.country_id as opt.country_name for opt in vm.countrylists" ng-focus="vm.foucs()" ng-model="vm.userprofiledetails.country_id"  style="width:100%;" ng-disabled="vm.countrybut" ng-change="vm.selectedItemChanged(vm.userprofiledetails.country_id)"></select>
+          </div>
+          <a href="#" class="btn btn-default" ng-click="vm.run('countrybut');">
+            <span class="glyphicon glyphicon-pencil" ></span>
+          </a>
+        </div>
+        <div class="form-group col-md-12 col-sm-12 mobAlignpadding clearfix">
+          <label class="control-label col-md-4 col-sm-4 col-xs-4" for="focusedInput">{{ vm.JsonVals.state}}</label>
+          <div class="col-md-5 col-sm-5 col-xs-5 controlWizard">        
+            <select class="form-control selfield" ng-options="opt.state_id as opt.state_name for opt in vm.GetStateLists" ng-model="vm.userprofiledetails.state_id"  style="width:100%;" ng-disabled="vm.countrybut" ></select>        
+          </div>
+        </div>
+        <div class="form-group col-md-12 col-sm-12 mobAlignpadding clearfix">
+          <div class="col-md-5 col-sm-5 col-xs-12 col-md-offset-4 col-sm-offset-4 controlWizard">
+            <button type="submit" class="btn btn-primary" ng-click="vm.updateprofile(vm.croppedDataUrl,vm.userprofiledetails)" ng-disabled="updateprofileform.$pristine|| updateprofileform.$invalid">{{vm.JsonVals.update}}</button>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+</div>
+</div>

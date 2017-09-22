@@ -1,0 +1,8 @@
+{
+	"exception" : "Exception Logs",
+	"under_construction" : "images/under_construction.png",
+	"sno" : "S.No",
+	"exception_desc" : "Exception Description",
+	"log_date" : "Logged Date",
+	"copy" : "Copy"
+}

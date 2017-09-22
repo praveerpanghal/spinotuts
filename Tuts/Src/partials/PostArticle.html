@@ -1,0 +1,276 @@
+<div class="content containerWizard">
+	
+	<div class="col-md-12 article_bg" id="atclPst">
+		
+		<div class="col-md-4 col-sm-4 interviewQuestions alignPaddingLftRgt">
+			<div class="col-md-12 alignPaddingLftRgt">
+				<div class="row">
+					<div class="col-md-2 col-xs-12 pstActlDpDwn iqAtclType" >
+						<div class="form-group">							  
+							<select class="form-control" id="select" ng-model="atype">
+								<option value="">Aritcle Type</option>
+								<option value="Y">Approved</option>
+								<option value="N">Disapproved</option>
+								<option value="P">Pending</option>
+							</select>	
+						</div>
+					</div>	
+					<div class="col-md-3 col-xs-12 pstActlDpDwn iqCat" >
+						<div class="form-group">								
+							<select class="selectpicker form-control" ng-model="cat_id" >
+								<option value="">Aritcle Category</option>
+								<option ng-repeat="clist in vm.cLists" ng-if="clist.category_name != 'All'"  value='{{clist.category_name}}'>{{clist.category_name}}</option>	
+							</select>
+						</div>
+					</div>								
+					<div class="col-md-7 col-xs-12 iqSearch"> 
+						<form role="search">
+							<div class="input-group">
+								<input class="form-control" ng-model="search" placeholder="Search" id="rch-term" type="text">
+								<div class="input-group-btn">
+									<button class="btn btn-default" name="ebkSrchBttn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>	
+			</div>	
+			<div class="col-md-12 articlePost">
+				<div class="row" >
+					<div class="col-md-12 alignPaddingLftRgt">
+						<div class="div_head">
+							ArticleName
+						</div>
+						<div class="div_head">
+							View
+						</div>
+					</div>
+					<div>
+						<div style="max-height:580px;overflow-y:scroll;border:1px solid transparent;">	
+							<div class="row div_data" ng-repeat="particle in vm.particles|filter:{category_name:cat_id}|filter:search|filter:{is_approved:atype}" >
+								<div class="col-xs-4 col-sm-3 col-md-2 catimg">
+									<div class="lstArticle">	
+										<img ng-src="../Src/images/HomePage/htmlbg.png" alt="" class="lstArticleImg" src="../Src/images/HomePage/htmlbg.png">
+										<p class="ng-binding catimgname">{{particle.category_name}}</p>
+									</div>
+								</div>
+								<div class="col-xs-10 col-sm-10 col-md-10 elipse">
+									<a ng-click="vm.updatearticleinfo(particle,particle.is_approved)" href="" ng-if="particle.is_approved=='Y'">
+										{{particle.article_name}}</a>
+										<a ng-click="vm.updatearticleinfo(particle,particle.is_approved)" href="" style="color: #d9534f" ng-if="particle.is_approved=='N'">
+											{{particle.article_name}}</a>
+											<a ng-click="vm.updatearticleinfo(particle,particle.is_approved)" href="" ng-if="particle.is_approved=='P'">
+												{{particle.article_name}}</a>
+												<h6 class="title_by">
+													<span ng-if="particle.posted_by">Posted By :</span> 
+													<span class="qpostedby">{{particle.posted_by}}</span>
+													<span ng-if="particle.updated_by">Updated By :</span> 
+													<span class="qpostedby">{{particle.updated_by}}</span>
+													<span ng-if="particle.approved_by">Approved By :</span> 
+													<span class="qpostedby">{{particle.approved_by}}</span>
+													<span ng-if="particle.disapproved_by">Disapproved By :</span> 
+													<span class="qpostedby">{{particle.disapproved_by}}</span>
+												</h6>
+											</div>
+											<div class="col-xs-2 col-sm-2 col-md-2 viewBtnWizard">
+												<a href="#" class="btn btn-xs btn-success txt_clr" data-toggle="modal" data-target="#myModal" 
+												ng-click="vm.open(particle.alias_url,'model')" ng-if="particle.is_approved=='Y'">View</a>
+												<a href="#" class="btn btn-xs btn-danger txt_clr" data-toggle="modal" data-target="#myModal" 
+												ng-click="vm.open(particle.alias_url,'model')" ng-if="particle.is_approved=='N'">View</a>
+												<a href="#" class="btn btn-info btn-xs txt_clr" data-toggle="modal" data-target="#myModal" 
+												ng-click="vm.open(particle.alias_url,'model')" ng-if="particle.is_approved=='P'">View</a>
+												
+												
+												<!-- Modal -->
+												<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+													<div class="modal-dialog" role="document">
+														<div class="modal-content">
+															<div class="modal-body">
+																<button type="button" class="close new_close" data-dismiss="modal" aria-hidden="true">&times;</button>
+																<div class="articleHeading articleContHeading" >
+																	<h4 class="latest_update">{{vm.articledetails.category_name}}</h4>
+																	<div class="row articleContent">
+																		<div class="col-md-12 col-xs-12 articleContent">
+																			<h2>{{vm.articledetails.article_name}}</h2>
+																			<p>{{vm.articledetails.article_short_desc}}</p>
+																		</div>
+																	</div>
+																	<div class="row articleContent">
+																		<div class="col-md-12 col-xs-12 articleContent">
+																			<h2>{{vm.articledetails.article_title}}</h2>
+																			<p>
+																				{{vm.articledetails.article_title_short_desc}}
+																			</p>
+																		</div>
+																	</div>
+																	<div class="row articleContent" ng-show="vm.articledetails.example_name!=null && vm.articledetails.example_name!=''">
+																		<div class="col-md-12 col-xs-12 articleContent">
+																			<p class="pull-left">	
+																				<span class="articleExample">Example :</span>
+																				{{vm.articledetails.example_name}}
+																			</p>
+																			<p class="textCopy">
+																				<a href="" class="copybtn" data-clipboard-target="#copyinput">copy</a>
+																			</p>
+																		</div>
+																	</div>
+																	<div class="exampleCode">
+																		
+																		<div class="well" ng-show="vm.articledetails.code_desc!=null && vm.articledetails.code_desc!=''">
+																			<pre id="copyinput">
+																				{{vm.articledetails.code_desc}}
+																			</pre> 
+																		</div>
+																		
+																	</div>
+																	<div class="row articleContent" ng-hide="vm.articledetails.example_desc==''">
+																		<div class="col-md-12 col-xs-12 articleContent">
+																			<h2 ng-show="vm.articledetails.example_name!=null && vm.articledetails.example_name!=''">Example Description</h2>
+																			<h2 ng-hide="vm.articledetails.example_name!=null && vm.articledetails.example_name!=''">Description</h2>
+																			<p class="test" ng-bind-html="vm.articledetails.example_desc">
+																			</div>
+																		</div>	
+																	</div>
+																	
+																	<div class="clearfix"></div>
+																	
+																</div>							  
+															</div>
+														</div>
+													</div>
+												</div>									
+											</div>
+										</div>
+									</div>								
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4">
+							
+							<h3 class="text-center no_head">
+								<button class="btn btn-primary btn-xs pull-left" ng-click="vm.reload()">
+									<a href="" class="glyphicon glyphicon-refresh txt_clr" ></a>
+								</button>{{vm.JsonVals.article_title_post}}
+							</h3>
+							<hr class="postArticleHr">
+							<form class="form-horizontal" role="form" name="registerForm">
+								<fieldset ng-disabled="vm.isClicked">
+									
+									<div class="form-group" >															
+										<div class="col-sm-12" >
+											<select class="selectpicker form-control field_area" id="category_id" name="category_id" 
+											ng-options="cList.category_id as cList.category_name for cList in vm.cLists" 
+											ng-model="vm.article.category_id" required>
+											<option value="">{{vm.JsonVals.post_article_form_fields[0].select_category}}</option>
+										</select>
+										
+									</div>
+								</div>						
+								
+								<div class="form-group" >								 
+									<div class="col-sm-12">
+										<input type="text" class="form-control field_area" id="article_name" name="article_name" ng-model="vm.article.article_name" maxlength="150" placeholder="Article Name" ng-blur="vm.copyText(vm.article.article_name)" required title="Enter Article Name" >
+									</div>
+								</div>
+								
+								<div class="form-group" >								 
+									<div class="col-sm-12">
+										<input type="text" class="form-control field_area" id="alias_url" name="alias_url" ng-model="vm.article.alias_url" maxlength="150" placeholder="Enter Alias URL" readonly>
+									</div>
+								</div>
+								
+								<div class="form-group">							  
+									<div class="col-sm-12">
+										<textarea class="form-control" rows="6" name="article_short_desc" maxlength="200" id="article_short_desc" ng-model="vm.article.article_short_desc"  placeholder="Enter Article Short Description" required  title="Enter Article Short Description"></textarea>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									
+									<div class="col-sm-12">
+										
+										
+										<input type="text" class="form-control field_area" id="example_name" name="example_name" ng-model="vm.article.example_name" maxlength="100" placeholder="Enter Example Name"  title="Enter Example Name">
+										
+										
+									</div>
+								</div>
+								<div class="form-group" >
+									
+									<div class="col-sm-12">
+										
+										<textarea class="form-control" rows="10" id="code_desc" maxlength="4000" name="code_desc" ng-model="vm.article.code_desc"  title="Enter Code Description" placeholder="Enter Code Description"></textarea>
+										
+									</div>
+								</div>
+								
+							</div><!-- col-md-4 middle ends -->	
+							<div class="col-md-4 col-sm-4 lftRgtPadding pstAtclRgtBx">
+								<h3 class="text-center no_head">&nbsp<span class="successmessage" ng-if="vm.successmessage">{{vm.successmessage}}</span></h3>
+								
+								<hr class="postArticleHr">
+								<div class="form-group">
+									
+									<div class="col-sm-12 lftRgtPadding">
+										<input type="text" class="form-control field_area" id="article_title" name="article_title" ng-model="vm.article.article_title" ng-disabled="vm.isClicked" maxlength="150" placeholder="Enter Article Title" title="Enter Article Title">
+										
+										<input type="hidden"  id="article_title_id" name="article_title_id" ng-model="vm.article.article_title_id" >
+									</div>
+								</div>
+								<div class="form-group" >
+									
+									<div class="col-sm-12 lftRgtPadding">
+										
+										<textarea class="form-control" rows="6" id="article_title_short_desc" name="article_title_short_desc" ng-disabled="vm.isClicked" ng-model="vm.article.article_title_short_desc" maxlength="200" placeholder="Enter Title Short Description" title="Enter Title Short Description"></textarea>
+										
+										
+									</div>
+								</div>
+								
+								
+								<div class="form-group">
+									
+									<div class="col-sm-12 lftRgtPadding" style="margin-bottom: 18px;">									
+										<wysiwyg textarea-id="question" 
+										textarea-class="form-control"  
+										textarea-height="290px" 
+										textarea-name="textareaQuestion"
+										textarea-required 
+										ng-model="vm.article.example_desc" 
+										enable-bootstrap-title="true"
+										textarea-menu="menu"
+										title="Enter Example Description"
+										placeholder="Enter Example Description"
+										disabled="vm.isClicked"
+										>
+									</wysiwyg>							
+									
+								</div>
+							</div>
+							<div class="form-group">        
+								
+								<div class="col-sm-10 butnCtrls">
+									<span ng-repeat="accbutton in vm.buttons" >
+										<button type="submit" class="btn btn-primary" 
+										ng-class="{'btn-danger':accbutton.btn_value=='Delete','btn-success':accbutton.btn_value=='Approve','btn-info':accbutton.btn_value=='Close','btn-warning':accbutton.btn_value=='DisApprove'}" 						
+										ng-disabled="registerForm.$invalid||vm.isClicked" ng-click="vm.Articles(accbutton.name,accbutton.status,vm.article)">{{accbutton.btn_value}}</button>
+									</span>
+									
+								</div>
+								
+								
+							</div>
+							
+						</div>
+					</fieldset>	
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	

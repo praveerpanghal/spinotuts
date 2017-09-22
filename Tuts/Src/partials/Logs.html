@@ -1,0 +1,42 @@
+<div class="container content ">
+	<div class="col-md-12  main_content">	
+		<div class="col-md-12 article_edit exceptionLog">
+			<h4>{{vm.JsonVals.exception}}</h4> 
+			<div class="col-md-3 exceptionSearch artcleSearchBox">
+				<form class="navbar-form ng-pristine ng-valid articleLst_Align" role="search">
+					<div class="col-md-12 input-group add-on">
+						<input class="form-control ng-pristine ng-valid ng-touched" placeholder="Search" name="srch-term" id="srch-term" ng-model="search" type="text">
+						<div class="input-group-btn">
+							<button class="btn btn-default" id="logSrchButt" name="logSrchButt" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div> 
+		<div class="col-md-12 col-sm-12 col-xs-12 excp excpBorder">
+			<div class="col-md-3 col-sm-3 col-xs-4 alignPaddingLftRgt">
+				<p class="excpSno">{{vm.JsonVals.sno}}</p>
+				<p class="excpDate">{{vm.JsonVals.log_date}}</p>
+			</div>
+			<div class="col-md-9 col-sm-9 col-xs-8 alignPaddingLftRgt">
+				<p class="col-md-11 col-xs-11 excpDiscrip">{{vm.JsonVals.exception_desc}}</p>
+				<p class="col-md-1 col-xs-1 exceptionCopy">&nbsp</p>
+			</div>
+		</div>
+		<div >
+			<div class="col-md-12 col-sm-12 col-xs-12 logExceptions alignPaddingLftRgt " ng-repeat="logErr in vm.data|filter:search" >
+				<div class="col-md-3 col-sm-3 col-xs-4 alignPaddingLftRgt excepDate">
+					<p class="logSno">{{ ($index + 1) }}</p>
+					<p class="excepLogDate">{{logErr.created_date}}</p>
+				</div>
+				<div class="col-md-9 col-sm-9 col-xs-8 excepLogDiscrip">
+					<p class="col-md-11 col-xs-10" id="copy{{$index}}">{{logErr.exception_details}}</p>
+					<p class="col-md-1 col-xs-2 lftRgtPadding">
+						<a href="" class="excpCopyTxt copybtn{{$index}}" data-clipboard-target="#copy{{$index}}">{{vm.JsonVals.copy}}</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>

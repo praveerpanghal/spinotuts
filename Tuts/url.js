@@ -1,0 +1,1 @@
+var BaseURL="http://162.17.231.115:121/SpinoService.svc";

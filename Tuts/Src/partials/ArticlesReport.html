@@ -1,0 +1,69 @@
+<div class="container">
+	<div class="col-md-12 article_edit exceptionLog">
+		
+		<div class="row">
+			<div class="col-md-12 col-xs-12" >
+				<div class="row">
+					<div class="col-md-8 col-xs-12 artcleSearchBox">
+						<form class="navbar-form ng-pristine ng-valid articleLst_Align" role="search">
+							<div class="col-md-12 col-xs-12 input-group add-on">
+								<input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text" ng-model="search" >
+								<div class="input-group-btn">
+									<button class="btn btn-default" type="button" id="atclSrchButt" name="atclSrchBttn"><i class="glyphicon glyphicon-search"></i></button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div id="no-more-tables" >
+					<table class="table table-bordered actlRptTbl"> 
+						<thead> 
+							<tr> 
+								<th class="col-md-1 text-center">{{vm.JsonVals.s_no}}</th> 
+								<th class="col-md-2">{{vm.JsonVals.dateofapproval}}</th> 
+								<th class="col-md-8">{{vm.JsonVals.url}}</th>
+								<th class="col-md-1">Copy Link</th> 
+							</tr> 
+						</thead> 
+						<tbody> 
+							<tr ng-repeat="list in vm.GetReportResultList |filter:search"> 
+								<th data-title="{{vm.JsonVals.s_no}}" class="text-center"> {{ $index + 1}}</th> 
+								<td data-title="{{vm.JsonVals.dateofapproval}}" class="tblLstAprv">
+									<table style="width:100%">
+										<tr class="nline">
+											<td class="tblPaddingLft">
+												<p>{{list.approved_date}}</p>
+											</td>
+										</tr>
+									</table>		
+								</td>
+								<td data-title="{{vm.JsonVals.url}}"class="urlinfo tblAprUrl">
+									<table style="width:100%">
+										<tr class="nline">
+											<td class="tblPaddingLft"><p id="copy{{$index}}">{{vm.JsonVals.base_url}}{{list.alias_url}}</p></td>
+										</tr>
+										<tr class="newline">
+											<td class="tblPaddingLft"><p id="newcopy{{$index}}">{{vm.JsonVals.articleurl}}{{list.alias_url}}</p></td>
+										</tr>
+									</table>
+								</td>
+								<td data-title="Copy Link" class="urlinfo tblAprUrl">
+									<table style="width:100%">
+										<tr class="nline">
+											<td class="tblPaddingLft"><p><button class="btn btn-primary copybtn" data-clipboard-target="#copy{{$index}}">{{vm.JsonVals.copy}}</button></p></td>
+										</tr>
+										<tr class="newline">
+											<td class="tblPaddingLft"><p><button class="btn btn-primary copybtn" data-clipboard-target="#newcopy{{$index}}">{{vm.JsonVals.copy}}</button></p></td>
+										</tr>
+									</table>
+									
+								</td> 
+							</tr> 
+						</tbody> 
+					</table>
+				</div>
+			</div>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+</div>

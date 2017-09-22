@@ -1,0 +1,161 @@
+<div class="article_bg col-md-12 col-sm-12 interviewQues">		
+	<div class="col-md-5 col-sm-5 interviewQuestions alignPaddingLftRgt">			
+		<div class="col-md-12 alignPaddingLftRgt">
+			<div class="row">
+				<div class="col-md-2 col-xs-12 pstActlDpDwn iqAtclType">
+					<div class="form-group">							  
+						<select class="form-control" id="select" ng-model="iqs">
+							<option value="">All</option>
+							<option value="Y">Approved</option>
+							<option value="N">Disapproved</option>
+							<option value="P">Pending</option>
+						</select>	
+					</div>
+				</div>
+				<div class="col-md-3 col-xs-12 pstActlDpDwn iqCat">
+					<div class="form-group">						
+						<select class="form-control" id="category_idf" name="category_idf" ng-options="cList.category_id as cList.category_name for cList in vm.catList|filter:{category_name:'!All'}" 
+						ng-model="vm.category_idf">
+							<option value="">Choose Category</option></select>	
+						</div>
+					</div>
+					<div class="col-md-7 col-xs-12 iqSearch"> 
+						<form role="search">
+							<div class="input-group">
+								<input class="form-control" ng-model="iqsearch" placeholder="Search" id="rch-term" type="text">
+								<div class="input-group-btn">
+									<button class="btn btn-default" name="iqsearchBttn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+								</div>
+							</div>
+						</form>
+					</div>					
+				</div>		  
+			</div>
+			
+			<div class="col-md-12 articlePost">
+				<div class="row">
+					<div class="col-md-12 alignPaddingLftRgt">
+						<div class="div_head">
+							QuestionName
+						</div>
+						<div class="div_head">
+							View
+						</div>
+					</div>
+					<div style="max-height:580px;overflow-y:scroll;border:1px solid transparent;">
+						<div class="row div_data" 
+						ng-repeat="interlist in vm.interviewList|filter:iqsearch |filter:{is_approved:iqs} |filter:{category_id:vm.category_idf||undefined}">
+							<div class="col-xs-4 col-sm-3 col-md-2 catimg">
+								<div class="lstArticle">	
+									<img ng-src="../Src/images/HomePage/htmlbg.png" alt="" class="lstArticleImg" src="../Src/images/HomePage/htmlbg.png">
+									<p class="ng-binding catimgname">{{interlist.category_name}}</p>
+								</div>
+							</div>
+							<div class="col-xs-8 col-sm-8 col-md-8 elipse">
+								<a ng-click="vm.update_iq_info(interlist,interlist.is_approved)" href="" ng-if="interlist.is_approved=='Y'">{{interlist.question_description}}</a>
+								
+								<a ng-click="vm.update_iq_info(interlist,interlist.is_approved)" href="" ng-if="interlist.is_approved=='N'" style="color: #d9534f">{{interlist.question_description}}</a>
+								
+								<a ng-click="vm.update_iq_info(interlist,interlist.is_approved)" href="" ng-if="interlist.is_approved=='P'">	{{interlist.question_description}}</a>
+								
+								<h6 class="title_by">
+									<span ng-if="interlist.posted_by">Posted By :</span> 
+									<span class="qpostedby">{{interlist.posted_by}}</span>
+									<span ng-if="interlist.updated_by">Updated By :</span> 
+									<span class="qpostedby">{{interlist.updated_by}}</span>
+									<span ng-if="interlist.approved_by">Approved By :</span> 
+									<span class="qpostedby">{{interlist.approved_by}}</span>
+									<span ng-if="interlist.disapproved_by">Disapproved By :</span> 
+									<span class="qpostedby">{{interlist.disapproved_by}}</span>
+								</h6>
+							</div>
+							<div class="col-xs-2 col-sm-2 col-md-2 viewBtnWizard">
+								<a href="#" class="btn btn-success btn-xs txt_clr" ng-if="interlist.is_approved=='Y'" data-toggle="modal" data-target="#myModal" ng-click="vm.open(interlist.question_id,'model')">View</a>	
+								<a href="#" class="btn btn-danger btn-xs txt_clr" ng-if="interlist.is_approved=='N'" data-toggle="modal" data-target="#myModal"  ng-click="vm.open(interlist.question_id,'model')">View</a>
+								<a href="#" class="btn btn-info btn-xs txt_clr" ng-if="interlist.is_approved=='P'" data-toggle="modal" data-target="#myModal"  ng-click="vm.open(interlist.question_id,'model')">View</a>				
+								
+								<!-- Modal -->
+								<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-body">
+												<button type="button" class="close new_close" data-dismiss="modal" aria-hidden="true">&times;</button>
+												<h4 style="color: #c0225d;">{{vm.qdatainfo.category_name}}</h4>
+												<p style="color: #034374!important;">{{vm.qdatainfo.question_description}}</p>
+												<p ng-bind-html="vm.qdatainfo.answer_description"></p>
+											</div>							  
+										</div>
+									</div>
+								</div>
+							</div>						
+						</div>
+					</div>		
+				</div>
+			</div>			 
+		</div>
+		<div class="col-md-7 col-sm-7" >
+			
+			<h3 class="text-center"><button class="btn btn-primary btn-xs pull-left" ng-click="vm.reload()">
+				<a href="" class="glyphicon glyphicon-refresh txt_clr" ></a>
+			</button>{{ vm.JsonVals.interview_question }}</h3>
+			<hr class="postArticleHr">
+			<p class="postArticleCont" ng-if="vm.successmessage!=''">{{vm.successmessage}}</p>
+			<form name="CreateinterviewQuestions">
+				<fieldset ng-disabled="vm.isClicked">
+				<div class="form-group">
+					
+					<div class="col-lg-12 col-sm-12">	
+						<select class="form-control form-control" id="category_id" name="category_id" ng-options="cList.category_id as cList.category_name for cList in vm.catList|filter:{category_name:'!All'}" ng-model="vm.qdata.category_id" required>
+							<option value="">-- Choose any category --</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">					
+					<div class="col-lg-12 col-sm-12" style="margin-bottom: 18px;">
+						<wysiwyg textarea-id="answer" 
+						textarea-class="form-control"  
+						textarea-height="125px" 
+						textarea-name="textareaIQuestion"
+						textarea-required 
+						ng-model="vm.qdata.question_description" 
+						enable-bootstrap-title="true"
+						textarea-menu="menu"
+						title="Enter Question"
+						placeholder="Enter Question"
+						ng-required="!(vm.qdata.question_description.length)"		
+						disabled='vm.isClicked'
+						>
+					</wysiwyg>		
+					
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div class="col-lg-12 col-sm-12" style="margin-bottom: 18px;">				
+					<wysiwyg textarea-id="answer" 
+					textarea-class="form-control"  
+					textarea-height="290px" 
+					textarea-name="textareaIQuestion"
+					textarea-required 
+					ng-model="vm.qdata.answer_description" 
+					enable-bootstrap-title="true"
+					textarea-menu="menu" 					
+					title="Enter Answer Description"
+					placeholder="Enter Answer Description"
+					disabled='vm.isClicked'
+					>
+				</wysiwyg>					
+			</div></div>
+			<div class="form-group">
+				<div class="col-lg-10" style="margin-top: 13px;">
+					<span ng-repeat="accbutton in vm.buttons">
+						<button type="submit" class="btn btn-primary" 
+						ng-class="{'btn-danger':accbutton.btn_value=='Delete','btn-success':accbutton.btn_value=='Approve','btn-info':accbutton.btn_value=='Close','btn-warning':accbutton.btn_value=='DisApprove'}" 						
+						ng-disabled="CreateinterviewQuestions.$invalid" ng-click="vm.InterviewQuestion(accbutton.name,accbutton.status,vm.qdata)">{{accbutton.btn_value}}</button>
+					</span>					
+					</div>
+				</div>
+			</fieldset>
+			</form>
+		</div>
+		

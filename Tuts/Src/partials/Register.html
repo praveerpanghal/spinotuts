@@ -1,0 +1,93 @@
+﻿	<div class="container content"> 
+        <div class="col-md-12 main_content">
+            
+            <div class="row registerPannel">
+                
+                <div class="login_panel col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3"> 
+                    
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="panel-title">{{vm.JsonVals.panel_title}}</div>
+                        </div>
+                        <div style="padding-top:30px" class="panel-body">                            
+                            <div style="color:red">{{vm.errormessage}}</div>
+                            <form class="form-horizontal" name="userForm">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input type="text" class="form-control" name="fname" id="fname" ng-model="vm.newUser.fname" ng-pattern="/^[a-zA-Z]{2,30}$/" placeholder="First Name"  ng-maxlength="30" required/>                                       
+                                </div>
+                                <span style="color:red;" ng-show="userForm.fname.$dirty && userForm.fname.$error.required">{{vm.JsonVals.required_field}}</span>
+                                <span style="color:red;" ng-show="userForm.fname.$error.pattern">{{vm.JsonVals.pattern_match}}</span>
+                                <span style="color:red;" ng-show="userForm.fname.$dirty && userForm.fname.$error.maxlength">{{vm.JsonVals.max_30_char_limit}}</span>
+                                
+                                <div style="margin-top: 20px" class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input type="text" class="form-control" name="lname" id="lname" ng-model="vm.newUser.lname" ng-pattern="/^[a-zA-Z]{2,30}$/" placeholder="Last Name" ng-maxlength="30" required/>                                        
+                                </div>
+                                <span style="color:red;" ng-show="userForm.lname.$dirty && userForm.lname.$error.required">{{vm.JsonVals.required_field}}</span>
+                                <span style="color:red;" ng-show="userForm.lname.$error.pattern">{{vm.JsonVals.pattern_match}}</span>
+                                <span style="color:red;" ng-show="userForm.lname.$dirty && userForm.lname.$error.maxlength">{{vm.JsonVals.max_30_char_limit}}</span>
+                                <div style="margin-top: 20px" class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                    <input type="text" class="form-control" placeholder="Email" name="email" ng-model="vm.newUser.email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" ng-maxlength="50" required />
+                                </div>
+                                <span style="color:Red" ng-show="userForm.email.$dirty &&userForm.email.$error.required">{{vm.JsonVals.required_field}}</span>
+                                <span style="color:Red" ng-show="userForm.email.$dirty&&userForm.email.$error.pattern">{{vm.JsonVals.invalid_mail}}</span>
+                                <span style="color:red;" ng-show="userForm.email.$dirty && userForm.email.$error.maxlength">{{vm.JsonVals.max_50_char_limit}}</span>
+                                <div style="margin-top: 20px" class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                    <input type="password" class="form-control" name="password" id="password" ng-model="vm.newUser.password" placeholder="password" ng-minlength="8" ng-maxlength="30" ng-pattern="/^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*?&])[a-z\d$@$!%*?&]{8,20}/" required/>
+                                </div>
+                                <span style="color:red;" ng-show="userForm.password.$error.required && userForm.password.$dirty">{{vm.JsonVals.required_field}}</span>
+                                
+                                <span style="color:red;" ng-show="!userForm.password.$error.required && (userForm.password.$error.minlength || userForm.password.$error.maxlength) && userForm.password.$dirty">{{vm.JsonVals.password_limit}}</span>
+                                
+                                <span style="color:red;" ng-show="!userForm.password.$error.required && !userForm.password.$error.minlength && !userForm.password.$error.maxlength && userForm.password.$error.pattern && userForm.password.$dirty">{{vm.JsonVals.password_case_letters}}</span>
+                                <div class="input-group">
+                                    <div class="checkbox">
+                                        <label style="color: #606061;">
+                                            <input type="checkbox" name="remember" value="1">{{vm.JsonVals.remember}}
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div style="margin-top:10px" class="form-group">
+                                    <div class="col-sm-12 controls" align="center">
+                                        <button type="submit" ng-disabled="userForm.$invalid" id="registerNowButt" name="registerNowButt" ng-click="vm.register()" class="btn btn-block btn-primary" style="padding: 10px;">{{vm.JsonVals.register}}</button>
+                                    </div>
+                                </div>
+                                <p><a href="/login">{{vm.JsonVals.back}}</a></p>
+                            </form>
+                        </div>                     
+                    </div>  
+                </div>
+                <div class="col-md-4 col-sm-3 loginAdd">
+                    
+                    <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-7097333205788199"
+                    data-ad-slot="9573289661"
+                    data-ad-format="auto"></ins>
+					<script defer type="text/javascript">
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+                </div>
+            </div>
+            
+            
+            
+            <div class="col-md-12 articleAdd">
+                <div class="adds">
+                    <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-7097333205788199"
+                    data-ad-slot="9573289661"
+                    data-ad-format="auto"></ins>
+					<script defer type="text/javascript">
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+                </div>
+            </div>
+        </div>
+        
+    </div>

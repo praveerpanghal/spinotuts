@@ -1,0 +1,82 @@
+		<div class="containerWizard">
+			<div class="col-md-12 main_content">
+				<div class="row">
+					<div class="ebkTopAdd">
+						<div class="contTopAdd">
+							<ins class="adsbygoogle"
+							style="display:block"
+							data-ad-client="ca-pub-7097333205788199"
+							data-ad-slot="9573289661"
+							data-ad-format="auto"></ins>
+							<script defer type="text/javascript">
+								(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+						</div>
+					</div>
+					<div class="ebkLftAdd">
+						<div class="adds">		
+							<ins class="adsbygoogle"
+							style="display:block"
+							data-ad-client="ca-pub-7097333205788199"
+							data-ad-slot="9573289661"
+							data-ad-format="auto"></ins>
+							<script defer type="text/javascript">
+								(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+						</div>
+					</div>
+					<div class="ebkLftWizard">
+						<div class="row article_edit articleContHeading">
+							<hr class="line_hr">
+							<div class="col-md-12 menu_pannel">
+								<ul>
+									<li ng-repeat="Ebook in vm.Ebooks | orderBy:'sequence_no'" ng-class="{sel: $index == '{{vm.Chindex}}'}" ><a href="{{vm.parent}}/{{vm.categoryname | lowercase}}/{{vm.articleid}}/{{Ebook.alias_url | lowercase}}">
+										{{Ebook.chapter_name}}</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="ebkContent">				
+							<div class="article_edit alignPaddingTop">
+								
+								<div class="carousel slide" id="myCarousel">
+									<h3 class="ebkInfoWizard">{{vm.EbookInfo.chapter_name}}</h3>
+									<div class="adds">		
+										<ins class="adsbygoogle"
+										style="display:block"
+										data-ad-client="ca-pub-7097333205788199"
+										data-ad-slot="9573289661"
+										data-ad-format="auto"></ins>
+										<script defer type="text/javascript">
+											(adsbygoogle = window.adsbygoogle || []).push({});
+										</script>
+									</div>
+									
+									<div class="carousel-inner">		
+										
+										
+										<p ng-bind-html="vm.to_trusted(vm.EbookInfo.chapter_description)"></p>
+										<button class="btn btn-primary" ng-click="vm.pre(vm.EbookInfo.alias_url)">{{vm.JsonVals.pre}}</button>
+										<button class="btn btn-primary pull-right" ng-click="vm.next(vm.EbookInfo.alias_url)">{{vm.JsonVals.nxt}}</button>
+										
+										<div class="clearfix"></div>
+									</div>
+								</div><!-- /#myCarousel -->	
+							</div>
+						</div>
+						<div class="ebkRgtAdd">
+							<div class="adds">		
+								<ins class="adsbygoogle"
+								style="display:block"
+								data-ad-client="ca-pub-7097333205788199"
+								data-ad-slot="9573289661"
+								data-ad-format="auto"></ins>
+								<script defer type="text/javascript">
+									(adsbygoogle = window.adsbygoogle || []).push({});
+								</script>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+			<div class="clear"></div>

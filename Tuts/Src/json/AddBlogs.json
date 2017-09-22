@@ -1,0 +1,10 @@
+{
+	"sub_but":"Submit",
+	"edit_but":"Edit",
+	"del_but":"Delete",
+	"cls_but":"Close",
+	"add_but":"Add New Blog",
+	"update_but":"Update",
+	"title":"Blog Title",
+	"title_url":"Blog alias_url"
+	}

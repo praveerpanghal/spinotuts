@@ -1,0 +1,120 @@
+
+<div class="article_bg col-md-12 col-sm-12 interviewQues">		
+	<div class="col-md-6 col-sm-6 interviewQuestions alignPaddingLftRgt">			
+		<div class="row alignPaddingLftRgt">
+			<div class="col-md-12 alignPaddingLftRgt">
+				<div class="col-md-2 col-xs-12 pstActlDpDwn iqAtclType">
+					<div class="form-group">							  
+						<select class="form-control" id="select" ng-model="iqs">
+							<option value="">All</option>
+							<option value="Y">Approved</option>
+							<option value="N">Disapproved</option>
+							<option value="P">Pending</option>
+						</select>	
+					</div>
+				</div>
+				<div class="col-md-3 col-xs-12 pstActlDpDwn iqCat">
+					<div class="form-group">						
+						<select class="form-control" id="category_idf" name="category_idf" ng-options="cList.category_id as cList.category_name for cList in vm.cLists" ng-model="category_idf">
+							<option value="">Choose Category</option></select>	
+						</div>
+					</div>
+					<div class="col-md-7 col-xs-12 iqSearch"> 
+						<form role="search">
+							<div class="input-group">
+								<input class="form-control" ng-model="iqsearch" placeholder="Search" id="rch-term" type="text">
+								<div class="input-group-btn">
+									<button class="btn btn-default" name="iqsearchBttn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+								</div>
+							</div>
+						</form>
+					</div>					
+				</div>		  
+			</div>
+			
+			<div class="col-md-12 articlePost">
+				<div class="row">
+					<div class="col-md-12 alignPaddingLftRgt ">
+						<div class="divhead">
+							Ebook Chapter Name
+							
+						</div>
+					</div>
+					<div style="max-height:580px;overflow-y:scroll;border:1px solid transparent;">
+						<div class="row div_data" ng-repeat="booklist in vm.bookslists | orderBy:'sequence_no' |filter:iqsearch |filter:{chapter_is_approved:iqs} |filter:{category_id:category_idf||undefined}:true">
+							<div class="col-xs-4 col-sm-3 col-md-2 catimg eccatimg">
+								<div class="lstArticle">	
+									<img ng-src="../Src/images/HomePage/htmlbg.png" alt="" class="lstArticleImg" src="../Src/images/HomePage/htmlbg.png">
+									<p class="ng-binding catimgname">{{booklist.category_name}}</p>
+								</div>
+							</div>
+							<div class="col-xs-8 col-sm-8 col-md-8 elipse">
+								<a ng-click="vm.update_iq_info(booklist,booklist.chapter_is_approved)" href="" ng-if="booklist.chapter_is_approved=='Y'" style="color: #337ab7">{{booklist.chapter_name}}</a>
+								
+								<a ng-click="vm.update_iq_info(booklist,booklist.chapter_is_approved)" href="" ng-if="booklist.chapter_is_approved=='N'" style="color: #d9534f">{{booklist.chapter_name}}</a>
+								
+								<a ng-click="vm.update_iq_info(booklist,booklist.chapter_is_approved)" href="" ng-if="booklist.chapter_is_approved=='P'">	{{booklist.chapter_name}}</a>
+								
+								<h6 class="title_by">
+									<span ng-if="booklist.chapter_posted_by">Posted By :</span> 
+									<span class="qpostedby">{{booklist.chapter_posted_by}}</span>
+									<span ng-if="booklist.chapter_updated_by">Updated By :</span> 
+									<span class="qpostedby">{{booklist.chapter_updated_by}}</span>
+									<span ng-if="booklist.chapter_approved_by">Approved By :</span> 
+									<span class="qpostedby">{{booklist.chapter_approved_by}}</span>
+									<span ng-if="booklist.chapter_disapproved_by">Disapproved By :</span> 
+									<span class="qpostedby">{{booklist.chapter_disapproved_by}}</span>
+								</h6>
+							</div>
+							
+						</div>
+					</div>
+					
+				</div>
+			</div>			 
+		</div>
+		<div class="col-md-6 col-sm-6 mobAlignpadding">
+			<div class="ebkChptr">
+				<h3 class="text-center">
+					<button class="btn btn-primary btn-xs pull-left" ng-click="vm.reload()">
+						<a href="" class="glyphicon glyphicon-refresh txt_clr" ></a>
+					</button>{{vm.JsonVals.ebook_post}}</h3>
+					<hr class="postArticleHr">
+					<p class="postArticleCont" ng-if="vm.successmessage!=''">{{vm.successmessage}}</p>
+					<form class="form-horizontal" role="form" name="ebookpostporm" >						
+							<fieldset ng-disabled="vm.isClicked">	
+						<div class="form-group col-md-6 col-sm-12">
+							<select class="form-control form-control" id="category_id" name="category_id" ng-options="cList.category_id as cList.category_name for cList in vm.cLists" ng-model="vm.ebookpostch.category_id" required ng-change="vm.selectedItemChanged(vm.ebookpostch.category_id)">
+								<option value="">-- choose any category --</option>
+							</select>
+						</div>
+						<div class="form-group col-md-6 col-sm-12 iqseq">
+							<input class="form-control seqnum"  type="text" ng-model="vm.ebookpostch.sequence_no" placeholder="Sequence Number" disabled> 
+						</div>	
+						<div class="form-group col-sm-12">
+							<label class="control-label ebkPstBk" for="focusedInput">{{vm.JsonVals.cname}}</label>			
+							<input class="form-control"  type="text" ng-model="vm.ebookpostch.chapter_name" placeholder="Enter Chapter Name" ng-blur="vm.copyText(vm.ebookpostch.chapter_name)" required> 
+							<input type="hidden" ng-model="ebookpostch.chapter_id"> 
+						</div>						 
+						<div class="form-group col-sm-12">
+							<label class="control-label ebkPstBk" for="focusedInput">{{vm.JsonVals.page_url}}</label>	
+							<input class="form-control" type="text" ng-model="vm.ebookpostch.alias_url" ng-disabled="true" placeholder="Enter Page URL" required>
+						</div>	
+						
+						<div class="form-group  col-sm-12">
+							<div class="col-lg-10 paddingLftRgtAlign" style="margin-top: 13px;">
+									<span ng-repeat="accbutton in vm.buttons">
+											<button type="submit" class="btn btn-primary" 
+											ng-class="{'btn-danger':accbutton.btn_value=='Delete','btn-success':accbutton.btn_value=='Approve','btn-info':accbutton.btn_value=='Close','btn-warning':accbutton.btn_value=='DisApprove'}" 						
+								ng-disabled="ebookpostporm.$invalid" ng-click="vm.ebookchapterpost(accbutton.name,accbutton.status,vm.ebookpostch)">{{accbutton.btn_value}}</button>
+										</span>
+								
+							</div>
+						</div>
+					</fieldset>
+					</form>
+				</div>
+			</div>
+			
+			
+			

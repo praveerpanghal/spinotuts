@@ -1,0 +1,17 @@
+{
+	"s_no":"S No",
+	"pname":"Parent Menu Name",
+	"cname":"Child Menu Name",
+	"midNav":"Child Navigation",
+	"menuName":"Menu Name",
+ 	"pageUrl":"Page URL",
+ 	"userRight":"User Rights",
+ 	"pageName":"Page Name",
+ 	"seqNo":"Sequence Number",
+ 	"ctrl_name":"Controller Name",
+ 	"isactive":"Active",
+ 	"cancel":"Cancel",
+ 	"submit":"Submit",
+ 	"create":"Create",
+ 	"update":"Update"
+}

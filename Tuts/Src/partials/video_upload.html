@@ -1,0 +1,181 @@
+<!--<style>
+.main_wrap{
+background-color: #edf2f5;
+width: 33.33333333%;
+margin:0px auto;
+padding:35px;
+}
+.video{
+!float: left;
+}
+</style>
+<div class="main_wrap">
+<div class="body">
+<form class="video">  
+<select name = "dropdown" style="width:84%; height:30px; padding:5px; border-radius: 4px;">
+            <option value = "Select your category">Select your categroy</option>
+            <option value = "HTML">Html</option>
+			<option value = "CSS">Css</option>
+			<option value = "ANGULARJS">AngularJs</option>
+			<option value = "JAVASCRIPT">JavaScript</option>
+			<option value = "NODEJS">NodeJs</option>
+			<option value = "GULP">Gulp</option>
+         </select><br/>
+  <input type="Name" id="Name" name="Name" value="Title of the Video" style="width:84%; height:30px; padding:5px; margin-top:10px;"></input> <br/>  
+   <textarea rows = "5" cols = "72" name = "description" style="margin-top:10px; padding:5px; border-radius: 4px; font-style:arial;" value="Short Description">Enter Video Short Description</textarea><br/>
+	<label for="file-select">Upload:</label>
+    <input type="file" name="upload" id="file-select" style="margin-top:10px;"> <br/>  
+<textarea rows = "15" cols = "72" name = "description" style="margin-top:10px; padding:5px; border-radius: 4px;">Description of the Video</textarea>
+</form>
+</div>
+</div>
+-->
+
+<div class="article_bg col-md-12 col-sm-12 interviewQues">		
+	<div class="col-md-6 col-sm-6 interviewQuestions alignPaddingLftRgt">			
+		<div class="row alignPaddingLftRgt">
+			<div class="col-md-12 alignPaddingLftRgt">
+				<div class="col-md-2 col-xs-12 pstActlDpDwn iqAtclType">
+					<div class="form-group">							  
+						<select class="form-control" id="select" ng-model="iqs">
+							<option value="">All</option>
+							<option value="Y">Approved</option>
+							<option value="N">Disapproved</option>
+							<option value="P">Pending</option>
+						</select>	
+					</div>
+				</div>
+				<div class="col-md-3 col-xs-12 pstActlDpDwn iqCat">
+					<div class="form-group">						
+						<select class="form-control" id="category_idf" name="category_idf" ng-options="cList.category_id as cList.category_name for cList in cLists" ng-model="category_idf">
+							<option value="">Choose Category</option></select>	
+						</div>
+					</div>
+					<div class="col-md-7 col-xs-12 iqSearch"> 
+						<form role="search">
+							<div class="input-group">
+								<input class="form-control" ng-model="iqsearch" placeholder="Search" id="rch-term" type="text" ng-focus="getAllData()">
+								<div class="input-group-btn">
+									<button class="btn btn-default" name="iqsearchBttn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+								</div>
+							</div>
+						</form>
+					</div>					
+				</div>		  
+			</div>
+			
+			<div class="col-md-12 articlePost">
+				<div class="row">
+					<div class="col-md-12 alignPaddingLftRgt ">
+						<div class="divhead">
+							Name of the Video
+							
+						</div>
+					</div>
+					<div style="max-height:580px;overflow-y:scroll;border:1px solid transparent;">
+						<div class="row div_data" ng-repeat="booklist in bookslists | orderBy:'sequence_no' |filter:iqsearch |filter:{chapter_is_approved:iqs} |filter:{category_id:category_idf||undefined}:true">
+							<div class="col-xs-4 col-sm-3 col-md-2 catimg eccatimg">
+								<div class="lstArticle">	
+									<img ng-src="../Src/images/HomePage/htmlbg.png" alt="" class="lstArticleImg" src="../Src/images/HomePage/htmlbg.png">
+									<p class="ng-binding catimgname">{{booklist.category_name}}</p>
+								</div>
+							</div>
+							<div class="col-xs-8 col-sm-8 col-md-8 elipse">
+								<a ng-click="update_iq_info(booklist)" href="" ng-if="booklist.chapter_is_approved=='Y'" style="color: #337ab7">{{booklist.chapter_name}}</a>
+								
+								<a ng-click="update_iq_info(booklist)" href="" ng-if="booklist.chapter_is_approved=='N'" style="color: #d9534f">{{booklist.chapter_name}}</a>
+								
+								<a ng-click="update_iq_info(booklist)" href="" ng-if="booklist.chapter_is_approved=='P'">	{{booklist.chapter_name}}</a>
+								
+								<h6 class="title_by">
+									<span ng-if="booklist.chapter_posted_by">Posted By :</span> 
+									<span class="qpostedby">{{booklist.chapter_posted_by}}</span>
+									<span ng-if="booklist.chapter_updated_by">Updated By :</span> 
+									<span class="qpostedby">{{booklist.chapter_updated_by}}</span>
+									<span ng-if="booklist.chapter_approved_by">Approved By :</span> 
+									<span class="qpostedby">{{booklist.chapter_approved_by}}</span>
+									<span ng-if="booklist.chapter_disapproved_by">Disapproved By :</span> 
+									<span class="qpostedby">{{booklist.chapter_disapproved_by}}</span>
+								</h6>
+							</div>
+							
+						</div>
+					</div>
+					
+				</div>
+			</div>			 
+		</div>
+		<div class="col-md-6 col-sm-6 mobAlignpadding">
+			<div class="ebkChptr">
+				<h3 class="text-center">
+					<button class="btn btn-primary btn-xs pull-left" ng-click="reload()">
+						<a href="" class="glyphicon glyphicon-refresh txt_clr" ></a>
+					</button>Video Upload</h3>
+					<hr class="postArticleHr">
+					<p class="postArticleCont" ng-if="successmessage!=''">{{successmessage}}</p>
+					<form class="video">
+<div class="form-group col-md-12 col-sm-12">					
+<select name = "dropdown" class="form-control form-control" id="category_id" >
+            <option value = "Select your category">Select your categroy</option>
+            <option value = "HTML">Html</option>
+			<option value = "CSS">Css</option>
+			<option value = "CSS">Bootstrap</option>
+			<option value = "ANGULARJS">AngularJs</option>
+			<option value = "JAVASCRIPT">JavaScript</option>
+			<option value = "NODEJS">NodeJs</option>
+			<option value = "GULP">Gulp</option>
+         </select>		</div>
+<div class="form-group col-md-12 col-sm-12 ">
+  <input type="Name" id="Name" name="Name" value="Title of the Video" class="form-control "/>
+  </div>
+  <div class="form-group col-md-12 col-sm-12">
+   <textarea rows = "4" cols = "116" name = "description" class="form-control" value="Short Description">Enter Video Short Description</textarea><br/>
+	</div>
+  <div class="form-group col-md-12 col-sm-12 ">
+	<label for="file-select">Upload:</label>
+	 <input type="file" name="upload" id="file-select">   
+	</div>
+  <div class="form-group col-md-12 col-sm-12 ">
+<textarea rows = "8" cols = "116" name = "description" class="form-control">Description of the Video</textarea>
+</div>
+<button type="submit" class="btn btn-primary" ng-disabled="ebookpostporm.$invalid" ng-click="saveepost(ebookpostch)">{{ vm.JsonVals.sub_but }}</button>
+<button type="reset" class="btn btn-info" ng-click="close();"> {{ vm.JsonVals.cls_but }}</button>	
+</div>
+</form>
+					<!--<form class="form-horizontal" role="form" name="ebookpostporm" >						
+						
+						<div class="form-group col-md-6 col-sm-12">
+							<select class="form-control form-control" id="category_id" name="category_id" ng-options="cList.category_id as cList.category_name for cList in cLists" ng-model="ebookpostch.category_id" required ng-disabled='eclick' ng-change="selectedItemChanged(ebookpostch.category_id)">
+								<option value="">-- choose any category --</option>
+							</select>
+						</div>
+						<div class="form-group col-md-6 col-sm-12 iqseq">
+							<input class="form-control seqnum"  type="text" ng-model="ebookpostch.sequence_no" placeholder="Sequence Number" disabled> 
+						</div>	
+						<div class="form-group col-sm-12">
+							<label class="control-label ebkPstBk" for="focusedInput">{{vm.JsonVals.cname}}</label>			
+							<input class="form-control"  type="text" ng-model="ebookpostch.chapter_name" placeholder="Enter Chapter Name" ng-blur="copyText(ebookpostch.chapter_name)" required ng-disabled='eclick'> 
+							<input type="hidden" ng-model="ebookpostch.chapter_id"> 
+						</div>						 
+						<div class="form-group col-sm-12">
+							<label class="control-label ebkPstBk" for="focusedInput">{{vm.JsonVals.page_url}}</label>	
+							<input class="form-control" type="text" ng-model="ebookpostch.alias_url" ng-disabled="true" placeholder="Enter Page URL" required>
+						</div>	
+						
+						<div class="form-group  col-sm-12">
+							<div class="col-lg-10 paddingLftRgtAlign" style="margin-top: 13px;">
+								<button type="submit" class="btn btn-primary" ng-disabled="ebookpostporm.$invalid" ng-click="saveepost(ebookpostch)" ng-show="submit_btn">{{ vm.JsonVals.sub_but }}</button>
+								<button class="btn btn-primary" ng-click="updateepost(ebookpostch,'U')" ng-show="update_btn" ng-disabled="ebookpostporm.$invalid">{{ vm.JsonVals.update_but }}</button>
+								<button type="button" id="pstAprvButt" name="pstAprvButt" class="btn btn-success" ng-click="updateepost(ebookpostch,'Y')" data-toggle="modal" ng-show="approve_btn">{{vm.JsonVals.approve_btn}}</button>
+								<button type="button" class="btn btn-danger" id="pstDisaprvButt" name="pstDisaprvButt" ng-click="updateepost(ebookpostch,'N')" ng-show="disapprove_btn">{{vm.JsonVals.disapprove_btn}}</button>
+								<button type="button" class="btn btn-danger" id="deletebtn" name="deletearticlebtn" ng-click="updateepost(ebookpostch,'D');" ng-show="delete_btn">{{vm.JsonVals.delete_btn_text}}</button>
+								<button type="button" class="btn btn-danger" id="apprReqBtn" name="apprReqBtn" ng-click="updateepost(ebookpostch,'P')" ng-show="appr_req_btn">{{vm.JsonVals.appr_req_btn}}</button>
+								<button type="reset" class="btn btn-info" ng-click="close();"> {{ vm.JsonVals.cls_but }}</button>	
+							</div>
+						</div>
+					</form>-->
+				</div>
+			</div>
+			
+			
+				

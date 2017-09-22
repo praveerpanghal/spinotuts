@@ -1,0 +1,18 @@
+{
+	"s_no":"S No",
+	"pname":"Parent Menu Name",
+	"cname":"Child Menu Name",
+	"scname":"Sub Child Name",
+	"subchildnav":"Sub Child Navigation",
+	"subcatname":"Sub category Name",
+ 	"subcategoryurl":"Sub category URL",
+ 	"userRight":"User Rights",
+ 	"pageName":"Page Name",
+ 	"seqNo":"Sequence Number",
+ 	"ctrl_name":"Controller Name",
+ 	"isactive":"Active",
+ 	"cancel":"Cancel",
+ 	"submit":"Submit",
+ 	"create":"Create",
+ 	"update":"Update"
+}

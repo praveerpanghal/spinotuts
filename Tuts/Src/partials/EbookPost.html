@@ -1,0 +1,153 @@
+<div class="article_bg col-md-12 col-sm-12 interviewQues">
+		<div class="col-md-5 col-sm-5 interviewQuestions alignPaddingLftRgt">			
+			<div class="col-md-12 alignPaddingLftRgt">
+				<div class="row">
+					<div class="col-md-2 col-xs-12 pstActlDpDwn iqAtclType">
+						<div class="form-group">							  
+							<select class="form-control" id="select" ng-model="iqs">
+								<option value="">Choose Aritcle</option>
+								<option value="Y">Approved</option>
+								<option value="N">Disapproved</option>
+								<option value="P">Pending</option>
+							</select>	
+						</div>
+					</div>
+					<div class="col-md-3 col-xs-12 pstActlDpDwn iqCat">
+						<div class="form-group">						
+							<select class="form-control" id="category_idf" name="category_idf" ng-options="cList.category_id as cList.category_name for cList in vm.cLists" ng-model="category_idf">
+								<option value="">Choose Category</option></select>	
+							</div>
+						</div>
+						<div class="col-md-7 col-xs-12 iqSearch"> 
+							<form role="search">
+								<div class="input-group">
+									<input class="form-control" ng-model="iqsearch" placeholder="Search" id="rch-term" type="text">
+									<div class="input-group-btn">
+										<button class="btn btn-default" name="iqsearchBttn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+									</div>
+								</div>
+							</form>
+						</div>					
+					</div>		  
+				</div>
+				
+				<div class="col-md-12 articlePost">
+					<div class="row">
+						<div class="col-md-12 alignPaddingLftRgt ">
+							<div class="div_head">
+								Ebook Chapter Name
+							</div>
+							<div class="div_head">
+								View
+							</div>
+						</div>
+						<div style="max-height:580px;overflow-y:scroll;border:1px solid transparent;">
+							<div class="row div_data" ng-repeat="booklist in vm.bookslists | orderBy:'sequence_no' |filter:iqsearch |filter:{content_is_approved:iqs} |filter:{category_id:category_idf||undefined}:true">
+								<div class="col-xs-4 col-sm-3 col-md-2 catimg">
+									<div class="lstArticle">	
+										<img ng-src="../Src/images/HomePage/htmlbg.png" alt="" class="lstArticleImg" src="../Src/images/HomePage/htmlbg.png">
+										<p class="ng-binding catimgname">{{booklist.category_name}}</p>
+									</div>
+								</div>
+								<div class="col-xs-8 col-sm-8 col-md-8 elipse">
+									<a ng-click="vm.update_iq_info(booklist.chapter_id,booklist.content_is_approved)" href="" ng-if="booklist.content_is_approved=='Y'">{{booklist.chapter_name}}</a>
+									
+									<a ng-click="vm.update_iq_info(booklist.chapter_id,booklist.content_is_approved)" href="" ng-if="booklist.content_is_approved=='N'" style="color: #d9534f">{{booklist.chapter_name}}</a>
+									
+									<a ng-click="vm.update_iq_info(booklist.chapter_id,booklist.content_is_approved)" href="" ng-if="booklist.content_is_approved=='P'">	{{booklist.chapter_name}}</a>
+									
+									<h6 class="title_by">
+										<span ng-if="booklist.content_posted_by">Posted By :</span> 
+										<span class="qpostedby">{{booklist.content_posted_by}}</span>
+										<span ng-if="booklist.content_updated_by">Updated By :</span> 
+										<span class="qpostedby">{{booklist.content_updated_by}}</span>
+										<span ng-if="booklist.content_approved_by">Approved By :</span> 
+										<span class="qpostedby">{{booklist.content_approved_by}}</span>
+										<span ng-if="booklist.content_disapproved_by">Disapproved By :</span> 
+										<span class="qpostedby">{{booklist.content_disapproved_by}}</span>
+									</h6>
+								</div>
+								<div class="col-xs-2 col-sm-2 col-md-2 viewBtnWizard">
+									<a href="#" class="btn btn-success btn-xs txt_clr" ng-if="booklist.content_is_approved=='Y'" data-toggle="modal" data-target="#myModal" ng-click="vm.open(booklist.chapter_id,'model')">View</a>	
+									<a href="#" class="btn btn-danger btn-xs txt_clr" ng-if="booklist.content_is_approved=='N'" data-toggle="modal" data-target="#myModal"  ng-click="vm.open(booklist.chapter_id,'model')">View</a>
+									<a href="#" class="btn btn-info btn-xs txt_clr" ng-if="booklist.content_is_approved=='P'" data-toggle="modal" data-target="#myModal"  ng-click="vm.open(booklist.chapter_id,'model')">View</a>				
+									
+									<!-- Modal -->
+									<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-body">
+													<button type="button" class="close new_close" data-dismiss="modal" aria-hidden="true">&times;</button>
+													<h4 style="color: #c0225d;">{{vm.EbookInfo.chapter_name}}</h4>
+													<p ng-bind-html="vm.EbookInfo.chapter_description"></p>
+												</div>							  
+											</div>
+										</div>
+									</div>
+								</div>						
+							</div>
+						</div>		
+					</div>
+				</div>			 
+			</div>
+			<div class="col-md-7 col-sm-7 mobAlignpadding" >
+				<h3 class="text-center">
+					<button class="btn btn-primary btn-xs pull-left" ng-click="vm.reload()">
+						<a href="" class="glyphicon glyphicon-refresh txt_clr" ></a>
+					</button>{{vm.JsonVals.ebook_post}}</h3>
+					<hr class="postArticleHr">
+					<p class="postArticleCont" ng-if="vm.successmessage!=''">{{vm.successmessage}}</p>
+					<form class="form-horizontal" role="form" name="ebookpostporm" >						
+						<div class="col-md-12 col-sm-12 alignPaddingLftRgt">
+								<fieldset ng-disabled="vm.isClicked">
+							<div class="col-md-6 col-sm-6 ebookAlign alignPaddingLftRgt " >					
+								<div class="col-md-12 mobAlignpadding">
+									<select class="form-control col-sm-5" id="category_id" name="category_id" ng-options="cList.category_id as cList.category_name for cList in vm.cLists" ng-model="vm.ebookpost.category_id" required ng-disabled='vm.isselected' ng-change="vm.getList(vm.ebookpost.category_id,'remaining')">
+										<option value="">Choose any category</option>
+									</select>					
+								</div>
+								<input type="hidden" ng-model="ebookpost.book_id"/>
+								
+							</div>
+							<div class="col-md-6 col-sm-6 ebookAlign alignPaddingLftRgt" >					
+								<div class="col-md-12 mobAlignpadding">
+									<select class="form-control col-sm-5" id="chapter_id" name="chapter_id" ng-options="chList.chapter_id as chList.chapter_name for chList in vm.booksList| filter:{chapter_is_approved:'Y'}" ng-model="vm.ebookpost.chapter_id" required ng-disabled='vm.isselected' >
+										<option value="">Choose chapter name</option>
+									</select>
+									
+								</div>
+								
+							</div>
+						</div>
+						<div class="col-md-12 col-sm-12">
+							<div class="form-group" id="ebkPstTxtArea">
+								<div class="col-sm-12 mobAlignpadding">
+									<wysiwyg 
+									textarea-class="form-control"  
+									textarea-height="380px" 			        
+									required 
+									ng-model="vm.ebookpost.chapter_description" 
+									enable-bootstrap-title="true"
+									textarea-menu="menu" 
+									disabled='vm.isClicked'
+									ng-required="!(vm.ebookpost.chapter_description.length)">
+								</wysiwyg>
+							</div>	
+						</div>
+					</div>
+					<div class="col-md-12 col-sm-12">
+						<div class="form-group">
+							<div class="col-lg-10" style="margin-top: 13px;">
+	
+									<span ng-repeat="accbutton in vm.buttons">
+											<button type="submit" class="btn btn-primary" 
+											ng-class="{'btn-danger':accbutton.btn_value=='Delete','btn-success':accbutton.btn_value=='Approve','btn-info':accbutton.btn_value=='Close','btn-warning':accbutton.btn_value=='DisApprove'}" 						
+											ng-show="accbutton.active" ng-disabled="ebookpostporm.$invalid || vm.isClicked" ng-click="vm.EbookPost(accbutton.name,accbutton.status,vm.ebookpost)">{{accbutton.btn_value}}</button>
+										</span>
+							</div>
+						</div>
+					</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>

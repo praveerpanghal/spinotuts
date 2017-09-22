@@ -1,0 +1,13 @@
+{
+	"listofaprrovedarticles":"List of Approved Articles",
+	"totalnoofarticles":"Total No of Articles",
+	"approved":"Approved",
+ 	"disApproved":"DisApproved",
+ 	"pendingforapproved":"Pending for Approval",
+ 	"s_no" : "S No",
+ 	"dateofapproval":"Date of Approval",
+ 	"url":"Url",
+ 	"base_url":"http://www.spinotuts.com/",
+ 	
+ 	"copy":"Copy"
+}

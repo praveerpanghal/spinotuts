@@ -1,0 +1,113 @@
+	<div class="article_bg col-md-12 col-sm-12 interviewQues">
+		<div class="col-md-5 col-sm-5 interviewQuestions alignPaddingLftRgt">			
+			<div class="col-md-12 alignPaddingLftRgt">
+				<div class="row">
+					<div class="col-md-2 col-xs-12 pstActlDpDwn iqAtclType">
+						<div class="form-group">							  
+							<select class="form-control" id="select" ng-model="iqs">
+								<option value="">Choose Aritcle</option>
+								<option value="Y">Approved</option>
+								<option value="N">Disapproved</option>
+								<option value="P">Pending</option>
+							</select>	
+						</div>
+					</div>
+					<div class="col-md-7 col-xs-12 iqSearch blogSearch"> 
+						<form role="search">
+							<div class="input-group">
+								<input class="form-control" ng-model="iqsearch" placeholder="Search" id="rch-term" type="text">
+								<div class="input-group-btn">
+									<button class="btn btn-default" name="iqsearchBttn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+								</div>
+							</div>
+						</form>
+					</div>					
+				</div>		  
+			</div>
+			
+			<div class="col-md-12 articlePost">
+				<div class="row">
+					<div class="col-md-12 alignPaddingLftRgt ">
+						<div class="div_head">
+							Blog Info
+						</div>
+						<div class="div_head">
+							View
+						</div>
+					</div>
+					<div style="max-height:580px;overflow-y:scroll;border:1px solid transparent;">
+						<div class="row div_data" ng-repeat="Blog in vm.Blogs |filter:iqsearch">
+							<div class="col-xs-11 col-sm-11 col-md-11 elipse">
+								<a ng-click="vm.update_info(Blog)" href="" >{{Blog.blog_title}}</a>
+							</div>								
+							
+							<div class="col-xs-1 col-sm-1 col-md-1 viewBtnWizard">
+								<a href="#" class="btn btn-success btn-xs txt_clr" data-toggle="modal" data-target="#myModal" ng-click="vm.open(Blog.blog_id)">View</a>
+								<!-- Modal -->
+								<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-body">
+												<button type="button" class="close new_close" data-dismiss="modal" aria-hidden="true">&times;</button>
+												<h4 style="color: #c0225d;">{{vm.BlogInfo.blog_title}}</h4>
+												<p ng-bind-html="vm.BlogInfo.blog_description"></p>
+											</div>							  
+										</div>
+									</div>
+								</div>
+							</div>						
+						</div>
+					</div>
+					
+				</div>
+			</div>			 
+		</div>
+		<div class="col-md-7 col-sm-7 mobAlignpadding" >
+			<h3 class="text-center">
+				<button class="btn btn-primary btn-xs pull-left" ng-click="vm.reload()">
+					<a href="" class="glyphicon glyphicon-refresh txt_clr" ></a>
+				</button>Blog Post</h3>
+				<hr class="postArticleHr">
+				<p class="postArticleCont" ng-if="vm.successmessage!=''">{{vm.successmessage}}</p>
+				<form class="form-horizontal" role="form" name="blogpostform" >
+						<fieldset ng-disabled="vm.isClicked">	
+					<div class="col-md-6">
+						<label class="control-label article_formtext" for="blogtitle">{{vm.JsonVals.title}}</label>
+						<input class="form-control" id="blogtitle" type="text" ng-model="vm.blogpost.blog_title" placeholder="Enter Title" required ng-blur="vm.copyTText(vm.blogpost.blog_title)">
+					</div>
+					<div class="col-md-6">
+						<label class="control-label article_formtext" for="blogtitleurl">{{vm.JsonVals.title_url}}</label>
+						<input class="form-control" id="blogtitleurl" type="text" ng-model="vm.blogpost.alias_url" placeholder="Enter Title Url" ng-disabled="true">
+					</div>
+					<input type="hidden" ng-model="blogpost.blog_id"/>					
+					<div class="col-md-12 col-sm-12">
+						<div class="form-group" id="ebkPstTxtArea">
+							<div class="col-sm-12 mobAlignpadding">
+								<wysiwyg 
+								textarea-class="form-control"  
+								textarea-height="380px" 			        
+								required 
+								ng-model="vm.blogpost.description" 
+								enable-bootstrap-title="true"
+								textarea-menu="menu">
+							</wysiwyg>
+						</div>	
+					</div>
+				</div>
+				<div class="col-md-12 col-sm-12">
+					<div class="form-group">
+						<div class="col-lg-10" style="margin-top: 13px;">
+							<button type="submit" class="btn btn-primary" ng-disabled="blogpostform.$invalid" ng-show="vm.sub_but" ng-click="vm.submit_blog(vm.blogpost)">{{ vm.JsonVals.sub_but }}</button>
+							<button type="button" class="btn btn-primary" ng-disabled="blogpostform.$invalid" ng-show="vm.update_but" ng-click="vm.update_blog(vm.blogpost,'U')">{{ vm.JsonVals.update_but }}</button>
+							<button type="button" class="btn btn-danger" ng-show="vm.del_but" ng-click="vm.update_blog(vm.blogpost,'D')">{{vm.JsonVals.del_but}}</button>
+							<button type="button" class="btn btn-success" ng-show="vm.add_but" ng-click="vm.reload();">{{vm.JsonVals.add_but}}</button>
+							<button type="reset" class="btn btn-info" ng-click="vm.reload();"> {{ vm.JsonVals.cls_but }}</button>	
+						</div>
+						
+					</div>
+				</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	

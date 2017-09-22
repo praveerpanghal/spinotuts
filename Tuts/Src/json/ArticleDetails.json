@@ -1,0 +1,14 @@
+{
+	"example" : "Example:",
+	"copy" : "Copy",
+	"ex_desc" : "E.g. Description",
+	"des": "Description",
+	"leave_comment" : "Leave a Comment:",
+	"btn_submit" : "Submit",
+	"comments" : "Comments:",
+	"view_all" : "View All",
+	"view_less":"View Less",
+	"article_category" : "Article Categories",
+	"pre":"Previous",
+	"nxt":"Next"
+}

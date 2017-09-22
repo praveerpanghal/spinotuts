@@ -1,0 +1,57 @@
+<div class="col-md-12 main_content">
+    <div class="row">
+		<div class="col-md-12 article_edit exceptionLog" >
+            <div id="no-more-tables">
+                <p class="postArticleCont" ng-if="vm.userupdatemsg!=''">{{vm.userupdatemsg}}</p>
+                <table class="col-md-12 table-bordered table-striped table-condensed cf" style="text-align:center">
+                    <thead class="cf">
+                        <tr >	<th style="text-align:center">{{vm.JsonVals.s_no}}</th>
+							<th style="text-align:center">{{vm.JsonVals.u_name}}</th>
+							<th style="text-align:center">{{vm.JsonVals.user}}</th>
+							<th style="text-align:center">{{vm.JsonVals.publisher}}</th>
+							<th style="text-align:center">{{vm.JsonVals.admin}}</th>
+							<th style="text-align:center">{{vm.JsonVals.isactive}}</th>
+							<th style="text-align:center">{{vm.JsonVals.update}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>                
+                        <form>
+                            <tr ng-repeat="user in vm.User_info">
+                                <td data-title="S No" >{{ $index + 1}}<input type="hidden" ng-model="user.UserId" ng-init="user.UserId=user.UserId" value={{user.UserId}}></td>
+                                <td data-title="Name">{{user.UserName}}</td>
+                                <td data-title="User" class="numeric">
+                                    <div class="radio radio-danger">
+                                        <input id="roleu{{$index}}" name="role{{$index}}" class="rbtn" type="radio" ng-checked="(user.RightId=='1')" value="1" ng-model="user.RightId">
+                                        <label for="roleu{{$index}}" ng-click="vm.grun()"></label>
+                                    </div> 
+                                </td>
+                                <td data-title="Publisher" class="numeric">
+                                    <div class="radio radio-danger">
+                                        <input id="rolep{{$index}}" name="role{{$index}}" class="rbtn" type="radio" ng-checked="(user.RightId=='2')"  value="2" ng-click="vm.grun()" ng-model="user.RightId">
+                                        <label for=rolep{{$index}}></label>
+                                    </div>  
+                                </td>
+                                <td data-title="Admin" class="numeric">
+                                    <div class="radio radio-danger">
+                                        <input id="rolea{{$index}}" name="role{{$index}}" class="rbtn" type="radio" ng-checked="(user.RightId=='3')"  value="3" ng-click="vm.grun()" ng-model="user.RightId">
+                                        <label for="rolea{{$index}}"></label>
+                                    </div>
+                                </td>
+                                <td data-title="1st Active" class="numeric">
+                                    <p class="deleteArticle">                
+                                        <input id={{$index}} name="role{{$index}}" class="rbtn" ng-click="grun()" type="checkbox" ng-model="user.IsActive" ng-checked="user.IsActive == 'Y'" ng-true-value="'Y'" ng-false-value="'N'" >
+                                        <label for={{$index}}></label>
+                                    </p>
+                                </td>
+                                <td data-title="Up Date" class="numeric">                
+                                    <button class="btn btn-primary btn-default updaterole{{$index}}" ng-click="vm.updatecontrol(user)" ng-disabled={{vm.mval}}>{{vm.JsonVals.update}}</button>
+                                </td>            
+                            </tr>
+                            
+                        </form> 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

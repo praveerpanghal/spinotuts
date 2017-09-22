@@ -1,0 +1,11 @@
+{
+	"s_no" : "S No",
+	"u_name":"UserName",
+ 	"user":"Normal User",
+ 	"publisher":"Publisher",
+ 	"admin":"Administrator",
+ 	"isactive":"Active",
+ 	"update":"Update"
+
+	
+}
