@@ -28,7 +28,7 @@
           </div>
           <div ng-show="vm.eselect">          
             <div class="cropArea upload">
-            <img-crop image="vm.picFile  | ngfDataUrl"                 
+            <img-crop image="vm.picFile  | ngfDataUrl" area-type="square"
             result-image="vm.croppedDataUrl" ng-init="vm.croppedDataUrl=''">
           </img-crop>
         </div>
