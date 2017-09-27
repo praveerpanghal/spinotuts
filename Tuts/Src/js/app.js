@@ -1,5 +1,5 @@
  'use strict';
- var app = angular.module('SpinoApp',['ngRoute','ngResource','ui.router','ngSanitize','ngStorage','angularUtils.directives.dirPagination','ui.bootstrap', 'mj.scrollingTabs','angularModalService','ngFileUpload','colorpicker.module', 'wysiwyg.module','infinite-scroll','ngImgCrop']);
+ var app = angular.module('SpinoApp',['ngRoute','ngResource','ui.router','ngSanitize','ngStorage','angularUtils.directives.dirPagination','ui.bootstrap', 'mj.scrollingTabs','angularModalService','ngFileUpload','colorpicker.module', 'wysiwyg.module','infinite-scroll','ngImgCrop','ngMeta']);
 
  app.config( function(){
     new Clipboard('.copybtn');

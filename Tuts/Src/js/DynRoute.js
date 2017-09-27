@@ -6,7 +6,8 @@ app.config(['$routeProvider','$locationProvider',function ($routeProvider,$locat
 	$locationProvider.html5Mode(true);
 }]); 
 
-app.run(['$route','$http','myAppURLs','$rootScope',function ($route, $http,myAppURLs,$rootScope) {  
+app.run(['$route','$http','myAppURLs','$rootScope','ngMeta',function ($route, $http,myAppURLs,$rootScope,ngMeta) {  
+    ngMeta.init();
     $rootScope.images = {};    
         var url=myAppURLs.GetRouteList;        
             $http.get(url).success(function (data) {
@@ -18,7 +19,13 @@ app.run(['$route','$http','myAppURLs','$rootScope',function ($route, $http,myApp
                     $routeProviderReference.when(routeName, {
                         templateUrl: "Src/partials/"+currentRoute.template_name,
                         controller:currentRoute.controller_name,
-                        controllerAs:"vm"
+                        controllerAs:"vm",
+                        data: {
+                          meta: {
+                            'title': currentRoute.menu_name,
+                            'description': currentRoute.menu_name+ ' page description'
+                          }
+                        }
                     })
                     .otherwise({redirectTo:'/'});                 
                 }

@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="en"  ng-app="SpinoApp">
 <head>
-  <title>SpinoTuts HTML,Bootstrap,Jquery,ReactJS,NodeJS,JavaScript,AngularJS</title>
+  <title>{{ngMeta.title}}</title>
   <meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="Expires" content="1">
   <meta http-equiv="Access-Control-Allow-Origin" content="*">
-  <meta name="description" content="Spino Tuts is a free tutorial on HTML, CSS, Bootstrap,JavaScript, Jquery , ReactJS,NodeJS,JavaScript and AngularJS Technologies.">
+  <meta name="description" content="{{ngMeta.description}}">
   <meta name="author" content="Spino Inc">
   <meta name="robots" content="index,follow,noarchive">
   <meta name="yandex-verification" content="6e9cde9771c4086e">
@@ -23,6 +23,7 @@
   <script src="Src/AngularScripts/angular-route.min.js"></script>
   <script src="Src/AngularScripts/angular-ui-router.js"></script>
   <script src="Src/AngularScripts/underscore.min.js"></script>
+  <script src="Src/js/ngMeta.min.js"></script>
   <script src="../url.js"></script>
   <script src="Src/js/app.js"></script>
   <script src="Src/js/DynRoute.js"></script>
@@ -97,7 +98,7 @@
   }
 }</script>
 </head>
-<body ng-app="SpinoApp">
+<body>
   <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5H6NRJG" height="0" width="0" style="display:none;visibility:hidden"></iframe>
   </noscript>
