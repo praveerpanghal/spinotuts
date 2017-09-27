@@ -141,7 +141,10 @@ app.factory('EncodeService', function() {
     }
     return factory;
 });
-app.factory('permission', function() {
+
+
+
+app.factory('ButtonService', function() {
     var factory = {};
     var buttons=[];
     factory.permissionbuttons=function(str){

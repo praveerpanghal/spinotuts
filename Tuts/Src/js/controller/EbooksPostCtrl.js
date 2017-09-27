@@ -1,9 +1,9 @@
-app.controller('EbooksPostCtrl', ['$route','$log','JsonDataService','$filter','myAppURLs','EncodeService','httpCall','permission',
-function ($route,$log,JsonDataService,$filter,myAppURLs,EncodeService,httpCall,permission) {
+app.controller('EbooksPostCtrl', ['$route','$log','JsonDataService','$filter','myAppURLs','EncodeService','httpCall','ButtonService',
+function ($route,$log,JsonDataService,$filter,myAppURLs,EncodeService,httpCall,ButtonService) {
  var vm=this;
   var profile = JSON.parse(EncodeService.encodelogval(sessionStorage.UserInfo));
  vm.urid = profile.UserRightsId;
- vm.buttons=permission.permissionbuttons(vm.urid);  
+ vm.buttons=ButtonService.permissionbuttons(vm.urid);  
 
 vm.reload=function(){
   vm.ebookpost.category_id='';
@@ -13,7 +13,7 @@ vm.reload=function(){
   vm.ebookpost.flag='';
   //vm.booksList='';
   vm.isselected=false;
-  vm.buttons=permission.permissionbuttons(vm.urid); 
+  vm.buttons=ButtonService.permissionbuttons(vm.urid); 
 }
 var jsonurl=JsonDataService.GetJsonInfo($route.current.templateUrl);
 httpCall.GetMethod(jsonurl)               
@@ -86,7 +86,7 @@ vm.getList(0);
     vm.update_iq_info = function(uiq,status){
       vm.isClicked = false;
       vm.isselected = true;
-      vm.buttons=permission.permissionbuttonsupdate(vm.urid,status); 
+      vm.buttons=ButtonService.permissionbuttonsupdate(vm.urid,status); 
       vm.getList(uiq.category_id,'fetch');        
       vm.open(uiq)
      }

@@ -1,5 +1,5 @@
-app.controller('PostArticleCtrl', ['CatService','$filter','myAppURLs','$route','JsonDataService','EncodeService','httpCall','permission',
-function (CatService,$filter,myAppURLs,$route,JsonDataService,EncodeService,httpCall,permission) {
+app.controller('PostArticleCtrl', ['CatService','$filter','myAppURLs','$route','JsonDataService','EncodeService','httpCall','ButtonService',
+function (CatService,$filter,myAppURLs,$route,JsonDataService,EncodeService,httpCall,ButtonService) {
   var vm=this;
   var jsonurl=JsonDataService.GetJsonInfo($route.current.templateUrl);
   httpCall.GetMethod(jsonurl)               
@@ -26,7 +26,7 @@ function (CatService,$filter,myAppURLs,$route,JsonDataService,EncodeService,http
   vm.cLists = JSON.parse(CatService.getVal());  
   var profile = JSON.parse(EncodeService.encodelogval(sessionStorage.UserInfo));
   vm.urid = profile.UserRightsId;  
-  vm.buttons=permission.permissionbuttons(vm.urid);  
+  vm.buttons=ButtonService.permissionbuttons(vm.urid);  
   vm.reload=function(){
     vm.article.category_id='';
     vm.article.article_name='';
@@ -39,7 +39,7 @@ function (CatService,$filter,myAppURLs,$route,JsonDataService,EncodeService,http
     vm.article.example_desc='';
     vm.article.article_title_id='';
     vm.article.flag='';
-    vm.buttons=permission.permissionbuttons(vm.urid);  
+    vm.buttons=ButtonService.permissionbuttons(vm.urid);  
   }
   vm.getArticles=function(){
     var url=myAppURLs.GetArticlesInformation;
@@ -57,7 +57,7 @@ function (CatService,$filter,myAppURLs,$route,JsonDataService,EncodeService,http
   vm.updatearticleinfo=function(u,status)
   {
     vm.isClicked = false;
-    vm.buttons=permission.permissionbuttonsupdate(vm.urid,status); 
+    vm.buttons=ButtonService.permissionbuttonsupdate(vm.urid,status); 
     vm.successmessage = "";
     
     vm.open(u.alias_url);

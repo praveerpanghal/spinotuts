@@ -1,5 +1,5 @@
-app.controller('InterviewQuestionsCtrl', ['$route','$log','myAppURLs','JsonDataService','EncodeService','httpCall','permission',
-  function ($route,$log,myAppURLs,JsonDataService,EncodeService,httpCall,permission) {
+app.controller('InterviewQuestionsCtrl', ['$route','$log','myAppURLs','JsonDataService','EncodeService','httpCall','ButtonService',
+  function ($route,$log,myAppURLs,JsonDataService,EncodeService,httpCall,ButtonService) {
   var vm=this;
   var jsonurl=JsonDataService.GetJsonInfo($route.current.templateUrl);
   httpCall.GetMethod(jsonurl)               
@@ -25,14 +25,14 @@ app.controller('InterviewQuestionsCtrl', ['$route','$log','myAppURLs','JsonDataS
     var profile = JSON.parse(EncodeService.encodelogval(sessionStorage.UserInfo));  
   vm.urid = profile.UserRightsId;  
 
-  vm.buttons=permission.permissionbuttons(vm.urid);  
+  vm.buttons=ButtonService.permissionbuttons(vm.urid);  
   vm.reload=function(){
     vm.qdata.category_id = '';
     vm.qdata.question_description = '';
     vm.qdata.answer_description =  '';
     vm.qdata.question_id =  '';
     vm.qdata.flag =  '';
-    vm.buttons=permission.permissionbuttons(vm.urid);     
+    vm.buttons=ButtonService.permissionbuttons(vm.urid);     
   }
 
   var url = myAppURLs.fetchcategory;
@@ -88,7 +88,7 @@ vm.submit_btn = true;
 
 vm.update_iq_info = function(uiq,status){
   vm.isClicked = false;
-  vm.buttons=permission.permissionbuttonsupdate(vm.urid,status);  
+  vm.buttons=ButtonService.permissionbuttonsupdate(vm.urid,status);  
 vm.successmessage = "";
 
 vm.open(uiq.question_id);

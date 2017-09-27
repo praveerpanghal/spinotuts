@@ -1,5 +1,5 @@
-app.controller('EbooksChapterPostCtrl', ['$route','$log','$filter','myAppURLs','JsonDataService','EncodeService','httpCall','permission',
-function ($route,$log,$filter,myAppURLs,JsonDataService,EncodeService,httpCall,permission) {
+app.controller('EbooksChapterPostCtrl', ['$route','$log','$filter','myAppURLs','JsonDataService','EncodeService','httpCall','ButtonService',
+function ($route,$log,$filter,myAppURLs,JsonDataService,EncodeService,httpCall,ButtonService) {
 var vm=this;
 var jsonurl=JsonDataService.GetJsonInfo($route.current.templateUrl);
 httpCall.GetMethod(jsonurl)               
@@ -14,7 +14,7 @@ httpCall.GetMethod(jsonurl)
   var profile = JSON.parse(EncodeService.encodelogval(sessionStorage.UserInfo));  
 vm.urid = profile.UserRightsId;  
 
-vm.buttons=permission.permissionbuttons(vm.urid);  
+vm.buttons=ButtonService.permissionbuttons(vm.urid);  
 vm.reload=function(){  
   vm.ebookpostch.category_id = '';
   vm.ebookpostch.chapter_name = '';
@@ -22,7 +22,7 @@ vm.reload=function(){
   vm.ebookpostch.sequence_no='';
   vm.ebookpostch.chapter_id ='';
   vm.ebookpostch.flag='';
-  vm.buttons=permission.permissionbuttons(vm.urid); 
+  vm.buttons=ButtonService.permissionbuttons(vm.urid); 
 }
   /*get all list begin*/
   vm.getIQList = function(){
@@ -81,7 +81,7 @@ vm.update_iq_info = function(uiq,status){
   $(".seqnum").prop('disabled', false);
 vm.isClicked = false;
 
-vm.buttons=permission.permissionbuttonsupdate(vm.urid,status);  
+vm.buttons=ButtonService.permissionbuttonsupdate(vm.urid,status);  
 vm.successmessage = "";
 vm.ebookpostch= angular.copy(uiq); 
 }
