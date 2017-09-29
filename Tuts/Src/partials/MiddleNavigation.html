@@ -69,7 +69,20 @@
 							</select>
 						</div>
 					</div>
-					
+					<div class="form-group">
+							
+							<div class="col-md-6">
+								<label class="control-label article_formtext" for="page_title">{{vm.JsonVals.page_title}}</label>
+								<textarea class="form-control" id="page_title" placeholder="Enter Page Title" ng-model="vm.MidMenuItem.page_title" required>
+									</textarea>
+								
+							</div>
+							<div class="col-md-6">
+								<label class="control-label article_formtext" for="meta_description">{{vm.JsonVals.meta_description}}</label>
+								<textarea id="meta_description" class="form-control" placeholder="Enter Meta Description"  ng-model="vm.MidMenuItem.meta_description" required></textarea>
+								
+							</div>
+						</div>
 					<div class="form-group">
 						
 						<div class="col-md-6">

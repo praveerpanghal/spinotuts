@@ -76,6 +76,8 @@ function ($route,JsonDataService,myAppURLs,$filter,$location,EncodeService,httpC
     data.category_id =SubChildMenuItem.category_id;
     data.user_rights_id =SubChildMenuItem.user_rights_id;
     data.sequence_no = SubChildMenuItem.sequence_no;
+    data.page_title = SubChildMenuItem.page_title;
+    data.meta_description = SubChildMenuItem.meta_description;
     data.user_id = profile.UserId;
     
     httpCall.PostMethod(url,data).
@@ -111,6 +113,8 @@ function ($route,JsonDataService,myAppURLs,$filter,$location,EncodeService,httpC
     data.user_rights_id=SubChildMenuItem.user_rights_id;
     data.sequence_no=SubChildMenuItem.sequence_no;
     data.user_id= profile.UserId;
+    data.page_title = SubChildMenuItem.page_title;
+    data.meta_description = SubChildMenuItem.meta_description;
     data.is_active=SubChildMenuItem.is_active;  
     var url=myAppURLs.ModifyChildSubNavigation;
     httpCall.PostMethod(url,data).

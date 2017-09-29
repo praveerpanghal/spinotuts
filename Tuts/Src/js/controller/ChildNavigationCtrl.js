@@ -64,6 +64,8 @@ data.category_name = ChildMenuItem.category_name;
  data.page_name = ChildMenuItem.page_name||'';
  data.parent_menu_id = ChildMenuItem.parent_menu_id;
  data.user_rights_id = ChildMenuItem.user_rights_id;
+ data.page_title = ChildMenuItem.page_title;
+ data.meta_description = ChildMenuItem.meta_description;
  data.user_id = profile.UserId;
   if(vm.ChildMenuItem.is_active){
   data.is_active = vm.ChildMenuItem.is_active;  
@@ -73,7 +75,7 @@ data.category_name = ChildMenuItem.category_name;
   }
   
  var url=myAppURLs.CreateChildNavigation;
-  httpCall.PostMethod(url,data)               
+   httpCall.PostMethod(url,data)               
     .then(function(result) {   
         if(result==1){
           vm.msg = 'Navigation Created successfully.';
@@ -109,10 +111,12 @@ data.page_name = ChildMenuItem.page_name||'';
 data.user_rights_id = ChildMenuItem.user_rights_id;
 data.is_active = ChildMenuItem.is_active;
 data.parent_menu_id = ChildMenuItem.parent_menu_id;
+data.page_title = ChildMenuItem.page_title;
+data.meta_description = ChildMenuItem.meta_description;
 data.controller = ChildMenuItem.controller||'';
   var url=myAppURLs.UpdateChildNavigation;  
   httpCall.PostMethod(url,data)               
-    .then(function(result) {    
+    .then(function(result) {  
         if(result==1){
           vm.msg="navigation updated successfully";
           vm.isClicked = true;	

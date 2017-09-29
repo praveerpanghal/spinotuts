@@ -59,6 +59,8 @@ vm.getTopVal();
   data.controller = MidMenuItem.controller||'';
   data.lookup_value_id =MidMenuItem.lookup_value_id;
   data.user_rights_id = MidMenuItem.user_rights_id;
+  data.page_title = MidMenuItem.page_title;
+  data.meta_description = MidMenuItem.meta_description;
   data.page_name = MidMenuItem.page_name||'';
   data.sequence_no =MidMenuItem.sequence_no||'';
   data.header = "2";
@@ -105,9 +107,10 @@ vm.getTopVal();
   data.lookup_value_id =MidMenuItem.lookup_value_id;
   data.user_rights_id = MidMenuItem.user_rights_id;
   data.is_active = MidMenuItem.is_active;
+  data.page_title = MidMenuItem.page_title;
+  data.meta_description = MidMenuItem.meta_description;
   data.controller =MidMenuItem.controller||'';
-  var url=myAppURLs.UpdateTopNavigation;
-  
+  var url=myAppURLs.UpdateTopNavigation;  
   httpCall.PostMethod(url,data)               
     .then(function(result) {    
         if(result==1){

@@ -62,6 +62,8 @@ vm.getTopVal();
   data.controller = TopMenuItem.controller||'';
   data.lookup_value_id =TopMenuItem.lookup_value_id;
   data.user_rights_id = TopMenuItem.user_rights_id;
+  data.page_title = TopMenuItem.page_title;
+  data.meta_description = TopMenuItem.meta_description;
   data.page_name = TopMenuItem.page_name||'';
   data.sequence_no =TopMenuItem.sequence_no||'';
   data.header = "1";
@@ -71,8 +73,7 @@ vm.getTopVal();
   }else
   {
   data.is_active ="N"
-  }
-  console.log(data)
+  }  
   var url=myAppURLs.CreateTopNavigation;
   httpCall.PostMethod(url,data)               
     .then(function(result) {    
@@ -106,17 +107,17 @@ vm.getTopVal();
   data.page_url = TopMenuItem.page_url;
   data.sequence_no = TopMenuItem.sequence_no;
   data.page_name = TopMenuItem.page_name;
+  data.page_title = TopMenuItem.page_title;
+  data.meta_description = TopMenuItem.meta_description;
   data.lookup_value_id = TopMenuItem.lookup_value_id;
   data.user_rights_id = TopMenuItem.user_rights_id;
   data.is_active = TopMenuItem.is_active;
-  data.controller = TopMenuItem.controller||'';
-  console.log(data)
-var url=myAppURLs.UpdateTopNavigation;
+  data.controller = TopMenuItem.controller||'';  
+  var url=myAppURLs.UpdateTopNavigation;
   httpCall.PostMethod(url,data)               
     .then(function(result) {    
         if(result==1){
-          vm.msg="navigation updated successfully";  
-    
+          vm.msg="navigation updated successfully";      
         }else if(result==-1){
           vm.msg = "sequence number already exists , please try another !";          
         }  
