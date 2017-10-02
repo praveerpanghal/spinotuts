@@ -5,7 +5,8 @@ app.factory('authorizationService', function ($resource, $q, $rootScope, $locati
             permission: {},
             isPermissionLoaded: false
         },       
-        permissionCheck: function (userrole) {            
+        permissionCheck: function (userrole) {    
+            console.log(userrole)        
             var roleCollection=1;
             var deferred = $q.defer(); 
             var parentPointer = this;
@@ -70,22 +71,24 @@ app.config(['$routeProvider','$locationProvider','$provide',function ($routeProv
 app.run(['$route','$http','myAppURLs','$rootScope',function ($route, $http,myAppURLs,$rootScope) {  
     $rootScope.images = {};    
     var url=myAppURLs.GetRouteList;
-    $http.get(url).success(function (data) {
-        var finalrouteval=data.GetRouteListResult;
-        var iLoop = 0, currentRoute;
-        for (iLoop = 0; iLoop < finalrouteval.length; iLoop++) {
-            currentRoute = finalrouteval[iLoop]; 
-            var routeName = "/" + currentRoute.navigation_url;
+    $http.get(url).success(function (data) {        
+        var finalroutevals=data.GetRouteListResult;
+        finalroutevals.forEach(function(finalrouteval, index) {            
+            var routeName = "/" + finalrouteval.navigation_url;
             $routeProviderReference.when(routeName, {
-                templateUrl: "Src/partials/"+currentRoute.template_name,
-                controller:currentRoute.controller_name,
+                templateUrl: "Src/partials/"+finalrouteval.template_name,
+                controller:finalrouteval.controller_name,
                 controllerAs:"vm",
-                title: currentRoute.page_title,
-                description:currentRoute.meta_description,
-                resolve: { permission: function(authorizationService, $route) { return authorizationService.permissionCheck(currentRoute.user_rights_id); } }
+                title: finalrouteval.page_title,
+                description:finalrouteval.meta_description,
+                resolve: { permission: function(authorizationService, $route) { return authorizationService.permissionCheck(finalrouteval.user_rights_id); } }
             })
-            .otherwise({redirectTo:'/'});        
-        }
+            .otherwise({redirectTo:'/'});
+          });
+          
+          
+
+
         $route.reload();
     });
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
