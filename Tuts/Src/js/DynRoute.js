@@ -5,8 +5,7 @@ app.factory('authorizationService', function ($resource, $q, $rootScope, $locati
             permission: {},
             isPermissionLoaded: false
         },       
-        permissionCheck: function (userrole) {    
-            console.log(userrole)        
+        permissionCheck: function (userrole) {                
             var roleCollection=1;
             var deferred = $q.defer(); 
             var parentPointer = this;
@@ -84,11 +83,7 @@ app.run(['$route','$http','myAppURLs','$rootScope',function ($route, $http,myApp
                 resolve: { permission: function(authorizationService, $route) { return authorizationService.permissionCheck(finalrouteval.user_rights_id); } }
             })
             .otherwise({redirectTo:'/'});
-          });
-          
-          
-
-
+        });
         $route.reload();
     });
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
