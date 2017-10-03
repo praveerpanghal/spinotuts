@@ -28,6 +28,8 @@ function (CatService,$filter,myAppURLs,$route,JsonDataService,EncodeService,http
   vm.urid = profile.UserRightsId;  
   vm.buttons=ButtonService.permissionbuttons(vm.urid);  
   vm.reload=function(){
+    vm.isClicked = false; 
+    vm.successmessage = "";
     vm.article.category_id='';
     vm.article.article_name='';
     vm.article.alias_url= '';

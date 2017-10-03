@@ -27,6 +27,8 @@ app.controller('InterviewQuestionsCtrl', ['$route','$log','myAppURLs','JsonDataS
 
   vm.buttons=ButtonService.permissionbuttons(vm.urid);  
   vm.reload=function(){
+    vm.isClicked = false; 
+    vm.successmessage = "";
     vm.qdata.category_id = '';
     vm.qdata.question_description = '';
     vm.qdata.answer_description =  '';

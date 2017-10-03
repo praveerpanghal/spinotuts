@@ -6,6 +6,8 @@ function ($route,$log,JsonDataService,$filter,myAppURLs,EncodeService,httpCall,B
  vm.buttons=ButtonService.permissionbuttons(vm.urid);  
 
 vm.reload=function(){
+  vm.isClicked = false; 
+  vm.successmessage = "";
   vm.ebookpost.category_id='';
   vm.ebookpost.chapter_id = '';
   vm.ebookpost.chapter_description ='';

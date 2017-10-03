@@ -16,6 +16,8 @@ vm.urid = profile.UserRightsId;
 
 vm.buttons=ButtonService.permissionbuttons(vm.urid);  
 vm.reload=function(){  
+  vm.isClicked = false; 
+  vm.successmessage = "" ;
   vm.ebookpostch.category_id = '';
   vm.ebookpostch.chapter_name = '';
   vm.ebookpostch.alias_url = '';
