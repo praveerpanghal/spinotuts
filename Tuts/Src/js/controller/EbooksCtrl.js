@@ -1,5 +1,5 @@
-app.controller('EbooksCtrl', ['$route','myAppURLs','JsonDataService','$location','httpCall',
-function ($route,myAppURLs,JsonDataService,$location,httpCall) {
+app.controller('EbooksCtrl', ['$route','myAppURLs','JsonDataService','$location','httpCall','$log',
+function ($route,myAppURLs,JsonDataService,$location,httpCall,$log) {
   var vm=this;
   vm.parent=$location.path().split('/')[1];      
   vm.category_name= ($location.path().split('/')[2]).replace(/ +(?=)/g,'-');       
@@ -15,8 +15,10 @@ function ($route,myAppURLs,JsonDataService,$location,httpCall) {
     console.log(error.statusText);
     $log.info(error);
   });
+  var data = new Object();  
+  data.category_id = vm.category_id;
+  data.chapter_id = '0';
   
-  var data = {"category_id":vm.category_id};
   httpCall.PostMethod(url,data)               
   .then(function(result) {        
     vm.Ebooks = result;          
