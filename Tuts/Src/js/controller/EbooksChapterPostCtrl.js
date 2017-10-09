@@ -97,18 +97,15 @@ function ($route,$log,$filter,myAppURLs,JsonDataService,EncodeService,httpCall,$
          }
   }
   
-  vm.changestatus=function(status){
-    var data = new Object();
-    data.flag=status;
-    data.UserId=profile.UserId;        
-    data.category_id ='';
-    data.chapter_name = '';
-    data.alias_url = '';
-    data.sequence_no='';
-    if(vm.selection.toString().length>0){   
-      data.chapter_id=  vm.selection.toString()
-      console.log(data)
-    }   
+  vm.changestatus=function(status)
+  {
+    var ebookpostch=[];
+    ebookpostch.category_id ='0';
+    ebookpostch.chapter_name = '';
+    ebookpostch.alias_url = '';
+    ebookpostch.sequence_no='0';      
+    ebookpostch.chapter_id=  vm.selection.toString()
+    vm.ebookchapterpost(ebookpostch,status);
   }
   // vm.disapprove=function(){
   //   if(vm.selection.toString().length>0){
@@ -133,7 +130,7 @@ function ($route,$log,$filter,myAppURLs,JsonDataService,EncodeService,httpCall,$
   }
   /*update_iq_info end*/
   /*create update begin*/
-  vm.ebookchapterpost=function(ebookpostch,status){  
+  vm.ebookchapterpost=function(ebookpostch,status){  console.log(status)
     var data = new Object();
     var createurl = myAppURLs.PostBookChapter;     
     var updateurl = myAppURLs.UpdateBookChapter;        
@@ -141,10 +138,11 @@ function ($route,$log,$filter,myAppURLs,JsonDataService,EncodeService,httpCall,$
     data.category_id = ebookpostch.category_id;              
     data.chapter_name = ebookpostch.chapter_name;
     data.alias_url = ebookpostch.alias_url;
-    data.sequence_no=ebookpostch.sequence_no;
+    data.sequence_no=ebookpostch.sequence_no;    
     if(status){
       data.chapter_id = ebookpostch.chapter_id;
       data.flag=status;   
+      console.log(data)
       httpCall.PostMethod(updateurl,data)               
       .then(function(result) {          
         vm.successmessage=result;   

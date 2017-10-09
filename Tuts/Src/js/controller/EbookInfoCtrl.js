@@ -17,10 +17,9 @@ function ($route,$localStorage,myAppURLs,JsonDataService,$location,$sanitize,$sc
     $log.info(error);
   });
   
-  var data = {"category_id":vm.articleid};  
+  var data = {"category_id":vm.articleid,"chapter_id":0};  
   httpCall.PostMethod(url,data)               
-  .then(function(result) {                  
-    
+  .then(function(result) {
     vm.Ebooks = result;
     vm.Ebooks=vm.Ebooks.filter(function( obj ) {
       return obj.chapter_is_approved == 'Y' && obj["chapter_description"] !== undefined ;
