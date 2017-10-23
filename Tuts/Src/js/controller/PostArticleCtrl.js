@@ -1,5 +1,5 @@
-app.controller('PostArticleCtrl', ['CatService','$filter','myAppURLs','$route','JsonDataService','EncodeService','httpCall','ButtonService',
-function (CatService,$filter,myAppURLs,$route,JsonDataService,EncodeService,httpCall,ButtonService) {
+app.controller('PostArticleCtrl', ['CatService','$filter','myAppURLs','$route','JsonDataService','EncodeService','httpCall','$log',
+function (CatService,$filter,myAppURLs,$route,JsonDataService,EncodeService,httpCall,$log) {
   var vm=this;
   var jsonurl=JsonDataService.GetJsonInfo($route.current.templateUrl);
   httpCall.GetMethod(jsonurl)               
@@ -22,13 +22,16 @@ function (CatService,$filter,myAppURLs,$route,JsonDataService,EncodeService,http
     ['code', 'quote', 'paragraph'],
     ['css-class']
   ];
-  
+  vm.BtnShow=true;
+  //vm.buttonnavi=true;  
   vm.cLists = JSON.parse(CatService.getVal());  
   var profile = JSON.parse(EncodeService.encodelogval(sessionStorage.UserInfo));
   vm.urid = profile.UserRightsId;  
-  vm.buttons=ButtonService.permissionbuttons(vm.urid);  
+    
   vm.reload=function(){
-    vm.isClicked = false; 
+    vm.article=[];
+    vm.isClicked = false;
+    vm.showmee=false; 
     vm.successmessage = "";
     vm.article.category_id='';
     vm.article.article_name='';
@@ -40,14 +43,54 @@ function (CatService,$filter,myAppURLs,$route,JsonDataService,EncodeService,http
     vm.article.code_desc= '';
     vm.article.example_desc='';
     vm.article.article_title_id='';
-    vm.article.flag='';
-    vm.buttons=ButtonService.permissionbuttons(vm.urid);  
+    vm.article.flag='';  
   }
+
+  vm.selectedItemChanged=function(id){
+    var filtered_json = find_in_object(JSON.parse(JSON.stringify(vm.bookslists)), {category_id: id});
+    function find_in_object(my_object, my_criteria){
+      return my_object.filter(function(obj) {
+        return Object.keys(my_criteria).every(function(c) {
+          return obj[c] == my_criteria[c];
+        });
+      });
+    }
+    if(filtered_json.length>0){  
+      vm.ebookpostch.sequence_no=filtered_json[0].sequence_no+1;
+    }
+    else
+    {
+      vm.ebookpostch.sequence_no=1; 
+    }
+  }
+  vm.successmessage = "" ;
+  vm.submit_btn = true;
+  
+  vm.selection=[];
+    vm.MultipleSelection = function(vals) {
+         var idx = vm.selection.indexOf(vals);
+    if(idx=='0'){
+      vm.buttonnavi=true;
+    }
+          if (idx > -1) {
+      
+             vm.selection.splice(idx, 1);
+         }
+         else {
+             vm.selection.push(vals);
+      vm.buttonnavi=false;
+         }
+  }
+
   vm.getArticles=function(){
     var url=myAppURLs.GetArticlesInformation;
     httpCall.GetMethod(url)               
     .then(function(result) {                  
-      vm.particles = result.GetArticlesInformationResult;      
+      vm.particles = result.GetArticlesInformationResult;  
+      vm.selection=[];
+      vm.buttonnavi=true;
+      vm.successmessage = "";
+     // console.log(vm.particles)    
     }, 
     function(error) { 
       console.log(error.statusText);
@@ -56,40 +99,39 @@ function (CatService,$filter,myAppURLs,$route,JsonDataService,EncodeService,http
   }
   vm.getArticles();
   
-  vm.updatearticleinfo=function(u,status)
-  {
+  /* update_iq_info  begin*/
+  vm.update_iq_info = function(uiq,status){
+    $(".seqnum").prop('disabled', false);
     vm.isClicked = false;
-    vm.buttons=ButtonService.permissionbuttonsupdate(vm.urid,status); 
+    vm.showmee=true;
+    vm.BtnShow=false;
     vm.successmessage = "";
-    
-    vm.open(u.alias_url);
+    vm.article= angular.copy(uiq); 
   }
-  vm.open =  function(atid,block) {  
-    var url=myAppURLs.GetMainArticle;
-    var data = {"alias_url":atid};
-    httpCall.PostMethod(url,data)               
-    .then(function(result) {            
-      if(block=="model")
-        {
-        vm.articledetails=JSON.parse(result.GetMainArticleResult)[0];
-      }    
-      else
-        {            
-        vm.article=JSON.parse(result.GetMainArticleResult)[0];        
-      }        
-    }, 
-    function(error) { 
-      console.log(error.statusText);
-      $log.info(error);
-    });
-  }
+  /*update_iq_info end*/
     
   vm.copyText = function(name){
     vm.article.alias_url = $filter('lowercase')(name).replace(/ +(?=)/g,'-');
   }
-  
-  vm.Articles=function(name,status,article)
+  vm.changestatus=function(status)
+  {    
+    var article=[];
+    article.article_name='';
+    article.alias_url= '';
+    article.article_short_desc='';
+    article.article_title= '';
+    article.article_title_short_desc='';
+    article.example_name= '';
+    article.code_desc='';
+    article.example_desc='';
+    article.article_title_id=  vm.selection.toString();
+    article.flag=status;    
+    article.category_id='';       
+    vm.Articles(article,status)
+  }
+  vm.Articles=function(article,status)
   {
+   
     var createurl= myAppURLs.PostArticle;      
     var updateurl = myAppURLs.ModifyArticles;
     
@@ -103,7 +145,7 @@ function (CatService,$filter,myAppURLs,$route,JsonDataService,EncodeService,http
     data.example_name= article.example_name;
     data.code_desc= article.code_desc;
     data.example_desc= article.example_desc;
-    if(status){
+    if(status){      
       data.article_title_id=article.article_title_id; 
       data.flag=status;
       httpCall.PostMethod(updateurl,data)               
@@ -117,7 +159,6 @@ function (CatService,$filter,myAppURLs,$route,JsonDataService,EncodeService,http
         $log.err(error);
       });
     }else {
-      if(name!="close"&&name!="add"){  
         data.category_id= article.category_id;         
         httpCall.PostMethod(createurl,data)               
         .then(function(result) {                
@@ -129,10 +170,7 @@ function (CatService,$filter,myAppURLs,$route,JsonDataService,EncodeService,http
         function(error) {
           console.log(error.statusText);
           $log.err(error);
-        });
-      }else{      
-        vm.reload();
-      }
+        });      
     }       
     
   }

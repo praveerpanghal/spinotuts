@@ -11,13 +11,15 @@ function ($route,$log,$filter,myAppURLs,JsonDataService,EncodeService,httpCall,$
     $log.info(error);
   });
   vm.BtnShow=true;
-  vm.buttonnavi=true;
+ 
   var profile = JSON.parse(EncodeService.encodelogval(sessionStorage.UserInfo));  
   vm.urid = profile.UserRightsId;  
   vm.reload=function(){  
+    vm.ebookpostch=[];
     vm.isClicked = false; 
     vm.BtnShow=true;
     vm.successmessage = "" ;
+    vm.showmee=false; 
     vm.ebookpostch.category_id = '';
     vm.ebookpostch.chapter_name = '';
     vm.ebookpostch.alias_url = '';
@@ -33,6 +35,9 @@ function ($route,$log,$filter,myAppURLs,JsonDataService,EncodeService,httpCall,$
     data.chapter_id = '0';    
     httpCall.PostMethod(url,data).then(function(result){            
       vm.bookslists = result;
+      vm.selection=[];
+      vm.buttonnavi=true;
+      vm.successmessage = "";
     },function(error){
       console.log(error.statusText);
       $log.err(error);
@@ -107,30 +112,19 @@ function ($route,$log,$filter,myAppURLs,JsonDataService,EncodeService,httpCall,$
     ebookpostch.chapter_id=  vm.selection.toString()
     vm.ebookchapterpost(ebookpostch,status);
   }
-  // vm.disapprove=function(){
-  //   if(vm.selection.toString().length>0){
-  //     var data={"article_ids":vm.selection.toString(),"user_id":profile.UserId};
-  //     console.log(data)
-  //   }
-  // }
-  // vm.approve=function(){
-  //   if(vm.selection.toString().length>0){
-  //     var data={"article_ids":vm.selection.toString(),"user_id":profile.UserId};
-  //     console.log(data)
-  //   }
-  // }
-  
+ 
   /* update_iq_info  begin*/
   vm.update_iq_info = function(uiq,status){
     $(".seqnum").prop('disabled', false);
     vm.isClicked = false;
     vm.BtnShow=false;
+    vm.showmee=true; 
     vm.successmessage = "";
     vm.ebookpostch= angular.copy(uiq); 
   }
   /*update_iq_info end*/
   /*create update begin*/
-  vm.ebookchapterpost=function(ebookpostch,status){  console.log(status)
+  vm.ebookchapterpost=function(ebookpostch,status){
     var data = new Object();
     var createurl = myAppURLs.PostBookChapter;     
     var updateurl = myAppURLs.UpdateBookChapter;        
@@ -141,12 +135,11 @@ function ($route,$log,$filter,myAppURLs,JsonDataService,EncodeService,httpCall,$
     data.sequence_no=ebookpostch.sequence_no;    
     if(status){
       data.chapter_id = ebookpostch.chapter_id;
-      data.flag=status;   
-      console.log(data)
+      data.flag=status; 
       httpCall.PostMethod(updateurl,data)               
       .then(function(result) {          
         vm.successmessage=result;   
-        vm.isClicked = true;                    
+        vm.isClicked = true;                          
         vm.getIQList();
       },
       function(error) {

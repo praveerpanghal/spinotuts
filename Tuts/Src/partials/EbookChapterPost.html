@@ -17,9 +17,13 @@
 						<button type="button" class="close new_close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						<p class="postArticleCont" ng-if="vm.successmessage!=''">{{vm.successmessage}}</p>
 						<form class="form-horizontal" role="form" name="ebookpostporm" >						
-							<fieldset ng-disabled="vm.isClicked">	
+							<fieldset ng-disabled="vm.isClicked">
+									<h3 class="text-center no_head">
+											{{vm.JsonVals.ebook_post}}
+										</h3>
+										<hr class="postArticleHr">	
 								<div class="form-group col-md-6 col-sm-12">
-									<select class="form-control form-control" id="category_id" name="category_id" ng-options="cList.category_id as cList.category_name for cList in vm.cLists" ng-model="vm.ebookpostch.category_id" required ng-change="vm.selectedItemChanged(vm.ebookpostch.category_id)">
+									<select class="form-control form-control" id="category_id" name="category_id" ng-options="cList.category_id as cList.category_name for cList in vm.cLists" ng-model="vm.ebookpostch.category_id" required ng-change="vm.selectedItemChanged(vm.ebookpostch.category_id)"  ng-disabled="vm.showmee">
 										<option value="">-- choose any category --</option>
 									</select>
 								</div>
@@ -52,8 +56,12 @@
 				<div class="modal-content">
 					<div class="modal-body">
 						<button type="button" class="close new_close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 style="color: #c0225d;float: none;text-align: center">{{vm.ebookpostch.chapter_name}}</h4>
+						<h4><span style="color: #c0225d;">E-Book Chapter Name :</span>  {{vm.ebookpostch.chapter_name}}</h4>
+						<div class="clearfix"></div>
 						<!-- <p ng-bind-html="vm.to_trusted(vm.ebookpostch.chapter_description)"></p>						 -->
+					</div>
+					<div class="modal-footer" style="text-align: center">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 					</div>							  
 				</div>
 			</div>
@@ -88,86 +96,47 @@
 			</div>	
 			<div class="clearfix"></div>				
 		</div>
-		<!-- <div class="col-md-12 aprvArticleRow">                      
-			<div class="col-md-12 divhead">
-				<div class="col-md-1"></div>
-				<div class="col-md-2">Category Name</div>
-				<div class="col-md-9">Ebook Chapter Name</div>
-			</div>
-			<div class="row article_edit deleteArticle" ng-repeat="booklist in vm.bookslists |filter:iqsearch |filter:{chapter_is_approved:iqs} |filter:{category_id:category_idf||undefined}:true">
-				<div class="col-md-12 col-xs-12">
-					<div class="col-md-1 col-xs-1">
-						<p>
-							<input type="checkbox" id="{{booklist.chapter_id}}" ng-checked="vm.selection.indexOf(booklist.chapter_id) > -1" ng-click="vm.MultipleSelection(booklist.chapter_id)"  />										
-							<label for="{{booklist.chapter_id}}"  ng-click="showme=!showme"></label>
-						</p>
-					</div>						
-					<div class="col-md-2">
-						<p class="ng-binding ">{{booklist.category_name}}</p>
-					</div>
-					<div class="col-md-7 article_block">
-						<a href="" ng-if="booklist.chapter_is_approved=='Y'" style="color: #337ab7">{{booklist.chapter_name}}</a>									
-						<a href="" ng-if="booklist.chapter_is_approved=='N'" style="color: #d9534f">{{booklist.chapter_name}}</a>									
-						<a href="" ng-if="booklist.chapter_is_approved=='P'">	{{booklist.chapter_name}}</a>						
-						<h6 class="title_by">
-							<span ng-if="booklist.chapter_posted_by">Posted By :</span> 
-							<span class="qpostedby">{{booklist.chapter_posted_by}}</span>
-							<span ng-if="booklist.chapter_updated_by">Updated By :</span> 
-							<span class="qpostedby">{{booklist.chapter_updated_by}}</span>
-							<span ng-if="booklist.chapter_approved_by">Approved By :</span> 
-							<span class="qpostedby">{{booklist.chapter_approved_by}}</span>
-							<span ng-if="booklist.chapter_disapproved_by">Disapproved By :</span> 
-							<span class="qpostedby">{{booklist.chapter_disapproved_by}}</span>
-						</h6>									
-					</div>
-					<div class="col-md-2">
-						<button ng-disabled="showme" class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#createnew"  title="Edit E-books Chapter" ng-click="vm.update_iq_info(booklist,booklist.chapter_is_approved)">Edit</button>
-						<button ng-disabled="showme" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewblack" ng-click="vm.update_iq_info(booklist)">View</button>
-					</div>
-				</div>
-			</div>
-		</div> -->
 		<div id="no-more-tables">                
-                <table class="col-md-12 table-bordered table-striped table-condensed cf" style="text-align:center">
-                    <thead class="cf divhead">
-                        <tr >	<th style="text-align:center">S No</th>
-							<th style="text-align:center">Category Name</th>
-							<th style="text-align:center">Ebook Chapter Name</th>
-							<th style="text-align:center">Buttons</th>
-                        </tr>
-                    </thead>
-                    <tbody>                
-                        <form>
-                            <tr ng-repeat="booklist in vm.bookslists |filter:iqsearch |filter:{chapter_is_approved:iqs} |filter:{category_id:category_idf||undefined}:true" class="deleteArticle">
-                                <td data-title="S No">
-										<input type="checkbox" id="{{booklist.chapter_id}}" ng-checked="vm.selection.indexOf(booklist.chapter_id) > -1" ng-click="vm.MultipleSelection(booklist.chapter_id)"  />										
-										<label for="{{booklist.chapter_id}}"  ng-click="showme=!showme" ></label>
-								</td>
-                                <td data-title="Category Name">{{booklist.category_name}}</td>
-                                <td data-title="Ebook Chapter Name" style="text-align: left">
-										<a href="" ng-if="booklist.chapter_is_approved=='Y'" style="color: #337ab7">{{booklist.chapter_name}}</a>									
-										<a href="" ng-if="booklist.chapter_is_approved=='N'" style="color: #d9534f">{{booklist.chapter_name}}</a>									
-										<a href="" ng-if="booklist.chapter_is_approved=='P'">	{{booklist.chapter_name}}</a>						
-										<h6 class="title_by">
-											<span ng-if="booklist.chapter_posted_by">Posted By :</span> 
-											<span class="qpostedby">{{booklist.chapter_posted_by}}</span>
-											<span ng-if="booklist.chapter_updated_by">Updated By :</span> 
-											<span class="qpostedby">{{booklist.chapter_updated_by}}</span>
-											<span ng-if="booklist.chapter_approved_by">Approved By :</span> 
-											<span class="qpostedby">{{booklist.chapter_approved_by}}</span>
-											<span ng-if="booklist.chapter_disapproved_by">Disapproved By :</span> 
-											<span class="qpostedby">{{booklist.chapter_disapproved_by}}</span>
-										</h6> 
-                                </td>
-                                <td data-title="Buttons" >
-										<button ng-disabled="showme"  class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#createnew"  title="Edit E-books Chapter" ng-click="vm.update_iq_info(booklist,booklist.chapter_is_approved)">Edit</button>
-										<button ng-disabled="showme"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewblack" ng-click="vm.update_iq_info(booklist)">View</button>  
-                                </td>                                    
-                            </tr>
-                            
-                        </form> 
-                    </tbody>
-                </table>
-            </div>
+			<table class="col-md-12 table-bordered table-striped table-condensed cf" style="text-align:center">
+				<thead class="cf divhead">
+					<tr >	<th style="text-align:center">S No</th>
+						<th style="text-align:center">Category Name</th>
+						<th style="text-align:center">Ebook Chapter Name</th>
+						<th style="text-align:center">Buttons</th>
+					</tr>
+				</thead>
+				<tbody>                
+					<form>
+						<tr ng-repeat="booklist in vm.bookslists |filter:iqsearch |filter:{chapter_is_approved:iqs} |filter:{category_id:category_idf||undefined}:true" class="deleteArticle">
+							<td data-title="S No">
+								<input type="checkbox" id="{{booklist.chapter_id}}" ng-checked="vm.selection.indexOf(booklist.chapter_id) > -1" ng-click="vm.MultipleSelection(booklist.chapter_id)"  />										
+								<label for="{{booklist.chapter_id}}"  ng-click="showme=!showme" ></label>
+							</td>
+							<td data-title="Category Name">{{booklist.category_name}}</td>
+							<td data-title="Ebook Chapter Name" style="text-align: left">
+								<a href="" ng-if="booklist.chapter_is_approved=='Y'" style="color: #337ab7">{{booklist.chapter_name}}</a>									
+								<a href="" ng-if="booklist.chapter_is_approved=='N'" style="color: #d9534f">{{booklist.chapter_name}}</a>									
+								<a href="" ng-if="booklist.chapter_is_approved=='P'">	{{booklist.chapter_name}}</a>						
+								<h6 class="title_by">
+									<span ng-if="booklist.chapter_posted_by">Posted By :</span> 
+									<span class="qpostedby">{{booklist.chapter_posted_by}}</span>
+									<span ng-if="booklist.chapter_updated_by">Updated By :</span> 
+									<span class="qpostedby">{{booklist.chapter_updated_by}}</span>
+									<span ng-if="booklist.chapter_approved_by">Approved By :</span> 
+									<span class="qpostedby">{{booklist.chapter_approved_by}}</span>
+									<span ng-if="booklist.chapter_disapproved_by">Disapproved By :</span> 
+									<span class="qpostedby">{{booklist.chapter_disapproved_by}}</span>
+								</h6> 
+							</td>
+							<td data-title="Buttons" >
+								<button ng-disabled="showme"  class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#createnew"  title="Edit E-books Chapter" ng-click="vm.update_iq_info(booklist,booklist.chapter_is_approved)">Edit</button>
+								<button ng-disabled="showme"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewblack" ng-click="vm.update_iq_info(booklist)">View</button>  
+							</td>                                    
+						</tr>
+						
+					</form> 
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>		
