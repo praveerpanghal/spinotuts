@@ -4810,7 +4810,8 @@ td.urlinfo p {
   #bs-example-navbar-collapse-11.navbar-collapse.in
   {
     height: 200px !important;
-	overflow: scroll;
+	overflow: scroll !important;
+	
   }  
   .navbar-nav  {
     display: inline;
