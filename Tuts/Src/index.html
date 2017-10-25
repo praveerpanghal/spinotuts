@@ -1,11 +1,12 @@
 <!doctype html>
 <html lang="en"  ng-app="SpinoApp">
 <head>
-  <title>{{title}}</title>
+  <title ng-bind="title">SpinoTuts HTML,Bootstrap,Jquery,ReactJS,NodeJS,JavaScript,AngularJS</title>
   <meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="Expires" content="1">
   <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <meta name="description" content="Spino Tuts is a free tutorial on HTML, CSS, Bootstrap,JavaScript, Jquery , ReactJS,NodeJS,JavaScript and AngularJS Technologies." ng-if="false" />
   <meta name="description" content="{{description}}">
   <meta name="author" content="Spino Inc">
   <meta name="robots" content="index,follow">
@@ -20,82 +21,82 @@
   
   
   <script src="Src/AngularScripts/jquery-3.1.0.min.js"></script>
-  <script src="Src/AngularScripts/bootstrap.min.js"></script>
-  <script src="Src/AngularScripts/angular.min.js"></script>
-  <script src="Src/AngularScripts/angular-route.min.js"></script>
-  <script src="Src/AngularScripts/angular-ui-router.js"></script>
-  <script src="Src/AngularScripts/underscore.min.js"></script>
-  <script src="../url.js"></script>
-  <script src="Src/js/app.js"></script>
-  <script src="Src/js/DynRoute.js"></script>
-  <script src="Src/scripts/directives/custom_directives.js"></script>
-  <script src="Src/scripts/services/adsbygoogle.js"></script>
-  <script src="Src/js/codemirror.js"></script>
-  <script src="Src/js/javascript.js"></script>
-  <script src="Src/js/css.js"></script>
-  <script src="Src/js/xml.js"></script>
-  <script src="Src/js/htmlmixed.js"></script>
-  <script src="Src/js/jotted.min.js"></script>
+  <script defer src="Src/AngularScripts/bootstrap.min.js"></script>
+  <script defer src="Src/AngularScripts/angular.min.js"></script>
+  <script defer src="Src/AngularScripts/angular-route.min.js"></script>
+  <script defer src="Src/AngularScripts/angular-ui-router.js"></script>
+  <script defer src="Src/AngularScripts/underscore.min.js"></script>
+  <script defer src="../url.js"></script>
+  <script defer src="Src/js/app.js"></script>
+  <script defer src="Src/js/DynRoute.js"></script>
+  <script defer src="Src/scripts/directives/custom_directives.js"></script>
+  <script defer src="Src/scripts/services/adsbygoogle.js"></script>
+  <script defer src="Src/js/codemirror.js"></script>
+  <script defer src="Src/js/javascript.js"></script>
+  <script defer src="Src/js/css.js"></script>
+  <script defer src="Src/js/xml.js"></script>
+  <script defer src="Src/js/htmlmixed.js"></script>
+  <script defer src="Src/js/jotted.min.js"></script>
   
-  <script src="Src/scripts/services/services.js"></script>
-  <script src="Src/js/inf.js"></script>
-  <script src="Src/js/scrolling-tabs.js"></script>
-  <script src="Src/js/dirPagination.js"></script>
-  <script src="Src/js/clipboard.min.js"></script>
-  <script src="Src/js/ngStorage.min.js"></script>
-  <script src="Src/js/angular-modal-service.js"></script>
-  <script src="Src/js/angular-sanitize.js"></script>
-  <script src="Src/js/ng-file-upload.js"></script>
-  <script src="Src/js/ng-file-upload-shim.js"></script>
-  <script src="Src/js/ng-img-crop.js"></script>
-  <script src="Src/js/bootstrap-colorpicker-module.js"></script>
-  <script src="Src/js/angular-wysiwyg.js"></script>
-  <script src="Src/js/ui-bootstrap-tpls-0.10.0.js"></script>
-  <script src="Src/scripts/services/GoogleAnalytics.js"></script>
-  <script src="Src/js/controller/AboutusCtrl.js"></script>
-  <script src="Src/js/controller/AddBlogCtrl.js"></script>
-  <script src="Src/js/controller/ApproveArticleCtrl.js"></script>
-  <script src="Src/js/controller/ApprovedArticlelistCtrl.js"></script>
-  <script src="Src/js/controller/ArticleDetailsCtrl.js"></script>
-  <script src="Src/js/controller/ArticleListCtrl.js"></script>
-  <script src="Src/js/controller/ArticlesReportCtrl.js"></script>
-  <script src="Src/js/controller/BlogCtrl.js"></script>
-  <script src="Src/js/controller/BloginfoCtrl.js"></script>
-  <script src="Src/js/controller/CodeEditorCtrl.js"></script>
-  <script src="Src/js/controller/ChildNavigationCtrl.js"></script>
-  <script src="Src/js/controller/DisapprovedArticleListCtrl.js"></script>
-  <script src="Src/js/controller/EbookInfoCtrl.js"></script>
-  <script src="Src/js/controller/EbooksCtrl.js"></script>
-  <script src="Src/js/controller/EbooksPostCtrl.js"></script>
-  <script src="Src/js/controller/EbooksChapterPostCtrl.js"></script>
-  <script src="Src/js/controller/ForgotCtrl.js"></script>
-  <script src="Src/js/controller/ForgotSuccessCtrl.js"></script>
-  <script src="Src/js/controller/GetInterviewQuestionsCtrl.js"></script>
-  <script src="Src/js/controller/HeaderCtrl.js"></script>
-  <script src="Src/js/controller/HomeCtrl.js"></script>
-  <script src="Src/js/controller/InterviewsCtrl.js"></script>
-  <script src="Src/js/controller/LogCtrl.js"></script>
-  <script src="Src/js/controller/LoginCtrl.js"></script>
-  <script src="Src/js/controller/LogoutCtrl.js"></script>
-  <script src="Src/js/controller/MenuControlCtrl.js"></script>
-  <script src="Src/js/controller/MiddleNavigationCtrl.js"></script>
-  <script src="Src/js/controller/NavigationCtrl.js"></script>
-  <script src="Src/js/controller/OnlineTestsCtrl.js"></script>
-  <script src="Src/js/controller/PostArticleCtrl.js"></script>
-  <script src="Src/js/controller/ProfileCtrl.js"></script>
-  <script src="Src/js/controller/RegisterCtrl.js"></script>
-  <script src="Src/js/controller/RegSuccessCtrl.js"></script>
-  <script src="Src/js/controller/SubChildNavigationCtrl.js"></script>
-  <script src="Src/js/controller/UserControlsCtrl.js"></script>
-  <script src="Src/js/controller/VideoCtrl.js"></script>
-  <script src="Src/js/controller/VideoUploadCtrl.js"></script>
-  <script src="Src/js/controller/webServiceCtrl.js"></script>
-  <script src="Src/js/controller/WelcomeCtrl.js"></script>
-  <script src="Src/js/controller/WriteusCtrl.js"></script>
-  <script src="Src/js/controller/root.js"></script>
+  <script defer src="Src/scripts/services/services.js"></script>
+  <script defer src="Src/js/inf.js"></script>
+  <script defer src="Src/js/scrolling-tabs.js"></script>
+  <script defer src="Src/js/dirPagination.js"></script>
+  <script defer src="Src/js/clipboard.min.js"></script>
+  <script defer src="Src/js/ngStorage.min.js"></script>
+  <script defer src="Src/js/angular-modal-service.js"></script>
+  <script defer src="Src/js/angular-sanitize.js"></script>
+  <script defer src="Src/js/ng-file-upload.js"></script>
+  <script defer src="Src/js/ng-file-upload-shim.js"></script>
+  <script defer src="Src/js/ng-img-crop.js"></script>
+  <script defer src="Src/js/bootstrap-colorpicker-module.js"></script>
+  <script defer src="Src/js/angular-wysiwyg.js"></script>
+  <script defer src="Src/js/ui-bootstrap-tpls-0.10.0.js"></script>
+  <script defer src="Src/scripts/services/GoogleAnalytics.js"></script>
+  <script defer src="Src/js/controller/AboutusCtrl.js"></script>
+  <script defer src="Src/js/controller/AddBlogCtrl.js"></script>
+  <script defer src="Src/js/controller/ApproveArticleCtrl.js"></script>
+  <script defer src="Src/js/controller/ApprovedArticlelistCtrl.js"></script>
+  <script defer src="Src/js/controller/ArticleDetailsCtrl.js"></script>
+  <script defer src="Src/js/controller/ArticleListCtrl.js"></script>
+  <script defer src="Src/js/controller/ArticlesReportCtrl.js"></script>
+  <script defer src="Src/js/controller/BlogCtrl.js"></script>
+  <script defer src="Src/js/controller/BloginfoCtrl.js"></script>
+  <script defer src="Src/js/controller/CodeEditorCtrl.js"></script>
+  <script defer src="Src/js/controller/ChildNavigationCtrl.js"></script>
+  <script defer src="Src/js/controller/DisapprovedArticleListCtrl.js"></script>
+  <script defer src="Src/js/controller/EbookInfoCtrl.js"></script>
+  <script defer src="Src/js/controller/EbooksCtrl.js"></script>
+  <script defer src="Src/js/controller/EbooksPostCtrl.js"></script>
+  <script defer src="Src/js/controller/EbooksChapterPostCtrl.js"></script>
+  <script defer src="Src/js/controller/ForgotCtrl.js"></script>
+  <script defer src="Src/js/controller/ForgotSuccessCtrl.js"></script>
+  <script defer src="Src/js/controller/GetInterviewQuestionsCtrl.js"></script>
+  <script defer src="Src/js/controller/HeaderCtrl.js"></script>
+  <script defer src="Src/js/controller/HomeCtrl.js"></script>
+  <script defer src="Src/js/controller/InterviewsCtrl.js"></script>
+  <script defer src="Src/js/controller/LogCtrl.js"></script>
+  <script defer src="Src/js/controller/LoginCtrl.js"></script>
+  <script defer src="Src/js/controller/LogoutCtrl.js"></script>
+  <script defer src="Src/js/controller/MenuControlCtrl.js"></script>
+  <script defer src="Src/js/controller/MiddleNavigationCtrl.js"></script>
+  <script defer src="Src/js/controller/NavigationCtrl.js"></script>
+  <script defer src="Src/js/controller/OnlineTestsCtrl.js"></script>
+  <script defer src="Src/js/controller/PostArticleCtrl.js"></script>
+  <script defer src="Src/js/controller/ProfileCtrl.js"></script>
+  <script defer src="Src/js/controller/RegisterCtrl.js"></script>
+  <script defer src="Src/js/controller/RegSuccessCtrl.js"></script>
+  <script defer src="Src/js/controller/SubChildNavigationCtrl.js"></script>
+  <script defer src="Src/js/controller/UserControlsCtrl.js"></script>
+  <script defer src="Src/js/controller/VideoCtrl.js"></script>
+  <script defer src="Src/js/controller/VideoUploadCtrl.js"></script>
+  <script defer src="Src/js/controller/webServiceCtrl.js"></script>
+  <script defer src="Src/js/controller/WelcomeCtrl.js"></script>
+  <script defer src="Src/js/controller/WriteusCtrl.js"></script>
+  <script defer src="Src/js/controller/root.js"></script>
   
-  <script src="Src/js/scripts.js"></script>
-  <script type="application/ld+json">{
+  <script defer src="Src/js/scripts.js"></script>
+  <script defer type="application/ld+json">{
   "@context": "http://spinotuts.com",
   "@type": "Organization",
   "url": "http://www.spinotuts.com",
