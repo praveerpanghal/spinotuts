@@ -9,7 +9,7 @@
 	<!-- UAT Begin-->
 	<base id="localhost:1810">			
 		<accessfolder>Build</accessfolder>
-		<baseurl>http://162.17.231.117:1313/SpinoService.svc</baseurl>
+		<baseurl>http://162.17.231.117:1314/SpinoService.svc</baseurl>
 	</base>
 	<!-- UAT End-->
 	<!-- Production Begin-->
