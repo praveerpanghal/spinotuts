@@ -15,7 +15,7 @@ pem = require('pem'),
 dynamicStatic = require('express-dynamic-static')(),
 jwt = require('jsonwebtoken');
 
-var port=1810;
+var port=80;
 var Client = require('node-rest-client').Client;
 var client = new Client();
 var request = require("request");
