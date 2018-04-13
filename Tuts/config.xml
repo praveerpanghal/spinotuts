@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <information>
 	<!-- Development Begin-->
-	<base id="localhost:1818">			
+	<base id="localhost:80">			
 		<accessfolder>Src</accessfolder>
 		<baseurl>http://162.17.231.117:1313/SpinoService.svc</baseurl>
 	</base>
 	<!-- Development End-->
 	<!-- UAT Begin-->
-	<base id="localhost:1810">			
+	<base id="localhost:81">			
 		<accessfolder>Build</accessfolder>
 		<baseurl>http://162.17.231.117:1314/SpinoService.svc</baseurl>
 	</base>
