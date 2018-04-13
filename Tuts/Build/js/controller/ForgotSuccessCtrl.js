@@ -1,0 +1,1 @@
+app.controller("ForgotSuccessCtrl",["$route","JsonDataService","httpCall",function(t,o,n){var e=this,r=o.GetJsonInfo(t.current.templateUrl);n.GetMethod(r).then(function(t){e.JsonVals=t},function(t){$log.info(t)})}]);

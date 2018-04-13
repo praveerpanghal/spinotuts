@@ -1,0 +1,1 @@
+app.controller("AdvertiseCtrl",["$route","JsonDataService","httpCall",function(t,n,e){var o=this,r=n.GetJsonInfo(t.current.templateUrl);e.GetMethod(r).then(function(t){o.JsonVals=t},function(t){$log.info(t)})}]);

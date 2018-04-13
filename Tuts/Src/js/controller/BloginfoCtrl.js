@@ -15,9 +15,10 @@ var data = {"alias_url":$location.path().split('/')[2]};
 httpCall.PostMethod(url,data)               
       .then(function(result) {
       vm.singlebloginfo=result[0];
+      console.log(vm.singlebloginfo);
    }, 
    function(error) { 
-    console.log(error.statusText);
+    console.log(error.statusText);  
     $log.info(error);
   });
 }]);

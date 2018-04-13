@@ -40,9 +40,10 @@
     "node-rest-client": "^3.1.0",
     "object-keys": "^1.0.11",
     "pem": "^1.9.7",
-    "request": "^2.79.0",
+    "request": "^2.85.0",
     "request-promise": "^4.1.1",
-    "sitemap-generator": "^4.1.1"
+    "sitemap-generator": "^4.1.1",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "express": "latest",

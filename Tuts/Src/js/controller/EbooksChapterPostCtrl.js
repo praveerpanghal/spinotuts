@@ -35,6 +35,7 @@ function ($route,$log,$filter,myAppURLs,JsonDataService,EncodeService,httpCall,$
     data.chapter_id = '0';    
     httpCall.PostMethod(url,data).then(function(result){            
       vm.bookslists = result;
+      console.log(vm.bookslists)
       vm.selection=[];
       vm.buttonnavi=true;
       vm.successmessage = "";
@@ -139,7 +140,9 @@ function ($route,$log,$filter,myAppURLs,JsonDataService,EncodeService,httpCall,$
       httpCall.PostMethod(updateurl,data)               
       .then(function(result) {          
         vm.successmessage=result;   
-        vm.isClicked = true;                          
+        vm.isClicked = true;    
+        $rootScope.demoroute();   
+        $rootScope.update();                   
         vm.getIQList();
       },
       function(error) {

@@ -121,7 +121,7 @@ vm.updateprofile=function(croppedDataUrl,userprofiledetail){
     .error(function(){
       console.log("error!!");
     });
-    vm.profile_pic='/Src/images/uploads/'+profile.UserId+'/'+file.name;     
+    vm.profile_pic='/images/uploads/'+profile.UserId+'/'+file.name;     
   }  
   else{
     vm.profile_pic=vm.userprofiledetails.profile_pic;

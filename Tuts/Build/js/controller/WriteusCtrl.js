@@ -1,0 +1,1 @@
+app.controller("WriteusCtrl",["$route","JsonDataService","httpCall",function(t,o,n){var e=this,l=o.GetJsonInfo(t.current.templateUrl);n.GetMethod(l).then(function(t){e.JsonVals=t},function(t){console.log(t.statusText),$log.info(t)})}]);

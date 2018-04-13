@@ -1,0 +1,1 @@
+app.controller("AboutusCtrl",["$route","JsonDataService",function(t,n){var o=this,e=n.GetJsonInfo(t.current.templateUrl);httpCall.GetMethod(e).then(function(t){o.JsonVals=t},function(t){$log.info(t)})}]);

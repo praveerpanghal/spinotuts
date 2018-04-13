@@ -1,0 +1,1 @@
+define(["services/services"],function(e){e.factory("exceptionlogservice",[function(){return{GetException:function(e){return e}}}])});

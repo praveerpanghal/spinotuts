@@ -1,7 +1,7 @@
 {
 	"article_list" : "Latest Articles",
 	"by" : "Approved By",
-	"article_bg_img" : "../Src/images/HomePage/htmlbg.png",
+	"article_bg_img" : "images/HomePage/htmlbg.png",
 	"view_all" : "View All",
 	"view_less" : "View Less",
 	"article_category" : "Article Categories"

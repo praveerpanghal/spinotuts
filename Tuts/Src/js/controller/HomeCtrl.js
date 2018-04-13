@@ -1,11 +1,13 @@
 app.controller('HomeCtrl',['$scope','$route','CatService','$localStorage','$log','$rootScope','JsonDataService','$location','myAppURLs','httpCall',
  function ($scope,$route,CatService,$localStorage,$log,$rootScope,JsonDataService,$location,myAppURLs,httpCall) {
 	var vm=this;
-
-	vm.service = CatService;
-$scope.$watch('vm.service.getVal()', function(newVal) {
+	
+	//vm.cLists = JSON.parse(CatService.getVal());	
+	//console.log(vm.cLists)
+vm.service = CatService;
+ $scope.$watch('vm.service.getVal()', function(newVal) {
 	vm.cLists = JSON.parse(newVal);	
-  });
+ });
 
 	vm.redirect=function(r){
 		var key_s = angular.uppercase(r);

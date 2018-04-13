@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<information>
+	<!-- Development Begin-->
+	<base id="localhost:1818">			
+		<accessfolder>Src</accessfolder>
+		<baseurl>http://162.17.231.117:1313/SpinoService.svc</baseurl>
+	</base>
+	<!-- Development End-->
+	<!-- UAT Begin-->
+	<base id="localhost:1810">			
+		<accessfolder>Build</accessfolder>
+		<baseurl>http://162.17.231.117:1313/SpinoService.svc</baseurl>
+	</base>
+	<!-- UAT End-->
+	<!-- Production Begin-->
+	<base id="www.spinotuts.com">   
+		<accessfolder>Build</accessfolder>
+		<baseurl>http://162.17.231.117:1314/SpinoService.svc</baseurl>
+	</base>
+	<!-- Production End-->
+</information>

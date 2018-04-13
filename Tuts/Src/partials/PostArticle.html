@@ -240,9 +240,7 @@
 								</td>
                                 <td data-title="Category Name">{{particle.category_name}}</td>
                                 <td data-title="Article" style="text-align: left">
-										<a href="" ng-if="particle.is_approved=='Y'" style="color: #337ab7">{{particle.article_name}}</a>									
-										<a href="" ng-if="particle.is_approved=='N'" style="color: #d9534f">{{particle.article_name}}</a>									
-										<a href="" ng-if="particle.is_approved=='P'">	{{particle.article_name}}</a>						
+										<a href="" ng-style="particle.is_approved=='Y' && { 'color' : '#337ab7' } || particle.is_approved=='N' && { 'color' : '#d9534f' } || {'color':'#000;'}">{{particle.article_name}}</a>
 										<h6 class="title_by">
 											<span ng-if="particle.posted_by">Posted By :</span> 
 											<span class="qpostedby">{{particle.posted_by}}</span>

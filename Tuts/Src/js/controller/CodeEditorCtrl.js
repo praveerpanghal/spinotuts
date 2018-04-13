@@ -11,7 +11,7 @@ function ($route,JsonDataService,httpCall) {
       $log.info(error);
     });
 
-    vm.data="<h2>welcome to live editor</h2>";
+    vm.data="<h2>welcome to live editor Src</h2>";
     // new Jotted(document.querySelector('#jotted-demo-bin'), 
     new Jotted(document.querySelector('#jotted-demo-codemirror'), 
     {

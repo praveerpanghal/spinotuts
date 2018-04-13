@@ -1,5 +1,5 @@
-app.controller('NavigationCtrl',['$route','JsonDataService','myAppURLs','$filter','$location','EncodeService','httpCall',
-  function ($route,JsonDataService,myAppURLs,$filter,$location,EncodeService,httpCall) {
+app.controller('NavigationCtrl',['$route','JsonDataService','myAppURLs','$filter','$location','EncodeService','httpCall','$rootScope',
+  function ($route,JsonDataService,myAppURLs,$filter,$location,EncodeService,httpCall,$rootScope) {
     var vm=this;
     var jsonurl=JsonDataService.GetJsonInfo($route.current.templateUrl);
     httpCall.GetMethod(jsonurl)               
@@ -78,6 +78,8 @@ vm.getTopVal();
   httpCall.PostMethod(url,data)               
     .then(function(result) {    
         if(result==1){
+          $rootScope.demoroute();
+        $rootScope.update();
           vm.msg = 'Navigation Created successfully.';
           vm.TopMenuItem=angular.copy(vm.master);
           vm.getTopVal();           
@@ -117,6 +119,8 @@ vm.getTopVal();
   httpCall.PostMethod(url,data)               
     .then(function(result) {    
         if(result==1){
+          $rootScope.demoroute();
+        $rootScope.update();
           vm.msg="navigation updated successfully";      
         }else if(result==-1){
           vm.msg = "sequence number already exists , please try another !";          

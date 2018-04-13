@@ -1,0 +1,7 @@
+# Node module should be added by npm install and not included in source.
+src\node_modules
+build\node_modules
+tuts\node_modules
+
+# ignore source dump
+tuts\SrcDump

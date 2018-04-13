@@ -1,6 +1,6 @@
 app.service('JsonDataService',  function () {
-        this.GetJsonInfo = function(name){
-       return name.split('/')[0]+"/json/"+name.substring(name.lastIndexOf("/")+1).substr(0,name.substring(name.lastIndexOf("/")+1).indexOf("."))+".json";    
+        this.GetJsonInfo = function(name){            
+       return "json/"+name.substring(name.lastIndexOf("/")+1).substr(0,name.substring(name.lastIndexOf("/")+1).indexOf("."))+".json";    
         }
      });
 

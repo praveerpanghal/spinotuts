@@ -1,0 +1,1 @@
+define(["directives/directives"],function(i){i.directive("colorbox",["$rootScope",function(i){return{restrict:"A",link:function(i,t,e){$(t).colorbox({rel:"group3",transition:"elastic",width:"50%",height:"50%"})}}}])});

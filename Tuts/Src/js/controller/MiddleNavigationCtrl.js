@@ -1,5 +1,5 @@
-app.controller('MiddleNavigationCtrl',['$route','JsonDataService','myAppURLs','$filter','EncodeService','httpCall',
- function ($route,JsonDataService,myAppURLs,$filter,EncodeService,httpCall) {
+app.controller('MiddleNavigationCtrl',['$route','JsonDataService','myAppURLs','$filter','EncodeService','httpCall','$rootScope',
+ function ($route,JsonDataService,myAppURLs,$filter,EncodeService,httpCall,$rootScope) {
   var vm=this;
   var jsonurl=JsonDataService.GetJsonInfo($route.current.templateUrl);
   httpCall.GetMethod(jsonurl)               
@@ -75,6 +75,8 @@ vm.getTopVal();
   httpCall.PostMethod(url,data)               
     .then(function(result) {    
         if(result==1){
+          $rootScope.demoroute();
+        $rootScope.update();
           vm.msg = 'Navigation Created successfully.';
           vm.MidMenuItem=angular.copy(vm.master);
           vm.getTopVal();          
@@ -114,6 +116,8 @@ vm.getTopVal();
   httpCall.PostMethod(url,data)               
     .then(function(result) {    
         if(result==1){
+          $rootScope.demoroute();
+        $rootScope.update();
           vm.msg="navigation updated successfully";  
           vm.isClicked = true;	
         }else if(result==-1){

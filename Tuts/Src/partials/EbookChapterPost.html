@@ -18,10 +18,10 @@
 						<p class="postArticleCont" ng-if="vm.successmessage!=''">{{vm.successmessage}}</p>
 						<form class="form-horizontal" role="form" name="ebookpostporm" >						
 							<fieldset ng-disabled="vm.isClicked">
-									<h3 class="text-center no_head">
-											{{vm.JsonVals.ebook_post}}
-										</h3>
-										<hr class="postArticleHr">	
+								<h3 class="text-center no_head">
+									{{vm.JsonVals.ebook_post}}
+								</h3>
+								<hr class="postArticleHr">	
 								<div class="form-group col-md-6 col-sm-12">
 									<select class="form-control form-control" id="category_id" name="category_id" ng-options="cList.category_id as cList.category_name for cList in vm.cLists" ng-model="vm.ebookpostch.category_id" required ng-change="vm.selectedItemChanged(vm.ebookpostch.category_id)"  ng-disabled="vm.showmee">
 										<option value="">-- choose any category --</option>
@@ -114,29 +114,28 @@
 							</td>
 							<td data-title="Category Name">{{booklist.category_name}}</td>
 							<td data-title="Ebook Chapter Name" style="text-align: left">
-								<a href="" ng-if="booklist.chapter_is_approved=='Y'" style="color: #337ab7">{{booklist.chapter_name}}</a>									
-								<a href="" ng-if="booklist.chapter_is_approved=='N'" style="color: #d9534f">{{booklist.chapter_name}}</a>									
-								<a href="" ng-if="booklist.chapter_is_approved=='P'">	{{booklist.chapter_name}}</a>						
-								<h6 class="title_by">
-									<span ng-if="booklist.chapter_posted_by">Posted By :</span> 
-									<span class="qpostedby">{{booklist.chapter_posted_by}}</span>
-									<span ng-if="booklist.chapter_updated_by">Updated By :</span> 
-									<span class="qpostedby">{{booklist.chapter_updated_by}}</span>
-									<span ng-if="booklist.chapter_approved_by">Approved By :</span> 
-									<span class="qpostedby">{{booklist.chapter_approved_by}}</span>
-									<span ng-if="booklist.chapter_disapproved_by">Disapproved By :</span> 
-									<span class="qpostedby">{{booklist.chapter_disapproved_by}}</span>
-								</h6> 
-							</td>
-							<td data-title="Buttons" >
-								<button ng-disabled="showme"  class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#createnew"  title="Edit E-books Chapter" ng-click="vm.update_iq_info(booklist,booklist.chapter_is_approved)">Edit</button>
-								<button ng-disabled="showme"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewblack" ng-click="vm.update_iq_info(booklist)">View</button>  
-							</td>                                    
-						</tr>
-						
-					</form> 
-				</tbody>
-			</table>
+								<a href="" ng-style="booklist.chapter_is_approved=='Y' && { 'color' : '#337ab7' } || booklist.chapter_is_approved=='N' && { 'color' : '#d9534f' } || {'color':'#000;'}">{{booklist.chapter_name}}</a>
+							
+									<h6 class="title_by">
+										<span ng-if="booklist.chapter_posted_by">Posted By :</span> 
+										<span class="qpostedby">{{booklist.chapter_posted_by}}</span>
+										<span ng-if="booklist.chapter_updated_by">Updated By :</span> 
+										<span class="qpostedby">{{booklist.chapter_updated_by}}</span>
+										<span ng-if="booklist.chapter_approved_by">Approved By :</span> 
+										<span class="qpostedby">{{booklist.chapter_approved_by}}</span>
+										<span ng-if="booklist.chapter_disapproved_by">Disapproved By :</span> 
+										<span class="qpostedby">{{booklist.chapter_disapproved_by}}</span>
+									</h6> 
+								</td>
+								<td data-title="Buttons" >
+									<button ng-disabled="showme"  class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#createnew"  title="Edit E-books Chapter" ng-click="vm.update_iq_info(booklist,booklist.chapter_is_approved)">Edit</button>
+									<button ng-disabled="showme"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewblack" ng-click="vm.update_iq_info(booklist)">View</button>  
+								</td>                                    
+							</tr>
+							
+						</form> 
+					</tbody>
+				</table>
+			</div>
 		</div>
-	</div>
-</div>		
+	</div>		

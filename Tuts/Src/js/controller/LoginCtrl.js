@@ -1,4 +1,3 @@
-
 app.controller('LoginCtrl',['$location','$http','myAppURLs','$route','JsonDataService','EncodeService','httpCall',
   function ($location,$http,myAppURLs,$route,JsonDataService,EncodeService,httpCall){
     var vm=this;

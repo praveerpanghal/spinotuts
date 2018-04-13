@@ -76,7 +76,7 @@ padding:35px;
 						<div class="row div_data" ng-repeat="booklist in bookslists | orderBy:'sequence_no' |filter:iqsearch |filter:{chapter_is_approved:iqs} |filter:{category_id:category_idf||undefined}:true">
 							<div class="col-xs-4 col-sm-3 col-md-2 catimg eccatimg">
 								<div class="lstArticle">	
-									<img ng-src="../Src/images/HomePage/htmlbg.png" alt="" class="lstArticleImg" src="../Src/images/HomePage/htmlbg.png">
+									<img ng-src="../images/HomePage/htmlbg.png" alt="" class="lstArticleImg" src="../images/HomePage/htmlbg.png">
 									<p class="ng-binding catimgname">{{booklist.category_name}}</p>
 								</div>
 							</div>

@@ -1,0 +1,1 @@
+app.controller("WelcomeCtrl",["$route","JsonDataService","httpCall",function(t,o,e){var n=this,l=o.GetJsonInfo(t.current.templateUrl);e.GetMethod(l).then(function(t){n.JsonVals=t},function(t){console.log(t.statusText),$log.info(t)})}]);

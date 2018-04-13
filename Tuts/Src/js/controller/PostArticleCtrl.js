@@ -1,5 +1,5 @@
-app.controller('PostArticleCtrl', ['CatService','$filter','myAppURLs','$route','JsonDataService','EncodeService','httpCall','$log',
-function (CatService,$filter,myAppURLs,$route,JsonDataService,EncodeService,httpCall,$log) {
+app.controller('PostArticleCtrl', ['CatService','$filter','myAppURLs','$route','JsonDataService','EncodeService','httpCall','$log', '$rootScope',
+function (CatService,$filter,myAppURLs,$route,JsonDataService,EncodeService,httpCall,$log,$rootScope) {
   var vm=this;
   var jsonurl=JsonDataService.GetJsonInfo($route.current.templateUrl);
   httpCall.GetMethod(jsonurl)               
@@ -10,6 +10,7 @@ function (CatService,$filter,myAppURLs,$route,JsonDataService,EncodeService,http
     console.log(error.statusText);
     $log.info(error);
   });
+
   vm.menu = [
     ['bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript'],
     ['format-block'],
@@ -72,8 +73,7 @@ function (CatService,$filter,myAppURLs,$route,JsonDataService,EncodeService,http
     if(idx=='0'){
       vm.buttonnavi=true;
     }
-          if (idx > -1) {
-      
+          if (idx > -1) {      
              vm.selection.splice(idx, 1);
          }
          else {
@@ -151,8 +151,10 @@ function (CatService,$filter,myAppURLs,$route,JsonDataService,EncodeService,http
       httpCall.PostMethod(updateurl,data)               
       .then(function(result) {                          
         vm.successmessage = result; 
-        vm.isClicked = true; 
+        vm.isClicked = true;         
         vm.getArticles();       
+        $rootScope.demoroute();
+        $rootScope.update();
       }, 
       function(error) { 
         console.log(error.statusText);

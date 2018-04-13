@@ -41,7 +41,6 @@ function ($location,$route,myAppURLs,JsonDataService,httpCall){
       console.log(error.statusText);
       $log.info(error);
       
-    });
-    
+    });    
 	}
 }]);

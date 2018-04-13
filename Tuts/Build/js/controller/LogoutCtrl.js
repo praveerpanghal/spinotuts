@@ -1,0 +1,1 @@
+app.controller("LogoutCtrl",["$location",function(o){sessionStorage.clear(),localStorage.removeItem("testObject"),window.location.href="/header",window.location.href="/login"}]);

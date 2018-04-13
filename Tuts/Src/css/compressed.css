@@ -2789,7 +2789,7 @@ a.aprvArticleTitle
 
 .deleteArticle h2.article_font,.deleteArticle h2.article_font1
 {   
-  !font-weight: 600;
+  /*font-weight: 600;*/
   color: #034374 !important;
   font-size:17px;
   margin:10px 0;
@@ -2841,7 +2841,7 @@ a.aprvArticleTitle
 }
 .atclTable h6
 {
-  !color:#000;
+ /*color:#000;*/
   font-style: italic;
   font-weight:normal;
 }
@@ -2865,7 +2865,7 @@ a.aprvArticleTitle
 }
 .lst{line-height: 33px;}
 .lstArticle img{
-  !width:100%;
+  /*width:100%;*/
   width: 90px;
 }
 .lstArticle p
@@ -2897,7 +2897,7 @@ a.aprvArticleTitle
 } 
 .atclTable .lstArticleImg
 {
-  width: 100px;
+  width: 100%;
   display:block;
 }
 
@@ -5260,6 +5260,8 @@ td.urlinfo p {
   {
     padding-left:0!important;
     text-align:left!important;
+    margin-left: auto;
+    margin-right: auto;
   }
   #no-more-tables .atclTable td.artticleLstBlock
   {
@@ -7379,7 +7381,7 @@ li ul li {
     left: -2px;
     font-size: 8px;
   }
-  
+  .lstArticletitle{font-size: 14px !important;line-height: 20px;}
   .hmContElem {padding-bottom: 0px;margin-bottom: 0px;}
   
   .hmContElem h2{font-size: 9px;font-weight: 600;}
@@ -7512,3 +7514,16 @@ img-crop canvas{display:block;position:absolute;outline:0;-webkit-tap-highlight-
 }
 
 .postmsg{margin-top: -30px;width:60%;}
+
+#atclSrchButt {
+  padding: 11.2px;
+}
+
+
+
+
+
+
+/*New style adding Begin*/
+
+/*New style adding End*/

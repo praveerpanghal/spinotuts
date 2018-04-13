@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * jQuery Validate Unobtrusive Bootstrap 1.2.3
  *
  * https://github.com/sandrocaseiro/jquery.validate.unobtrusive.bootstrap

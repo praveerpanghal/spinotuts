@@ -1,5 +1,5 @@
-app.controller('SubChildNavigationCtrl',['$route','JsonDataService','myAppURLs','$filter','$location','EncodeService','httpCall',
-function ($route,JsonDataService,myAppURLs,$filter,$location,EncodeService,httpCall) {
+app.controller('SubChildNavigationCtrl',['$route','JsonDataService','myAppURLs','$filter','$location','EncodeService','httpCall','$rootScope',
+function ($route,JsonDataService,myAppURLs,$filter,$location,EncodeService,httpCall,$rootScope) {
   var vm=this;
   var profile = JSON.parse(EncodeService.encodelogval(sessionStorage.UserInfo));
   var jsonurl=JsonDataService.GetJsonInfo($route.current.templateUrl);
@@ -83,6 +83,8 @@ function ($route,JsonDataService,myAppURLs,$filter,$location,EncodeService,httpC
     httpCall.PostMethod(url,data).
     then(function(result){      
       if(result==1){
+        $rootScope.demoroute();
+        $rootScope.update();
         vm.msg = 'Navigation Created successfully.';
         vm.SubChildMenuItem=angular.copy(vm.master);
         vm.getSubchildVal();
@@ -119,6 +121,8 @@ function ($route,JsonDataService,myAppURLs,$filter,$location,EncodeService,httpC
     var url=myAppURLs.ModifyChildSubNavigation;
     httpCall.PostMethod(url,data).
     then(function(result){  
+      $rootScope.demoroute();
+        $rootScope.update();
       vm.msg=result; 
       vm.isClicked = true;    
       vm.SubChildMenuItem=angular.copy(vm.master);

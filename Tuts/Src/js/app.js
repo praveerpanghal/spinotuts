@@ -1,14 +1,13 @@
  'use strict';
  var app = angular.module('SpinoApp',['ngRoute','ngResource','ui.router','ngSanitize','ngStorage','angularUtils.directives.dirPagination','ui.bootstrap', 'mj.scrollingTabs','angularModalService','ngFileUpload','colorpicker.module', 'wysiwyg.module','infinite-scroll','ngImgCrop']);
-
  app.config( function(){
     new Clipboard('.copybtn');
-    
     for (var i = 0; i < 1000; i++) {
         var na='.copybtn'+i;
         new Clipboard(na);
     }
 }); 
+
  app.value('myAppURLs',{
     Login: BaseURL+"/Login",
     SignUp: BaseURL+"/SignUp",

@@ -1,5 +1,5 @@
-app.controller('ChildNavigationCtrl', ['$route','JsonDataService','myAppURLs','$filter','$location','EncodeService','httpCall',
-  function ($route,JsonDataService,myAppURLs,$filter,$location,EncodeService,httpCall) {
+app.controller('ChildNavigationCtrl', ['$route','JsonDataService','myAppURLs','$filter','$location','EncodeService','httpCall','$rootScope',
+  function ($route,JsonDataService,myAppURLs,$filter,$location,EncodeService,httpCall,$rootScope) {
     var vm=this;
     var jsonurl=JsonDataService.GetJsonInfo($route.current.templateUrl);
     httpCall.GetMethod(jsonurl)               
@@ -78,6 +78,8 @@ data.category_name = ChildMenuItem.category_name;
    httpCall.PostMethod(url,data)               
     .then(function(result) {   
         if(result==1){
+          $rootScope.demoroute();
+        $rootScope.update();
           vm.msg = 'Navigation Created successfully.';
           vm.ChildMenuItem=angular.copy(vm.master);
           vm.getTopVal();          
@@ -118,6 +120,8 @@ data.controller = ChildMenuItem.controller||'';
   httpCall.PostMethod(url,data)               
     .then(function(result) {  
         if(result==1){
+          $rootScope.demoroute();
+        $rootScope.update();
           vm.msg="navigation updated successfully";
           vm.isClicked = true;	
         }else if(result==-1){
