@@ -120,7 +120,8 @@ app.post('/authenticate', function (req, res) {
 var multer = require('multer');
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    var filedestination='./images/uploads/'+req.session.seid;    
+    var filedestination='./'+accessfolder+'/images/uploads/'+req.session.seid;    
+    console.log(filedestination);
     if (!fs.existsSync(filedestination)){
       fs.mkdirSync(filedestination);
     }
