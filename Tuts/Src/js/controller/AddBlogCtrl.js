@@ -1,5 +1,5 @@
-app.controller('AddBlogCtrl',['$route','JsonDataService','myAppURLs', '$filter','EncodeService','httpCall','$log',
-function ($route,JsonDataService,myAppURLs,$filter,EncodeService,httpCall,$log) {
+app.controller('AddBlogCtrl',['$route','JsonDataService','myAppURLs', '$filter','EncodeService','httpCall','$log','$sce',
+function ($route,JsonDataService,myAppURLs,$filter,EncodeService,httpCall,$log,$sce) {
   var vm=this;
   var jsonurl=JsonDataService.GetJsonInfo($route.current.templateUrl);
   httpCall.GetMethod(jsonurl)               
@@ -21,7 +21,9 @@ function ($route,JsonDataService,myAppURLs,$filter,EncodeService,httpCall,$log) 
     ['code', 'quote', 'paragraph'],
     ['css-class']
   ];
-  
+  vm.to_trusted = function(html_code) {
+    return $sce.trustAsHtml(html_code);
+  }
   var profile = JSON.parse(EncodeService.encodelogval(sessionStorage.UserInfo));
   vm.loaddata=function(){
     var data = new Object();
@@ -64,7 +66,8 @@ function ($route,JsonDataService,myAppURLs,$filter,EncodeService,httpCall,$log) 
         }
         vm.successmessage = fields[0];
         vm.loaddata();
-     
+        $rootScope.demoroute();
+        $rootScope.update();     
     }, 
     function(error) { 
       $log.info(error);
@@ -124,6 +127,7 @@ function ($route,JsonDataService,myAppURLs,$filter,EncodeService,httpCall,$log) 
       return obj.blog_id == blogid;
     });
     vm.BlogInfo=vm.BlogInfo[0];
+    console.log(vm.BlogInfo.blog_description);
   }
   
 }]);

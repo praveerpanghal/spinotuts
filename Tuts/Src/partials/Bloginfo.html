@@ -37,8 +37,8 @@
 						</a>
 						</div>
 						<div class="col-md-11 col-xs-11 articleContent right">							
-							<h4>{{vm.singlebloginfo.blog_title}}</h4>
-							<p ng-bind-html="vm.singlebloginfo.blog_description"></p>
+							<h4>{{vm.singlebloginfo.blog_title}}</h4>							
+							<p ng-bind-html="vm.to_trusted(vm.singlebloginfo.blog_description)"></p>
 						</div>
 					</div>
 				</div>

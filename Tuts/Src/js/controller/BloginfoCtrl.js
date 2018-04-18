@@ -1,5 +1,5 @@
- app.controller('BloginfoCtrl',['$route','JsonDataService','$location','myAppURLs','httpCall', 
-  function ($route,JsonDataService,$location,myAppURLs,httpCall) {
+ app.controller('BloginfoCtrl',['$route','JsonDataService','$location','myAppURLs','httpCall','$sce',
+  function ($route,JsonDataService,$location,myAppURLs,httpCall,$sce) {
     var vm=this;
     var jsonurl=JsonDataService.GetJsonInfo($route.current.templateUrl);
     httpCall.GetMethod(jsonurl)               
@@ -20,4 +20,7 @@ httpCall.PostMethod(url,data)
     console.log(error.statusText);  
     $log.info(error);
   });
+  vm.to_trusted = function(html_code) {
+    return $sce.trustAsHtml(html_code);
+  }
 }]);

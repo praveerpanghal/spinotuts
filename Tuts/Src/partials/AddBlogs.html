@@ -49,8 +49,8 @@
 										<div class="modal-content">
 											<div class="modal-body">
 												<button type="button" class="close new_close" data-dismiss="modal" aria-hidden="true">&times;</button>
-												<h4 style="color: #c0225d;">{{vm.BlogInfo.blog_title}}</h4>
-												<p ng-bind-html="vm.BlogInfo.blog_description"></p>
+												<h4 style="color: #c0225d;">{{vm.BlogInfo.blog_title}}</h4>																											
+												<p ng-bind-html="vm.to_trusted(vm.BlogInfo.blog_description)"></p>
 											</div>							  
 										</div>
 									</div>
