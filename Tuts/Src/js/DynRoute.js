@@ -15,34 +15,49 @@ function ($resource, $q, $rootScope, $location,permissionService,EncodeService,$
                 //    console.log('response:', httpResponse.data);
             });  
             var roleCollection=1;
+            var userrightsid=0;
+            var islogedin=false;
             var deferred = $q.defer(); 
             var parentPointer = this;
             if(sessionStorage.UserInfo){
                 var profile = JSON.parse(EncodeService.encodelogval(sessionStorage.UserInfo));
-                roleCollection=profile.UserRightsId;
-                var islogedin = true;
-            }
-            if (permissionModel.isPermissionLoaded) {
-                this.getPermission(permissionModel, roleCollection,userrole, deferred);
+                userrightsid=profile.UserRightsId;
+                islogedin = true;
+                this.getPermission('true', islogedin,roleCollection,userrole,userrightsid, deferred);
             } else {
-                var result=permissionService.getPermissionList(roleCollection);
-                parentPointer.getPermission(result, roleCollection,userrole, deferred);
+                
+                this.getPermission('false', islogedin, roleCollection,userrole,userrightsid, deferred);
             } 
        
             return deferred.promise;
         }
-        this.getPermission= function (permissionModel, roleCollection,userrole, deferred) {
-            var ifPermissionPassed = '';
-            var islogedin=true;
-            if(permissionModel){
+        this.getPermission= function (permissionModel, islogedin , roleCollection,userrole,userrightsid, deferred) {            
+            var un = userrole.navigation_url.split("/")[0];            
+            var ifPermissionPassed = '';  
+            if(roleCollection==userrole.user_rights_id)
+            {
                 ifPermissionPassed = true;
-            }else{
-                if(roleCollection=='1'&& userrole.user_rights_id==roleCollection){ 
+            }
+            else if(permissionModel && islogedin){
+                if(un == 'username'){
+                    ifPermissionPassed = true;
+                }                
+                else if(userrightsid < userrole.user_rights_id && un=='post-content' && userrightsid !=roleCollection ){
                     ifPermissionPassed = true;
                 }
-                else{
+                else if( userrightsid == userrole.user_rights_id)
+                {
+                    ifPermissionPassed = true;
+                }
+                else
+                {
                     ifPermissionPassed = false;
                 }
+            }
+            else
+            {
+                ifPermissionPassed = false;
+             
             }
             if (!ifPermissionPassed) {                
                 $location.path('/home');                
@@ -96,17 +111,17 @@ function ($resource, $q, $rootScope, $location,permissionService,EncodeService,$
         
     app.service('permissionService',['$http','$q','myAppURLs', function($http,$q,myAppURLs) {
         
-            this.getPermissionList=function(role){
-                var isPermissionLoaded='';
-                if(role==1){
-                    isPermissionLoaded = false;
-                }
-                else
-                {
-                    isPermissionLoaded = true;
-                }
-                return isPermissionLoaded;
-            },
+            // this.getPermissionList=function(role){
+            //     var isPermissionLoaded='';
+            //     if(role==1){
+            //         isPermissionLoaded = false;
+            //     }
+            //     else
+            //     {
+            //         isPermissionLoaded = true;
+            //     }
+            //     return isPermissionLoaded;
+            // },
             this.title_value=function(){
                 var def = $q.defer();
                 var finalroutevals={};

@@ -1,5 +1,5 @@
-app.controller('AddBlogCtrl',['$route','JsonDataService','myAppURLs', '$filter','EncodeService','httpCall',
-function ($route,JsonDataService,myAppURLs,$filter,EncodeService,httpCall) {
+app.controller('AddBlogCtrl',['$route','JsonDataService','myAppURLs', '$filter','EncodeService','httpCall','$log',
+function ($route,JsonDataService,myAppURLs,$filter,EncodeService,httpCall,$log) {
   var vm=this;
   var jsonurl=JsonDataService.GetJsonInfo($route.current.templateUrl);
   httpCall.GetMethod(jsonurl)               

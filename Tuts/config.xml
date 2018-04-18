@@ -18,8 +18,8 @@
 		<baseurl>http://162.17.231.117:1314/SpinoService.svc</baseurl>
 	</base>
 	<base id="www.spinotuts.com">   
-	<accessfolder>Build</accessfolder>
-  	<baseurl>http://162.17.231.117:1314/SpinoService.svc</baseurl>
+		<accessfolder>Build</accessfolder>
+  		<baseurl>http://162.17.231.117:1314/SpinoService.svc</baseurl>
  	</base>
 	<!-- Production End-->
 </information>
