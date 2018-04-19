@@ -1,4 +1,4 @@
-<div class="container-fluid content">
+<div class="container-fluid content articlelist_content">
 	<div class="col-md-12 main_content">
 		<div class="row">
 			<div class="col-md-2 col-sm-12 col-xs-12">		
@@ -20,7 +20,7 @@
 						
 						<div class="col-md-12 artcleSearchBox">
 							<form class="navbar-form ng-pristine ng-valid articleLst_Align" role="search">
-								<div class="col-md-12 col-xs-12 input-group add-on">
+								<div class="col-md-12 col-xs-12 input-group add-on search-input">
 									<input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text" ng-model="search" >
 									<div class="input-group-btn">
 										<button class="btn btn-default" type="button" id="atclSrchButt" name="atclSrchBttn"><i class="glyphicon glyphicon-search"></i></button>
@@ -51,7 +51,7 @@
 							<tr ng-repeat="article in vm.articles |filter:search ">
 								<td class="artticleLst">
 									<div class="lstArticle lst">	
-										<img ng-src={{vm.JsonVals.article_bg_img}} alt="" class="lstArticleImg" />
+										<img ng-src={{vm.JsonVals.article_bg_img}} alt="" class="lstArticleImg img-responsive" />
 										<p class="lstArticletitle">{{article.category_name}}</p>
 									</div>	
 								</td>
