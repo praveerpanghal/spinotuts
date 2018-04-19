@@ -543,7 +543,7 @@ ul.userCtrls li a{
 .article_edit {
 	border: 1px solid #E0DFDF;
   padding:15px;
-  !border-radius: 5px;
+  /*border-radius: 5px;*/
   margin-left: 1px;
 	background-color: #fff;
 	width:100%;
@@ -755,7 +755,8 @@ table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .
 #no-more-tables table>tbody>tr>td,#no-more-tables .table>tbody>tr>th,#no-more-tables .table>tfoot>tr>td,#no-more-tables .table>tfoot>tr>th,#no-more-tables .table>thead>tr>td,#no-more-tables .table>thead>tr>th {
 	padding:0 11px;
   line-height: 36px;
-  vertical-align:middle;
+  /*vertical-align:middle;*/
+  vertical-align:top;
 }
 #no-more-tables table
 {
@@ -794,7 +795,8 @@ table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .
 .article_block.artticleLstBlock p
 {
 	height:22px;
-	overflow:hidden;
+  overflow:hidden;
+  margin-right: 10px;
 }
 
 .article_icon{
@@ -2841,7 +2843,7 @@ a.aprvArticleTitle
 }
 .atclTable h6
 {
- /*color:#000;*/
+  /*color:#000;*/
   font-style: italic;
   font-weight:normal;
 }
@@ -2871,13 +2873,13 @@ a.aprvArticleTitle
 .lstArticle p
 {
   position: absolute;
-  text-align: center;
+  text-align: center !important;
   bottom: 0;
   color: #FFF;
   text-overflow: ellipsis;
   text-align: center;
   top: 0px;
-  left: -5px;
+  /* left: -5px; */
   width: 100%;
 }
 #myCarousel .thumbnails .lstArticle p
@@ -3196,7 +3198,7 @@ a.excpCopyTxt:hover
 }
 .article_edit.articleTabAlign
 {
-  padding-top: 10px;
+  /*  padding-top: 10px;*/
 }
 .artticleLst
 {
@@ -4801,7 +4803,8 @@ td.urlinfo p {
   {
     height:949px;
   }
-  .mainbanner{max-height: calc(100vh - 188px)}
+  .mainbanner{max-height: calc(100vh - 188px);padding: 0px;}
+  .articlelist_content{padding: 0px;}
 }
 
 @media (max-width: 855px) {
@@ -4971,11 +4974,22 @@ td.urlinfo p {
   {
     z-index:900!important;
   }
+  .search-input {
+    padding-left: 15px !important;  
+  }  
+  .article_mobileimg{
+    float: left;
+    background: #4f3b39;
+    color: #fff;
+    padding: 1px 5px;
+    border-radius: 0px 10px 10px 0;
+    margin-right: 5px;
+    width: 80px;
+    font-weight: bold;
+  }
 }
 
 @media (min-width: 768px) {
-  
-  
   #bs-example-navbar-collapse-1 .navbar-nav > li > a,
   #bs-example-navbar-collapse-11 .navbar-nav > li > a
   {
@@ -5145,7 +5159,7 @@ td.urlinfo p {
     left: -9999px;
   }
   
-  #no-more-tables tr { border: 1px solid #ccc; }
+  /*#no-more-tables tr { border: 1px solid #ccc; }*/
   
   #no-more-tables td { 
     /* Behave  like a "row" */
@@ -5188,7 +5202,7 @@ td.urlinfo p {
   #bs-example-navbar-collapse-1 .navbar-nav > li:last-child a,
   #bs-example-navbar-collapse-11 .navbar-nav > li:last-child a
   {
-    !border:1px solid red!important;
+    /*!border:1px solid red!important;*/
   }
   #bs-example-navbar-collapse-1 .navbar-nav > li > a,
   #bs-example-navbar-collapse-11 .navbar-nav > li > a
@@ -5254,7 +5268,7 @@ td.urlinfo p {
     border: 1px solid #ccc!important;
   }
   #no-more-tables .atclTable tr {
-    padding:10px;
+    padding:5px 0 0 0;
   }
   #no-more-tables .atclTable td
   {
@@ -5269,8 +5283,10 @@ td.urlinfo p {
   }
   #no-more-tables .atclTable .lstArticle
   {
-    margin-top:15px;
-    margin-bottom:10px;
+    /*margin-top:15px;
+    margin-bottom:10px;*/
+    margin-top:0px;
+    /* margin-bottom:5px; */
   }
   .div_head:last-child {
     padding-left: 35px;
@@ -5278,12 +5294,26 @@ td.urlinfo p {
   .policy-text{
     line-height:15px;
   }
+  
   .addWizard{
     width:auto;
     margin: 0 auto;
     display: table;
   }
   
+  .article_edit{padding: 0px;}
+  .artticleLst {
+    border: none !important;
+  }
+  .lstArticle {
+    width: 80%;left:10%;
+  }
+  .artticleLstBlock p {
+    margin: 0px;
+  }
+  .articleContHeading {
+    padding: 15px;
+  }
 }
 
 @media (max-width: 479px) {
@@ -5431,7 +5461,7 @@ td.urlinfo p {
   .footerWizard .footerHeading
   {
     padding-right: 3px;
-    line-height: 20px;
+    line-height: 13px;
     font-size: 12px;	
   }
   .excp
@@ -5510,8 +5540,14 @@ td.urlinfo p {
     text-decoration: none;
     padding-top: 24px;
   }
+  .article_font, .article_font p{font-size: 10px !important;margin: auto;}
+  
 }
-
+@media (max-width: 450px) {  
+  .article_font{font-size: 12px !important;}
+  .article_font p{font-size: 9px !important;}
+  .article_mobileimg{ font-size: 10px;width: 60px;font-weight: bold;}
+}
 .errormsg,.succesmsg{
   
   text-align: center;
@@ -7521,6 +7557,7 @@ img-crop canvas{display:block;position:absolute;outline:0;-webkit-tap-highlight-
 #bs-example-navbar-collapse-1.navbar-collapse.in{
   height:230px!important;
 }
+
 
 
 
