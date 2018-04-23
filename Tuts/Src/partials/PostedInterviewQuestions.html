@@ -48,7 +48,7 @@
 								<p>
 									
 									<span class="quesindex iqAns">{{$index+1 }}.</span>
-									<span class="quesText" ng-bind-html="question.question_description"></span>
+									<span class="quesText" ng-bind-html="question.question_description" class="ebookinformation"></span>
 									<div class="iqans">
 										View Answer
 									</div>
@@ -58,7 +58,7 @@
 							</accordion-heading>
 							<p  style="font-style: 14px !important;font-family: arial;">
 								<span class="iqAns"></span>
-								<span ng-bind-html="question.answer_description" class="quesAns"></span>
+								<span ng-bind-html="question.answer_description" class="quesAns ebookinformation"></span>
 							</p>
 						</accordion-group>
 					</accordion>
