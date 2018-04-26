@@ -17,7 +17,7 @@
                 <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1" >
                     <ul class="nav site-nav">
                         <li class="flyout" ng-repeat="main_menu in vm.topnav">
-                            <a href="{{main_menu.url}}/{{main_menu.category_id}}" ng-if="main_menu.childList.length < 1">{{main_menu.name}}</a>
+                            <a href="{{main_menu.url}}/{{main_menu.category_id}}" ng-if="main_menu.childList.length < 1">{{main_menu.name}} </a>
                             <a href="" ng-if="main_menu.childList.length > 1" class="headnavimg">{{ main_menu.name}}</a>
                             <!-- Flyout -->
                             <ul class="flyout-content nav stacked">
@@ -65,7 +65,7 @@
                             <!-- Flyout -->
                             <ul class="flyout-content nav stacked">
                                 <li class="flyout-alt" ng-repeat="child_menu in main_menu.childList" >
-                                    <a href="{{child_menu.url}}/{{child_menu.category_id}}" ng-if="child_menu.ChildSubNavigationList.length < 1" ng-click="runcode(child_menu)">{{child_menu.category_name}}</a>
+                                    <a href="{{child_menu.url}}/{{child_menu.category_id}}" ng-if="child_menu.ChildSubNavigationList.length < 1" >{{child_menu.category_name}}</a>
                                     <a href="" ng-if="child_menu.ChildSubNavigationList.length > 1">{{child_menu.category_name}} <b class="caret"></b></a>
                                     <!-- Flyout -->
                                     <ul class="flyout-content nav stacked">
@@ -119,8 +119,23 @@
         $('#tglButt').click(function(){
             $('#bs-example-navbar-collapse-11').removeClass('in');
         });
-        $('#bs-example-navbar-collapse-11 li a').hover(function(){
-            console.log('hello');
-        })
+        $('#bs-example-navbar-collapse-11').on('click', event => {
+            var wd=$(document).width(); 
+            if(wd<=1000){
+                var clickedElement = $(event.target);                
+                if(clickedElement[0].innerHTML.indexOf("caret") > -1){
+                    return false;
+                }
+            }
+        });
+        $('#bs-example-navbar-collapse-1').on('click', event => {
+            var wd=$(document).width(); 
+            if(wd<=1000){
+                var clickedElement = $(event.target);                
+                if(clickedElement[0].innerHTML.indexOf("userWizard") > -1){
+                    return false;
+                }
+            }
+        });
     });    
 </script>
