@@ -12,8 +12,14 @@ function ($resource, $q, $rootScope, $location,permissionService,EncodeService,$
                 method: 'POST',
                 data: data
             }).then(function (httpResponse) {
+                
+            // $('.flyout-content').css("left",'0');
+            setTimeout(function() {                
+                $('.flyout-content').css("display","block");               
+            }, 1000 );
                 //    console.log('response:', httpResponse.data);
             });  
+            
             var roleCollection=1;
             var userrightsid=0;
             var islogedin=false;
@@ -31,14 +37,17 @@ function ($resource, $q, $rootScope, $location,permissionService,EncodeService,$
        
             return deferred.promise;
         }
-        this.getPermission= function (permissionModel, islogedin , roleCollection,userrole,userrightsid, deferred) {            
+        this.getPermission= function (permissionModel, islogedin , roleCollection,userrole,userrightsid, deferred) {          
+            // $('.flyout-content').css("display",'block');             
             var un = userrole.navigation_url.split("/")[0];            
             var ifPermissionPassed = '';  
             if(roleCollection==userrole.user_rights_id)
             {
+                // $('.flyout-content').css("display",'block');
                 ifPermissionPassed = true;
             }
             else if(permissionModel && islogedin){
+                // $('.flyout-content').css("display",'block');
                 if(un == 'username'){
                     ifPermissionPassed = true;
                 }                
@@ -89,15 +98,14 @@ function ($resource, $q, $rootScope, $location,permissionService,EncodeService,$
                         controller:finalrouteval.controller_name,
                         controllerAs:"vm",
                         resolve: {                            
-                        permission:['authorizationService', function ( authorizationService) {                            
+                        permission:['authorizationService', function ( authorizationService) {                                  
                             return authorizationService.permissionCheck(finalrouteval);
                         }]    
                         }
                     })
                     .otherwise({redirectTo:'/'});
                 });
-                $route.reload();
-                
+                $route.reload();                
             });   
         }        
         $rootScope.demoroute();

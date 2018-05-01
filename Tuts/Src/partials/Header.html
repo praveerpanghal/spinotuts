@@ -115,7 +115,7 @@
 </div>
 <!-- End Google Tag Manager -->
 <script type="text/javascript">    
-    $(document).ready(function(){
+    $(document).ready(function(){          
         $('#tglButt').click(function(){
             $('#bs-example-navbar-collapse-11').removeClass('in');
         });
@@ -127,6 +127,8 @@
                     return false;
                 }
             }
+            // $('.flyout-content').css("left",'-99999px');
+            $('.flyout-content').css("display",'none');            
         });
         $('#bs-example-navbar-collapse-1').on('click', event => {
             var wd=$(document).width(); 
