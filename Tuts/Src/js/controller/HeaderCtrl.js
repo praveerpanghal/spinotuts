@@ -32,7 +32,7 @@ function ($http,myAppURLs,$log,CatService,EncodeService,httpCall,$rootScope) {
               var text = $(this).text();
               $(this).text(text.replace('Username', name)); 
             });            
-            $(".headnavimg").css({ lineHeight:'25px', paddingLeft:'5px' });
+            $(".headnavimg").css({ lineHeight:'25px', padding:'5px' });
             if(pic){
               $(".headnavimg").prepend('<span class="userWizard"><img id="theImg" src='+pic+' /></span>');
             }else{      
