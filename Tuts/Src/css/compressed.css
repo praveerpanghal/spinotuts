@@ -5724,7 +5724,7 @@ li ul li {
   margin-left:0;
   z-index: 1;
 }
-#bs-example-navbar-collapse-11 .nav > li{background: #4f4f4f;}
+#bs-example-navbar-collapse-11 .nav > li{/*background: #4f4f4f;*/}
 #bs-example-navbar-collapse-1 .nav > li,#bs-example-navbar-collapse-11 .nav > li,
 .nav > li > a{
   display:inline-block;
@@ -5764,6 +5764,7 @@ li ul li {
   text-align: center;
   border-right: 1px solid #000;
 }
+#bs-example-navbar-collapse-11 .flyout-alt{background: #4f4f4f;}
 #bs-example-navbar-collapse-1 .flyout {
   border-right: 1px solid #c9c9c9;
 }
@@ -5811,7 +5812,7 @@ li ul li {
 }
 .site-nav > li > a{
   display: block;
-  
+  overflow: hidden;
 }
 /* The first link in the site-nav doesn’t require a border at all. */
 .site-nav > li:first-child > a{
