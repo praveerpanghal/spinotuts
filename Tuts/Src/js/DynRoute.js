@@ -14,7 +14,11 @@ function ($resource, $q, $rootScope, $location,permissionService,EncodeService,$
             }).then(function (httpResponse) {
                 
             // $('.flyout-content').css("left",'0');
-            setTimeout(function() {                
+            setTimeout(function() {            
+                var wd=$(document).width(); 
+            if(wd<=1000){
+                $('#bs-example-navbar-collapse-11').removeClass('in');
+            }    
                 $('.flyout-content').css("display","block");               
             }, 1000 );
                 //    console.log('response:', httpResponse.data);

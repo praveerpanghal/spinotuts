@@ -19,8 +19,8 @@
                 var clickedElement = $(event.target);                
                 if(clickedElement[0].innerHTML.indexOf("caret") > -1){
                     return false;
-                }else{
-                    $('#bs-example-navbar-collapse-11').removeClass('in');
+                }else{  
+                    return true;
                 }
             }
             // $('.flyout-content').css("left",'-99999px');
@@ -40,7 +40,8 @@
             $('.flyout-content').css("display",'none'); 
         });     
     });  
-    $( window ).on( "orientationchange", function( event ) {         
+    $( window ).on( "orientationchange", function( event ) {        
+        $("#bs-example-navbar-collapse-11").removeClass('in');   
         $("#bs-example-navbar-collapse-11").css('min-height', 'auto');         
 });
 $( window ).orientationchange();</script>
