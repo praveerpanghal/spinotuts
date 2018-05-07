@@ -17,6 +17,7 @@ function ($resource, $q, $rootScope, $location,permissionService,EncodeService,$
             setTimeout(function() {            
                 var wd=$(document).width(); 
             if(wd<=1000){
+                $('#bs-example-navbar-collapse-1').removeClass('in');
                 $('#bs-example-navbar-collapse-11').removeClass('in');
             }    
                 $('.flyout-content').css("display","block");               
