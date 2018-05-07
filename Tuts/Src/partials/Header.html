@@ -119,11 +119,13 @@
         $('#tglButt').click(function(){
             $('#bs-example-navbar-collapse-11').removeClass('in');
         });
+        $('#tglmainButt').click(function(){
+            var hd=$(window).innerHeight()-90; 
+                $("#bs-example-navbar-collapse-11").css('min-height', hd+'px');
+        });
         $('#bs-example-navbar-collapse-11').on('click', event => {
             var wd=$(document).width(); 
-            if(wd<=1000){     
-                var hd=$(window).innerHeight()-90; 
-                $("#bs-example-navbar-collapse-11").css('min-height', hd+'px');                        
+            if(wd<=1000){                                            
                 var clickedElement = $(event.target);                
                 if(clickedElement[0].innerHTML.indexOf("caret") > -1){
                     return false;
