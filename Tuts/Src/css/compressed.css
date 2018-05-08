@@ -5972,6 +5972,8 @@ img-crop canvas{display:block;position:absolute;outline:0;-webkit-tap-highlight-
   overflow-y: scroll;
 }
 .accordionans{font-style: 14px !important;font-family: arial;}
+.article_edit .flyout{width: 100%;border-right: none;}
+
 @media (max-width: 455px) {
   body{
     padding-top: 210px;
@@ -6401,6 +6403,10 @@ img-crop canvas{display:block;position:absolute;outline:0;-webkit-tap-highlight-
   {
     width:100%;
   }
+  .ebookinformation table { 
+  font-size: 12px;}
+  .ebookinformation table p{ 
+  line-height: 12px;}
 }	
 @media (max-width: 455px) {
   .cnbtn {
@@ -6520,6 +6526,12 @@ img-crop canvas{display:block;position:absolute;outline:0;-webkit-tap-highlight-
     line-height: 10px;
   }
 }
+@media (max-width: 401px){
+  .ebookinformation table { 
+    font-size: 8px;
+  }
+}
+
 @media (max-width: 372px){
   .lstArticle img{width: 50px;height: 30px;}
   .lstArticle p {
@@ -6532,7 +6544,6 @@ img-crop canvas{display:block;position:absolute;outline:0;-webkit-tap-highlight-
   .hmContElem {padding-bottom: 0px;margin-bottom: 0px;}
   
   .hmContElem h2{font-size: 9px;font-weight: 600;}
-  
 }
 
 @media (min-width: 768px)
@@ -6994,6 +7005,7 @@ img-crop canvas{display:block;position:absolute;outline:0;-webkit-tap-highlight-
     width: 80px;
     font-weight: bold;
   }
+  .MsoNormal span{font-size: 8pt !important;}
 }
 
 @media (min-width: 768px) 
