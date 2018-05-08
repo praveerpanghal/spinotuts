@@ -133,6 +133,16 @@
                     return true;
                 }
             }
+            else
+            {
+                var clickedElement = $(event.target);                
+                if(clickedElement[0].innerHTML.indexOf("caret") > -1){
+                    return false;
+                }else{  
+                    $('.flyout-content').css("display",'none'); 
+                    return true;
+                }   
+            }
             // $('.flyout-content').css("left",'-99999px');
             $('.flyout-content').css("display",'none');            
         });
@@ -147,6 +157,15 @@
                     return true;
                     //$('#bs-example-navbar-collapse-1').removeClass('in');
                 }
+            }     else
+            {
+                var clickedElement = $(event.target);                
+                if(clickedElement[0].innerHTML.indexOf("userWizard") > -1){
+                    return false;
+                }else{  
+                    $('.flyout-content').css("display",'none'); 
+                    return true;
+                }   
             }
             $('.flyout-content').css("display",'none'); 
         });     
