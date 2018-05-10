@@ -5973,7 +5973,12 @@ img-crop canvas{display:block;position:absolute;outline:0;-webkit-tap-highlight-
 }
 .accordionans{font-style: 14px !important;font-family: arial;}
 .article_edit .flyout{width: 100%;border-right: none;}
-
+#bs-example-navbar-collapse-2 .nav > li>a{  
+  padding: 8px 0px;
+  font-size: 10px;
+}
+.ui-loader-header{display: none;}
+.blog_information{margin: 0px;padding-left: 30px;}
 @media (max-width: 455px) {
   body{
     padding-top: 210px;
@@ -5995,47 +6000,6 @@ img-crop canvas{display:block;position:absolute;outline:0;-webkit-tap-highlight-
   }
   
 } 
-@media (max-width: 440px) {
-  body{
-    padding-top: 130px;
-  }
-  .postedinterviewqs,.main_content {
-    padding: 0;
-    }
-  .quesWizard {padding: 5px;}
-  .interviewmob{border: none;border-bottom-color: #ddd;}
-  .niq .panel-heading {
-    padding: 0 5px;
-  }
-  .niq .panel-group {
-    margin-bottom: 0px;
-    border-bottom: 1px solid #ddd;
-  }
-  .quesindex, .quesText {
-    font-weight: bold;
-    font-size: 10px;
-  }
-  .iqAns {
-    color: #b8094c;
-    padding-right: 2px;
-  }
-  .iqans{
-    font-size: 10px;
-    margin: 2px 0;
-  }
-  .accordionans{padding: 0px;}
-  .quesAns {margin-left:0px;font-size: 10px !important;}
-  .interviewmob>a {padding: 0}
-  .interviewmob .panel-group .panel-heading + .panel-collapse > .list-group, .panel-group .panel-heading + .panel-collapse > .panel-body{padding: 5px !important;}
-  .niq .panel-heading p {
-    padding-top: 5px;
-}
-.panel-title > .small, .panel-title > .small > a, .panel-title > a, .panel-title > small, .panel-title > small > a {
-  color: inherit;
-  padding: 0;
-}
-.accordionans {margin: 0;}
-}
 
 @media (max-width: 767px) {
   body{
@@ -6452,8 +6416,92 @@ img-crop canvas{display:block;position:absolute;outline:0;-webkit-tap-highlight-
   {
     padding-left: 5px !important;
   }
+  .userimage_pannel {
+    width: 30px;
+    height: 30px;
+    margin-right: 0px;
+  }
+  .userImage {
+    width: 30px;
+    height: 30px;
+  }
+  .interview_content li .right { 
+    margin-top: 0px;
+   padding-left: 10px;
+  }
+  .blogtitle {
+    font-size: 12px;
+}
+.LinkNormalGrayLight, a.LinkNormalGrayLight {
+  font-size: 10px;
+}
+.interview_content { 
+  margin-top: 0px;
+}
+.under_cnstrn{
+  padding-left: 0;
+  padding-right: 0;
+  border: none !important;
+}
+.under_cnstrn .interview_content li{
+  margin-bottom: 0;
+  border-bottom: 1px solid #ddd;
+}
+.blogs_info{padding-left: 25px;}
+.blog_information_content{padding: 0px;}
+.blog_information {
+  padding-left: 20px !important;
+  padding-top: 5px !important;
+}
+.right h4{margin-top: 5px;margin-bottom: 5px;}
+.articleContent p {
+  font-size: 12px;}
 }
 
+@media (max-width: 440px) {
+  body{
+    padding-top: 130px;
+  }
+  .postedinterviewqs,.main_content {
+    padding: 0;
+    }
+  .quesWizard {padding: 5px;}
+  .interviewmob{border: none;border-bottom-color: #ddd;}
+  .niq .panel-heading {
+    padding: 0 5px;
+  }
+  .niq .panel-group {
+    margin-bottom: 0px;
+    border-bottom: 1px solid #ddd;
+  }
+  .quesindex, .quesText {
+    font-weight: bold;
+    font-size: 10px;
+  }
+  .iqAns {
+    color: #b8094c;
+    padding-right: 2px;
+  }
+  .iqans{
+    font-size: 10px;
+    margin: 2px 0;
+  }
+  .accordionans{padding: 0px;}
+  .quesAns {margin-left:0px;font-size: 10px !important;}
+  .interviewmob>a {padding: 0}
+  .interviewmob .panel-group .panel-heading + .panel-collapse > .list-group, .panel-group .panel-heading + .panel-collapse > .panel-body{padding: 5px !important;}
+  .niq .panel-heading p {
+    padding-top: 5px;
+}
+.panel-title > .small, .panel-title > .small > a, .panel-title > a, .panel-title > small, .panel-title > small > a {
+  color: inherit;
+  padding: 0;
+}
+.accordionans {margin: 0;}
+.blogs{padding-left: 35px !important;}
+.blog_information {
+  padding-left: 35px !important;}
+}
 @media (min-width: 767px) {
   .flyout-alt .caret {
     transform: rotate(-90deg);

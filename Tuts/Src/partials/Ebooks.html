@@ -42,7 +42,7 @@
 								<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-2" >
 									<ul class="nav site-nav">
 										<li class="flyout" ng-repeat="Ebook in vm.Ebooks| orderBy:'sequence_no'">
-											<a href="{{vm.parent}}/{{vm.category_name | lowercase}}/{{vm.category_id}}/{{Ebook.alias_url | lowercase}}">{{Ebook.chapter_name}} </a>
+											<a class="text-left" href="{{vm.parent}}/{{vm.category_name | lowercase}}/{{vm.category_id}}/{{Ebook.alias_url | lowercase}}">{{Ebook.chapter_name}} </a>
 										</li>
 									</ul>								
 								</div><!-- /.navbar-collapse -->
