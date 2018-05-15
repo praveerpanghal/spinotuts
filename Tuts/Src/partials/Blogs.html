@@ -1,8 +1,21 @@
 <div class="container-fluid content articlelist_content">
-	<div class="col-md-12 main_content">
-		<div class="row">
-			<div class="col-md-2 hidden-sm col-xs-12">		
-				<div class="adds">		
+	<div class="row main_content">
+		<div class="col-md-2 col-sm-12 col-xs-12">		
+			<div class="adds">		
+				<ins class="adsbygoogle"
+				style="display:block"
+				data-ad-client="ca-pub-7097333205788199"
+				data-ad-slot="9573289661"
+				data-ad-format="auto"></ins>
+				<script defer type="text/javascript">
+					(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div>
+		<!-- Blog Post Content Column -->
+		<div class="col-md-12 col-lg-8 col-sm-12 col-xs-12">			
+			<div class="col-md-12 col-sm-12 articleAdd hidden-xs">
+				<div class="adds">
 					<ins class="adsbygoogle"
 					style="display:block"
 					data-ad-client="ca-pub-7097333205788199"
@@ -12,56 +25,47 @@
 						(adsbygoogle = window.adsbygoogle || []).push({});
 					</script>
 				</div>
-			</div>
-			<div class="col-md-8 col-sm-9 col-xs-12 main_content">
-				<div class="row">
-					<div class="col-md-12 articleAdd hidden-xs">
-						<div class="adds">
-							<ins class="adsbygoogle"
-							style="display:block"
-							data-ad-client="ca-pub-7097333205788199"
-							data-ad-slot="9573289661"
-							data-ad-format="auto"></ins>
-							<script defer type="text/javascript">
-								(adsbygoogle = window.adsbygoogle || []).push({});
-							</script>
-						</div>
-					</div>
-					<div class="col-md-12 col-sm-12 col-xs-12 under_cnstrn">
-						
-						<div class="col-md-12 col-sm-12 col-xs-12" style="padding-left: 0px; padding-right: 0px;">
-							<ul class="col-md-12 col-sm-12 col-xs-12 interview_content">	
-								<li ng-repeat="blogslist in vm.blogslists" class="blogs">
-									<div class="col-md-1 col-sm-1  userimage_pannel">
-										<a href="#" title="Name">
-											<img class="userImage" ng-src="images/profileimg.png" ng-if="!blogslist.profile_pic" width="50" height="50">
-											<img class="userImage" ng-src="{{blogslist.profile_pic}}" ng-if="blogslist.profile_pic" width="50" height="50">
-										</a>
-									</div>
-									<div class="col-md-11 col-sm-11 right">
-										<p class="blogtitle"><a href="/{{vm.blogpath}}/{{blogslist.alias_url}}">{{blogslist.blog_title}}</a></p>
-										<div class="LinkNormalGrayLight"> <span class="LinkRed"><a href="#" class="LinkRed">{{blogslist.UserName}}</a> </span>|&nbsp;on <span>{{blogslist.posted_date}}</span></div>
-										
-									</div>										
-								</li>
-							</ul>
-							<div class="clearfix"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-2 col-sm-3 col-xs-12">
-				<div class="adds">		
-					
-					<ins class="adsbygoogle"
-					style="display:block"
-					data-ad-client="ca-pub-7097333205788199"
-					data-ad-slot="9573289661"
-					data-ad-format="auto"></ins>
-					<script defer type="text/javascript">
-						(adsbygoogle = window.adsbygoogle || []).push({});
-					</script>
-				</div>
+			</div>			
+			<!-- Post Content -->
+			<div class="col-md-12 article_edit articleTabAlign blogscontent" id="no-more-tables">
+				
+				<table class="table table-sm atclTable" >					
+					<tbody >				  
+						<tr ng-repeat="blogslist in vm.blogslists" class="">
+							<td class="artticleLst hidden-xs blog-img">
+								<div class="lstArticle lst userimage_pannel">											
+									<img class="userImage" ng-src="images/profileimg.png" ng-if="!blogslist.profile_pic" width="50" height="50">
+									<img class="userImage" ng-src="{{blogslist.profile_pic}}" ng-if="blogslist.profile_pic" width="50" height="50">
+									
+								</div>	
+							</td>
+							<td class="article_block artticleLstBlock">	
+								<div class="lstArticle lst visible-xs userimage_pannel">											
+									<img class="userImage" ng-src="images/profileimg.png" ng-if="!blogslist.profile_pic" width="50" height="50">
+									<img class="userImage" ng-src="{{blogslist.profile_pic}}" ng-if="blogslist.profile_pic" width="50" height="50">									
+								</div>								
+								<p class="blog_information">
+									<a class="article_font" href="/{{vm.blogpath}}/{{blogslist.alias_url}}">{{blogslist.blog_title}}</a>									
+								</p>
+								<div class="LinkNormalGrayLight"> <span class="LinkRed"><a href="#" class="LinkRed">{{blogslist.UserName}}</a> </span>|&nbsp;on <span>{{blogslist.posted_date}}</span>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>						
+			</div>			
+		</div>		
+		
+		<div class="col-md-2 col-sm-12 col-xs-12">			
+			<div class="adds">		
+				<ins class="adsbygoogle"
+				style="display:block"
+				data-ad-client="ca-pub-7097333205788199"
+				data-ad-slot="9573289661"
+				data-ad-format="auto"></ins>
+				<script defer type="text/javascript">
+					(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
 			</div>
 			
 		</div>

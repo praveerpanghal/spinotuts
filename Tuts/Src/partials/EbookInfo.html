@@ -25,7 +25,7 @@
 							</div>
 						</div>
 						<div class="col-lg-2 col-md-4 col-sm-4 visible-xs">
-							<div class="row article_edit navbar navbar-inverse navigation-panel" id="navigation-panel" role="navigation">
+							<div class="row article_edit navbar navbar-inverse navigation-panel ebooksnav" id="navigation-panel" role="navigation">
 								<div class="container">
 									<!-- Brand and toggle get grouped for better mobile display -->
 									<div class="navbar-header">
@@ -42,54 +42,54 @@
 											<li class="flyout" ng-repeat="Ebook in vm.Ebooks | orderBy:'sequence_no'" ng-class="{sel: $index == '{{vm.Chindex}}'}" >
 												<a class="text-left" href="{{vm.parent}}/{{vm.categoryname | lowercase}}/{{vm.articleid}}/{{Ebook.alias_url | lowercase}}">
 													{{Ebook.chapter_name}}</a>
-											</li>
-										</ul>								
-									</div><!-- /.navbar-collapse -->
-								</div><!-- /.container-fluid -->
-								
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-8 col-sm-8">				
-							<div class="article_edit alignPaddingTop">
-								
-								<div class="carousel slide" id="myCarousel">
-									<h3 class="ebkInfoWizard">{{vm.EbookInfo.chapter_name}}</h3>
-									<div class="adds hidden-md hidden-sm hidden-xs">		
-										<ins class="adsbygoogle"
-										style="display:block"
-										data-ad-client="ca-pub-7097333205788199"
-										data-ad-slot="9573289661"
-										data-ad-format="auto"></ins>
-										<script defer type="text/javascript">
-											(adsbygoogle = window.adsbygoogle || []).push({});
-										</script>
-									</div>
+												</li>
+											</ul>								
+										</div><!-- /.navbar-collapse -->
+									</div><!-- /.container-fluid -->
 									
-									<div class="carousel-inner">		
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-8 col-sm-8">				
+								<div class="article_edit alignPaddingTop">
+									
+									<div class="carousel slide" id="myCarousel">
+										<h3 class="ebkInfoWizard">{{vm.EbookInfo.chapter_name}}</h3>
+										<div class="adds hidden-md hidden-sm hidden-xs">		
+											<ins class="adsbygoogle"
+											style="display:block"
+											data-ad-client="ca-pub-7097333205788199"
+											data-ad-slot="9573289661"
+											data-ad-format="auto"></ins>
+											<script defer type="text/javascript">
+												(adsbygoogle = window.adsbygoogle || []).push({});
+											</script>
+										</div>
 										
-										
-										<p ng-bind-html="vm.to_trusted(vm.EbookInfo.chapter_description)" class="ebookinformation"></p>
-										<button class="btn btn-primary" ng-click="vm.pre(vm.EbookInfo.alias_url)">{{vm.JsonVals.pre}}</button>
-										<button class="btn btn-primary pull-right" ng-click="vm.next(vm.EbookInfo.alias_url)">{{vm.JsonVals.nxt}}</button>
-										
-										<div class="clearfix"></div>
-									</div>
-								</div><!-- /#myCarousel -->	
+										<div class="carousel-inner">		
+											
+											
+											<p ng-bind-html="vm.to_trusted(vm.EbookInfo.chapter_description)" class="ebookinformation"></p>
+											<button class="btn btn-primary" ng-click="vm.pre(vm.EbookInfo.alias_url)">{{vm.JsonVals.pre}}</button>
+											<button class="btn btn-primary pull-right" ng-click="vm.next(vm.EbookInfo.alias_url)">{{vm.JsonVals.nxt}}</button>
+											
+											<div class="clearfix"></div>
+										</div>
+									</div><!-- /#myCarousel -->	
+								</div>
+							</div>
+							<div class="col-lg-2 col-md-12 col-sm-12">
+								<div class="adds">		
+									<ins class="adsbygoogle"
+									style="display:block"
+									data-ad-client="ca-pub-7097333205788199"
+									data-ad-slot="9573289661"
+									data-ad-format="auto"></ins>
+									<script defer type="text/javascript">
+										(adsbygoogle = window.adsbygoogle || []).push({});
+									</script>
+								</div>
 							</div>
 						</div>
-						<div class="col-lg-2 col-md-12 col-sm-12">
-							<div class="adds">		
-								<ins class="adsbygoogle"
-								style="display:block"
-								data-ad-client="ca-pub-7097333205788199"
-								data-ad-slot="9573289661"
-								data-ad-format="auto"></ins>
-								<script defer type="text/javascript">
-									(adsbygoogle = window.adsbygoogle || []).push({});
-								</script>
-							</div>
-						</div>
-					</div>
-				</div>	
-			</div>
-			<div class="clear"></div>
+					</div>	
+				</div>
+				<div class="clear"></div>

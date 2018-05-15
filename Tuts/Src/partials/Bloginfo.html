@@ -27,22 +27,22 @@
 							</script>
 						</div>
 					</div>
-					<div class="col-md-12 ">
+					
 					<div class="col-md-12 article_edit articleHeading articleContHeading blog_information" >					
-					<div class="row articleContent ">
-						<div class="col-md-1 col-sm-1  userimage_pannel">
+					<div class="row articleContent blogcontent">
+						<div class="col-md-1 col-sm-1 col-xs-2 blogcontentinfo">
 						<a href="#" title="Name">
 						<img class="userImage" ng-src="images/profileimg.png" ng-if="!vm.singlebloginfo.profile_pic" width="50" height="50">
 						<img class="userImage" ng-src="{{vm.singlebloginfo.profile_pic}}" ng-if="vm.singlebloginfo.profile_pic" width="50" height="50">
 						</a>
 						</div>
-						<div class="col-md-11 col-xs-11 articleContent right">							
+						<div class="col-md-11 col-sm-11 col-xs-10 articleContent right">							
 							<h4>{{vm.singlebloginfo.blog_title}}</h4>							
 							<p ng-bind-html="vm.to_trusted(vm.singlebloginfo.blog_description)" class="ebookinformation"></p>
 						</div>
 					</div>
 				</div>
-					</div>
+					
 				</div>
 			</div>
 			<div class="col-md-2 col-sm-3 col-xs-12">
