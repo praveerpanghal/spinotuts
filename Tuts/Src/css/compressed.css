@@ -468,10 +468,17 @@ ul.userCtrls li a{
   border-left: 0px;
 	font-weight: 700;
 }
-.article_font{
+/* .article_font{
 	font-size: 17px;
   font-family: Segoe UI;
   font-weight: 400;
+} */
+.article_font
+{
+  font-size: 17px!important;
+  font-family: Segoe UI!important;
+  font-weight: 400!important;
+  line-height:20px!important;
 }
 .article_edit {
 	border: 1px solid #E0DFDF;
@@ -3082,19 +3089,19 @@ a.excpCopyTxt:hover
 {
   margin-top:14px;
 }
-.article_font p ,.mngtext{
+/* .article_font p ,.mngtext{
   height: 42px;
   overflow: hidden;
   font-size: 14px;
   font-family: arial;
-} 
-.article_font
+}  */
+/* .article_font
 {
   font-size: 17px!important;
   font-family: Segoe UI!important;
   font-weight: 400!important;
   line-height:20px!important;
-}
+} */
 .profileEdit
 {
   margin-top:20px;
@@ -6206,6 +6213,7 @@ img-crop canvas{display:block;position:absolute;outline:0;-webkit-tap-highlight-
   }
   .articleContHeading {
     padding: 15px;
+    padding-right: 15px;
   }
   .articleContbox {
     padding: 5px;
