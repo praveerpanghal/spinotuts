@@ -3,23 +3,23 @@
 	<!-- Development Begin-->
 	<base id="localhost:80">			
 		<accessfolder>Src</accessfolder>
-		<baseurl>http://162.17.231.117:1313/SpinoService.svc</baseurl>
+		<baseurl>http://praveer-001-site3.ctempurl.com/SpinoService.svc</baseurl>
 	</base>
 	<!-- Development End-->
 	<!-- UAT Begin-->
 	<base id="localhost:81">			
 		<accessfolder>Build</accessfolder>
-		<baseurl>http://162.17.231.117:1314/SpinoService.svc</baseurl>
+		<baseurl>http://praveer-001-site3.ctempurl.com/SpinoService.svc</baseurl>
 	</base>
 	<!-- UAT End-->
 	<!-- Production Begin-->
 	<base id="spinotuts.com">
 		<accessfolder>Build</accessfolder>
-		<baseurl>http://162.17.231.117:1314/SpinoService.svc</baseurl>
+		<baseurl>http://praveer-001-site3.ctempurl.com/SpinoService.svc</baseurl>
 	</base>
 	<base id="www.spinotuts.com">   
 		<accessfolder>Build</accessfolder>
-  		<baseurl>http://162.17.231.117:1314/SpinoService.svc</baseurl>
+  		<baseurl>http://praveer-001-site3.ctempurl.com/SpinoService.svc</baseurl>
  	</base>
 	<!-- Production End-->
 </information>
